@@ -14,7 +14,7 @@ export default class UserRoute {
 		app
 			.route("/api/user/register")
 			.post(async (req: Request, res: Response) => {
-				res.send(await this.userController.handleNewUser(req));
+				res.send(await this.userController.handleRegistration(req));
 			});
 	}
 }

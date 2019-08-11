@@ -9,7 +9,7 @@ export default class UserController {
 		this.init = new UserInitializer();
 	}
 
-	public handleNewUser(res: Request) {
+	public handleRegistration(res: Request) {
 		try {
 			validateRegistration(res);
 			// const registerRequst: userRegistrationRequest = res.body;
