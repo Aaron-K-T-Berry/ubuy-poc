@@ -3,25 +3,5 @@
 	"version": "1.0.0",
 	"main": "dist/api/app.js",
 	"repository": "git@github.com:Aaron-K-T-Berry/ubuy-poc.git",
-	"license": "MIT",
-	"devDependencies": {
-		"@types/express": "^4.17.0",
-		"@types/lodash": "^4.14.136",
-		"@types/node": "^12.7.1",
-		"eslint": "^6.1.0",
-		"eslint-plugin-import": "^2.18.2",
-		"nodemon": "^1.19.1",
-		"ts-node": "^8.3.0",
-		"typescript": "^3.5.3",
-		"yarn": "^1.17.3"
-	},
-	"dependencies": {
-		"body-parser": "^1.19.0",
-		"express": "^4.17.1",
-		"lodash": "^4.17.15",
-		"mongoose": "^5.6.9"
-	},
-	"scripts": {
-		"dev": "nodemon src/entry.ts"
-	}
+	"license": "MIT"
 }
