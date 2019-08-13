@@ -1,28 +1,13 @@
-.some-page-wrapper {
-  margin: 15px;
-  /* background-color: red; */
+.page-wrapper {
+  margin: 5%
 }
 
-.row {
+.h1 {
+  color: black;
+  font-size: 40pt
+}
+
+.container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.column {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 100%;
-  flex: 1;
-}
-
-.blue-column {
-  background-color: blue;
-  height: 100px;
-}
-
-.green-column {
-  background-color: green;
-  height: 100px;
+  justify-content: space-evenly;
 }

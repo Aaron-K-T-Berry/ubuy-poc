@@ -1,5 +1,6 @@
 import express, { Response, Request } from "express";
 import bodyParser from "body-parser";
+import cors from "cors";
 import ApiInitializer from "./initializer";
 import { Routes } from "./routes";
 import dotenv from "dotenv";
@@ -11,6 +12,7 @@ const serverStart = () => {
 	// Setup express
 	const app = express();
 	app.use(bodyParser.json());
+	app.use(cors());
 
 	// Status endpoints
 	app.get("/status", (req: Request, response: Response) => {

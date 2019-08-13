@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./styles/AddItemForm.css";
 
 export default class AddItemForm extends React.Component {
 	constructor(props: any) {
@@ -19,24 +20,24 @@ export default class AddItemForm extends React.Component {
 	}
 
 	async handleSubmit() {
-		const response = await axios.post("http://localhost:4000", this.state);
+		const response = await axios.post("http://localhost:4000/item/add", this.state);
 		console.log(response);
 	}
 
 	render() {
 		return (
 			<div>
-				<div>
+				<div className="stack">
 					<label>Name</label>
 					<input type="Text" name="name" onChange={this.onChange} />
 				</div>
 
-				<div>
+				<div className="stack">
 					<label>quantity</label>
 					<input type="Text" name="quantity" onChange={this.onChange} />
 				</div>
 
-				<div>
+				<div className="stack">
 					<label>price</label>
 					<input type="Text" name="price" onChange={this.onChange} />
 				</div>
