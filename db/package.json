@@ -1,0 +1,16 @@
+{
+	"name": "ubuy-db",
+	"version": "1.0.0",
+	"main": "index.ts",
+	"license": "MIT",
+	"dependencies": {
+		"@types/mongodb": "^3.1.32"
+	},
+	"devDependencies": {
+		"ts-node": "^8.3.0"
+	},
+	"scripts": {
+		"start": "mongod --dbpath ./data",
+		"configure": "./node_modules/.bin/ts-node index.ts"
+	}
+}
