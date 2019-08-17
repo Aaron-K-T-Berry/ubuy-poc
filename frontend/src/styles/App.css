@@ -3,11 +3,27 @@
 }
 
 .h1 {
-  color: black;
-  font-size: 40pt
+  text-align: center;
+  color:#0074D9;
+  font-size: 50pt
 }
 
 .container {
   display: flex;
   justify-content: space-evenly;
+  position: relative;
+}
+
+.login {
+  width: 70%;
+  align-self: center;
+}
+
+#parent {
+  height: 100%;
+}
+
+#login {
+  height: 50vh;
+  width: 80%;
 }
