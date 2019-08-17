@@ -78,12 +78,19 @@ Cons:
 ### Start the stack
 
 Note: Complete all of these steps in a **different terminal session** and run all of these commands in the root of this repo
-
+#### MAC
 1. Start the db layer with `yarn start dev-db`
-2. Start the backend layer with `yarn run dev-backend`
-3. Start the frontend with yarn `yarn run dev-frontend`
-
+2. Start the backend layer with `yarn start dev-backend`
+3. Start the frontend with yarn `yarn start dev-frontend`
+#### Windows
+1. cd to your repo root folder
+2. Create a `data` folder in the root folder in the repo. **You only have to do this once**. This is where the database objects will be stored. Delete the the contents inside if you want to reset it in the future.
+3. Start the db layer with `mongod --dbpath ./data`
+4. Start backend with `yarn run dev-backend`
+5. Start frontend with `yarn run dev-frontend`
 All layers should now be ready. You can access the ui at http://localhost:3000 and the api can be accessed at http://localhost:4000
+
+
 
 ---
 
