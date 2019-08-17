@@ -1,6 +1,6 @@
 import React from "react";
 import "./styles/App.css";
-import AddItemForm from "./components/AddItemForm";
+import LoginForm from "./components/LoginForm";
 import ItemViewer from "./components/ItemViewer";
 
 const App: React.FC = () => {
@@ -11,7 +11,7 @@ const App: React.FC = () => {
 			<div className="container">
 				<div>
 					<h2>Add Item</h2>
-					<AddItemForm />
+					<LoginForm />
 				</div>
 
 				<div>
