@@ -9,5 +9,8 @@
 		"dev-db": "cd ./db && yarn run start",
 		"dev-frontend": "cd ./frontend && yarn run start",
 		"dev-backend": "cd ./backend && yarn run dev"
+	},
+	"dependencies": {
+		"react-router-dom": "^5.0.1"
 	}
 }
