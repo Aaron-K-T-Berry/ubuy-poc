@@ -88,9 +88,8 @@ Note: Complete all of these steps in a **different terminal session** and run al
 3. Start the db layer with `mongod --dbpath ./data`
 4. Start backend with `yarn run dev-backend`
 5. Start frontend with `yarn run dev-frontend`
+
 All layers should now be ready. You can access the ui at http://localhost:3000 and the api can be accessed at http://localhost:4000
-
-
 
 ---
 
