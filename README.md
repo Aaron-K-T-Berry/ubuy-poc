@@ -77,12 +77,13 @@ Cons:
 
 ### Start the stack
 
-Note: Complete all of these steps in a different terminal session and run all of these commands in the root of this repo
+Note: Complete all of these steps in a **different terminal session** and run all of these commands in the root of this repo
 
 1. Start the db layer with `yarn start dev-db`
-2. Start the backend layer with `yarn start dev-backend`
-3. Start the frontend with yarn `start dev-frontend`
+2. Start the backend layer with `yarn run dev-backend`
+3. Start the frontend with yarn `yarn run dev-frontend`
 
 All layers should now be ready. You can access the ui at http://localhost:3000 and the api can be accessed at http://localhost:4000
 
 ---
+
