@@ -1,8 +1,10 @@
 import { Express } from "express";
 import ItemController from "./controllers/item";
+import AuthController from "./controllers/users";
 
 export default class ApiInitializer {
 	private itemController!: ItemController;
+	private authController!: AuthController;
 
 	constructor(private app: Express) {}
 
@@ -15,5 +17,12 @@ export default class ApiInitializer {
 			this.itemController = new ItemController();
 		}
 		return this.itemController;
+	}
+
+	public getAuthController(): any {
+		if (this.authController === undefined) {
+			this.authController = new AuthController();
+		}
+		return this.authController;
 	}
 }
