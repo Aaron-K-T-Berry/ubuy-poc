@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/Login.css";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import {
 	Button,
 	Form,
@@ -14,6 +14,7 @@ import axios from "axios";
 export interface LoginState {
 	email: string;
 	password: string;
+	loginSuccess: boolean;
 }
 
 // Add passed in props here
@@ -24,7 +25,8 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		super(props);
 		this.state = {
 			email: "",
-			password: ""
+			password: "",
+			loginSuccess: false
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -46,13 +48,17 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 				email: this.state.email,
 				password: this.state.password
 			},
-			{withCredentials: true}
+			{ withCredentials: true }
 		);
-		console.log(res.headers);
+		if (res.status === 200) {
+			this.setState({ loginSuccess: true });
+		}
 	}
 	async test(event: any) {
 		// TODO get the endpoint from config
-		const res = await axios.get("http://localhost:4000/auth/checkToken");
+		const res = await axios.get("http://localhost:4000/auth/checkToken", {
+			withCredentials: true
+		});
 	}
 
 	render() {
@@ -82,14 +88,14 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 						</Group>
 
 						<Label id="labelFeedback" />
-						{/* <Link to="/account">
-                        </Link> */}
+
 						<Button id="buttonLogin" block onClick={this.handleSubmit}>
 							Log In
 						</Button>
-						<Button id="buttonTest" block onClick={this.test}>
-							test
-						</Button>
+
+						{/* Handle redirect after successful login */}
+						{this.state.loginSuccess && <Redirect to={"/account"} />}
+
 						<Link to="/reset"> Forgot your password? </Link>
 
 						<div className="register">
