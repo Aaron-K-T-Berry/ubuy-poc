@@ -1,10 +1,12 @@
 .page-wrapper {
-  margin: 5%
+  margin: 5%;
+  align-items: center;
 }
 
 .h1 {
-  color: black;
-  font-size: 40pt
+  text-align: center;
+  color:#0074D9;
+  font-size: 50pt
 }
 
 .container {

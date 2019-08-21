@@ -1,0 +1,27 @@
+.h1 {
+  text-align: center;
+  color:#0074D9;
+  margin-bottom: 20pt;
+  font-size: 50pt
+}
+
+.h2 {
+  margin-top: 20pt;
+  margin-bottom: 10pt;
+  text-align: left;
+  color:rgb(0, 27, 51);
+  font-size: 20pt;
+}
+
+.input-wrapper{
+  display: flex;
+  justify-content: center;
+}
+
+.input {
+  width: 50%;
+}
+
+.register {
+  width: 40%;
+}
