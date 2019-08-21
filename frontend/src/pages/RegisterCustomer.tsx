@@ -34,11 +34,13 @@ export default class RegisterCustomer extends React.Component<
 	}
 
 	handleChange(event: any) {
-		// @ts-ignore
+        // @ts-ignore
+        // TODO fix this type error
 		this.setState({ [event.target.id]: event.target.value });
 	}
 
 	async handleSubmit(event: any) {
+        // TODO get the endpoint from config
 		const res = await axios.post("http://localhost:4000/auth/register", {
 			email: this.state.email,
 			password: this.state.password

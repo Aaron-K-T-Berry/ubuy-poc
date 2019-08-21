@@ -49,6 +49,7 @@ export const AuthRoute = (app: Express, controller: AuthController) => {
 						const token = jwt.sign(payload, controller.getSecret(), {
 							expiresIn: "1h"
 						});
+						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");
 						res.cookie("token", token, { httpOnly: true }).sendStatus(200);
 					}
 				});

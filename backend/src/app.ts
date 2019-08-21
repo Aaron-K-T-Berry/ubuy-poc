@@ -23,8 +23,8 @@ const serverStart = () => {
 	// Setup express
 	const app = express();
 	app.use(bodyParser.json());
-	app.use(cookieParser())
-	app.use(cors());
+	app.use(cookieParser());
+	app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 	// Status endpoints
 	app.get("/status", (req: Request, response: Response) => {
