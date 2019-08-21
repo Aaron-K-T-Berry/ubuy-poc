@@ -26,7 +26,9 @@ export default class LoginForm extends React.Component {
                         </Group>
                     
                         <Label id="labelFeedback"></Label>
-                        <Button id="buttonLogin" block>Log In</Button>
+                        <Link to="/account">
+                            <Button id="buttonLogin" block>Log In</Button>
+                        </Link>
                         <Link to="/reset"> Forgot your password? </Link>
                         
                         <div className="register">
