@@ -1,8 +1,11 @@
 import React from "react";
 import "./styles/Login.css";
-import RegisterUser from './RegisterCustomer';
 import { Link } from "react-router-dom";
 import {Button, Form, FormGroup as Group, FormControl as Input, FormLabel as Label} from 'react-bootstrap';
+
+function login() {
+
+}
 
 
 export default class LoginForm extends React.Component {
@@ -28,7 +31,9 @@ export default class LoginForm extends React.Component {
                         
                         <div className="register">
                             <div className="h2">New Customer? </div>
-                            <Button id="buttonRegisterUser" block> Register </Button>
+                            <Link to="/register" >
+                                <Button id="buttonRegisterUser" block> Register </Button>
+                            </Link>
                         </div>
                     </div>                    
                 </div>
