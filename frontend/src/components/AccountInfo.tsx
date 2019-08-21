@@ -1,5 +1,5 @@
 import React from "react";
-import "./styles/Login.css";
+import "../styles/Login.css";
 import { Link } from "react-router-dom";
 import {Button, Form, FormGroup as Group, FormControl as Input, FormLabel as Label} from 'react-bootstrap';
 
