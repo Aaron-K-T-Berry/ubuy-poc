@@ -1,14 +1,14 @@
 import { Express, Request, Response } from "express";
-import User, { UserModel } from "../model/users.model";
-import AuthController from "../controllers/users";
+import User, { UserModel } from "../model/user.model";
 import jwt from "jsonwebtoken";
 import withAuth from "../middlewear/auth-middlewear";
+import env from "../common/config-helper";
 
-export const AuthRoute = (app: Express, controller: AuthController) => {
+export const AuthRoute = (app: Express) => {
 	app.post("/auth/register", function(req: Request, res: Response) {
-		const { email, password } = req.body;
+		const { firstName, lastName, email, password } = req.body;
 		// @ts-ignore
-		const user = new User({ email, password });
+		const user = new User({ firstName, lastName, email, password });
 		user.save(function(err: Error) {
 			if (err) {
 				console.log(err);
@@ -46,7 +46,7 @@ export const AuthRoute = (app: Express, controller: AuthController) => {
 					} else {
 						// Issue token
 						const payload = { email };
-						const token = jwt.sign(payload, controller.getSecret(), {
+						const token = jwt.sign(payload, env.SECRET, {
 							expiresIn: "1h"
 						});
 						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");

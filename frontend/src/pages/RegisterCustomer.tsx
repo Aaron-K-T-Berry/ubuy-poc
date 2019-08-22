@@ -11,6 +11,8 @@ import axios from "axios";
 
 // Add state here
 export interface RegisterState {
+	firstName: string;
+	lastName: string;
 	email: string;
 	password: string;
 }
@@ -25,6 +27,8 @@ export default class RegisterCustomer extends React.Component<
 	constructor(props: any) {
 		super(props);
 		this.state = {
+			firstName: "",
+			lastName: "",
 			email: "",
 			password: ""
 		};
@@ -34,14 +38,16 @@ export default class RegisterCustomer extends React.Component<
 	}
 
 	handleChange(event: any) {
-        // @ts-ignore
-        // TODO fix this type error
+		// @ts-ignore
+		// TODO fix this type error
 		this.setState({ [event.target.id]: event.target.value });
 	}
 
 	async handleSubmit(event: any) {
-        // TODO get the endpoint from config
+		// TODO get the endpoint from config
 		const res = await axios.post("http://localhost:4000/auth/register", {
+			firstName: this.state.firstName,
+			lastName: this.state.lastName,
 			email: this.state.email,
 			password: this.state.password
 		});
@@ -56,10 +62,22 @@ export default class RegisterCustomer extends React.Component<
 					<div className="input">
 						<Group>
 							<Label>First Name:</Label>
-							<Input type="text" id="firstName" placeholder="William" />
+							<Input
+								type="text"
+								id="firstName"
+								placeholder="William"
+								value={this.state.firstName}
+								onChange={this.handleChange}
+							/>
 
 							<Label>Last Name:</Label>
-							<Input type="text" id="lastName" placeholder="Perdormo" />
+							<Input
+								type="text"
+								id="lastName"
+								placeholder="Perdormo"
+								value={this.state.lastName}
+								onChange={this.handleChange}
+							/>
 
 							<Label>Email:</Label>
 							<Input

@@ -1,8 +1,9 @@
 import React from "react";
 import "./styles/App.css";
 import LoginForm from "./pages/LoginForm";
-import AccountInfo from "./components/AccountInfo";
+import AccountInfo from "./pages/AccountInfo";
 import RegisterCustomer from "./pages/RegisterCustomer";
+import HomePage from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 const App: React.FC = () => {
@@ -10,8 +11,8 @@ const App: React.FC = () => {
 		<Router>
 			<div className="page-wrapper">
 				<Switch>
-					{/* TODO make /login path and make / go to index */}
-					<Route path="/" exact component={LoginForm} />
+					<Route path="/" exact component={HomePage} />
+					<Route path="/login" exact component={LoginForm} />
 					<Route path="/account" exact component={AccountInfo} />
 					<Route path="/register" component={RegisterCustomer} />
 				</Switch>
