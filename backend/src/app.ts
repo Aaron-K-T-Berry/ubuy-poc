@@ -5,9 +5,8 @@ import ApiInitializer from "./initializer";
 import { Routes } from "./routes";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-
-// Pull in .env files into process.env
 import env from "./common/config-helper";
+import logger from "./loaders/logger";
 
 const mongo_uri = "mongodb://localhost/ubuy";
 mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
@@ -37,7 +36,7 @@ const serverStart = () => {
 	// Start the server
 	const port = env.APP_PORT;
 	app.listen(port, () => {
-		console.log("Server started on port", port);
+		logger.info(`Server started on port ${port}`);
 	});
 };
 

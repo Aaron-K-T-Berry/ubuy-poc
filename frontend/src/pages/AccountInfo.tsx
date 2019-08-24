@@ -34,6 +34,8 @@ export default class AccountInfo extends React.Component<
 		const res = await axios.get("http://localhost:4000/user", {
 			withCredentials: true
 		});
+		console.log(res);
+
 		const user: AccountInfoState = {
 			firstName: res.data.user.firstName,
 			lastName: res.data.user.lastName,
@@ -50,7 +52,7 @@ export default class AccountInfo extends React.Component<
 				<div className="h1">Account Information</div>
 				<div className="input-wrapper">
 					<div className="input">
-						<Group >
+						<Group>
 							<Label>First Name:</Label>
 							<Input
 								type="text"
