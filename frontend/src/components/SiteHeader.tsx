@@ -17,8 +17,10 @@ export default class SiteHeader extends React.Component<
       <div className="site-header">
         <Navbar>
           <Container>
-            <Row >
+            <Row>
+              <Link to="/">
                 <h1>uBuy</h1>
+              </Link>
             </Row>
             <Row>
               <Col>
