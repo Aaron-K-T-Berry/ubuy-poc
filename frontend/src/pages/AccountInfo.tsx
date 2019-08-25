@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/Login.css";
+import "../styles/App.css";
 import {
 	Button,
 	FormGroup as Group,

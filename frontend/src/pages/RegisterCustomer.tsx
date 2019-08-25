@@ -1,5 +1,5 @@
-import React, { FormEvent } from "react";
-import "../styles/Register.css";
+import React from "react";
+import "../styles/App.css";
 import {
 	Button,
 	Form,
