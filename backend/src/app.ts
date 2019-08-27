@@ -3,12 +3,10 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import ApiInitializer from "./initializer";
 import { Routes } from "./routes";
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
-
-// Pull in .env files into process.env
-dotenv.config();
+import env from "./common/config-helper";
+import logger from "./loaders/logger";
 
 const mongo_uri = "mongodb://localhost/ubuy";
 mongoose.connect(mongo_uri, { useNewUrlParser: true }, function(err) {
@@ -23,8 +21,8 @@ const serverStart = () => {
 	// Setup express
 	const app = express();
 	app.use(bodyParser.json());
-	app.use(cookieParser())
-	app.use(cors());
+	app.use(cookieParser());
+	app.use(cors({ origin: "http://localhost:3000", credentials: true }));
 
 	// Status endpoints
 	app.get("/status", (req: Request, response: Response) => {
@@ -36,9 +34,9 @@ const serverStart = () => {
 	Routes(apiInit);
 
 	// Start the server
-	const port = process.env.APP_PORT;
+	const port = env.APP_PORT;
 	app.listen(port, () => {
-		console.log("Server started on port", port);
+		logger.info(`Server started on port ${port}`);
 	});
 };
 
