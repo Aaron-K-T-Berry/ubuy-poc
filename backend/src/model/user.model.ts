@@ -3,9 +3,13 @@ import bcrypt from "bcrypt";
 const saltRounds = 10;
 
 export interface User {
-	firstName?: string;
-	lastName?: string;
+	firstName: string;
+	lastName: string;
 	email: string;
+	// customer | admin | employee
+	// TODO validate against this
+	address: string;
+	userType: string;
 }
 
 export interface UserModel extends Document {

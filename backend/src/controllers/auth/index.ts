@@ -11,22 +11,7 @@ export default class AuthController {
 		responseBuilder.buildSuccess(res, "Your token is valid");
 	}
 
-	public handleRegister(req: Request, res: Response) {
-		const { firstName, lastName, email, password } = req.body;
-		// @ts-ignore
-		const user = new User({ firstName, lastName, email, password });
-		user.save(function(err: Error) {
-			if (err) {
-				responseBuilder.buildError(
-					res,
-					err,
-					"Error registering new user please try again."
-				);
-			} else {
-				responseBuilder.buildSuccess(res, "Welcome to the club!");
-			}
-		});
-	}
+	
 
 	public handleAuthenticate(req: Request, res: Response) {
 		const { email, password } = req.body;

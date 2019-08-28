@@ -45,7 +45,7 @@ export default class RegisterCustomer extends React.Component<
 
 	async handleSubmit(event: any) {
 		// TODO get the endpoint from config
-		const res = await axios.post("http://localhost:4000/auth/register", {
+		const res = await axios.post("http://localhost:4000/user/register", {
 			firstName: this.state.firstName,
 			lastName: this.state.lastName,
 			email: this.state.email,
