@@ -18,7 +18,6 @@ export default class HomePage extends React.Component {
           <Row>
             <h2>Recommendations</h2>
           </Row>
-
           <Row>
             <ItemViewer />
           </Row>          
