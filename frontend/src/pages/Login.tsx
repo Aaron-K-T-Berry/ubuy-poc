@@ -66,12 +66,12 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 
   render() {
     return (
-      <Container fluid={true}>
+      <Container className="homeBody" fluid={true}>
         <Row>
-          <Col>
+          <Col className="homeBody">
             <h2>Existing Customer?</h2>
             <div className="input-wrapper">
-              <Group>
+              <Group className="input">
                 <Label> Email Address:</Label>
                 <Input
                   type="text"
@@ -87,25 +87,23 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                   id="password"
                   onChange={this.handleChange}
                 />
-              </Group>
-            </div>
-            <div className="center">
-              <Button
+
+                <Button
                 className="button"
                 id="buttonLogin"
                 onClick={this.handleSubmit}
               >
                 Log In
               </Button>
-            </div>
-
-            {this.state.loginSuccess && <Redirect to={"/account"} />}
+              {this.state.loginSuccess && <Redirect to={"/account"} />}
+              </Group>
+            </div>            
           </Col>
-          <Col>
+          <Col className="homeBody">
             <h2>New Customer?</h2>
-            <div className="center">
+            <div className="input">
               <Link to="/register">
-                <Button className="button" id="buttonRegisterUser">
+                <Button className="button-register" id="buttonRegisterUser">
                   Register
                 </Button>
               </Link>

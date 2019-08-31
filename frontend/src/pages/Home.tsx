@@ -9,7 +9,7 @@ export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <Container>
+        <Container className="homeBody">
           <Row className="search">
             <Col>
               <Search />
