@@ -8,6 +8,16 @@
 		"install-all": "cd ./frontend && yarn && cd ../backend && yarn",
 		"dev-db": "cd ./db && yarn run start",
 		"dev-frontend": "cd ./frontend && yarn run start",
-		"dev-backend": "cd ./backend && yarn run dev"
-	}
+		"dev-backend": "cd ./backend && yarn run dev",
+		"commit": "git-cz"
+	},
+	"devDependencies": {
+		"commitizen": "^4.0.3",
+		"cz-emoji": "^1.1.2"
+	},
+	"config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
+  }
 }
