@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/App.css";
+import PageContent from "../PageContent";
 import {
 	Button,
 	FormGroup as Group,
@@ -48,37 +49,35 @@ export default class AccountInfo extends React.Component<
 
 	render() {
 		return (
-			<div>
-				<div className="h1">Account Information</div>
-				<div className="input-wrapper">
-					<div className="input">
-						<Group>
-							<Label>First Name:</Label>
-							<Input
-								type="text"
-								placeholder="This should be acc first name."
-								value={this.state.firstName}
-								disabled
-							/>
+			<div className="content-body flex-center">
+				<div className="body-heading">Account Information</div>
+				<div className="input">
+					<Group>
+						<Label>{PageContent.firstName.label}</Label>
+						<Input
+							type="text"
+							placeholder={PageContent.firstName.placeholder}
+							value={this.state.firstName}
+							disabled
+						/>
 
-							<Label>Last Name:</Label>
-							<Input
-								type="text"
-								value={this.state.lastName}
-								placeholder="Should be user's last name"
-								disabled
-							/>
+						<Label>{PageContent.lastName.label}</Label>
+						<Input
+							type="text"
+							value={this.state.lastName}
+							placeholder={PageContent.lastName.placeholder}
+							disabled
+						/>
 
-							<Label>Email:</Label>
-							<Input
-								type="text"
-								placeholder="User's email"
-								disabled
-								value={this.state.email}
-							/>
-						</Group>
-						<Button>Edit</Button>
-					</div>
+						<Label>{PageContent.email.label}</Label>
+						<Input
+							type="text"
+							placeholder={PageContent.email.placeholder}
+							disabled
+							value={this.state.email}
+						/>
+					</Group>
+					<Button>Edit</Button>
 				</div>
 			</div>
 		);

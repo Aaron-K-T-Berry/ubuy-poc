@@ -1,9 +1,8 @@
 import React from "react";
 import "../styles/App.css";
+import PageContent from "../PageContent";
 import {
 	Button,
-	Form,
-	FormGroup as Group,
 	FormControl as Input,
 	FormLabel as Label
 } from "react-bootstrap";
@@ -56,66 +55,62 @@ export default class RegisterCustomer extends React.Component<
 
 	render() {
 		return (
-			<Form>
-				<div className="h1"> Create New Account </div>
-				<div className="input-wrapper">
-					<div className="input">
-						<Group>
-							<Label>First Name:</Label>
-							<Input
-								type="text"
-								id="firstName"
-								placeholder="William"
-								value={this.state.firstName}
-								onChange={this.handleChange}
-							/>
+			<div className="content-body flex-center">
+				<div className="body-heading">Create New Account</div>
+				<div className="input">
+					<Label>{PageContent.firstName.label}</Label>
+					<Input
+						type="text"
+						id="firstName"
+						placeholder={PageContent.firstName.placeholder}
+						value={this.state.firstName}
+						onChange={this.handleChange}
+					/>
 
-							<Label>Last Name:</Label>
-							<Input
-								type="text"
-								id="lastName"
-								placeholder="Perdormo"
-								value={this.state.lastName}
-								onChange={this.handleChange}
-							/>
+					<Label>{PageContent.lastName.label}</Label>
+					<Input
+						type="text"
+						id="lastName"
+						placeholder={PageContent.lastName.placeholder}
+						value={this.state.lastName}
+						onChange={this.handleChange}
+					/>
 
-							<Label>Email:</Label>
-							<Input
-								type="text"
-								id="email"
-								placeholder="name@example.com"
-								value={this.state.email}
-								onChange={this.handleChange}
-							/>
+					<Label>{PageContent.email.label}</Label>
+					<Input
+						type="text"
+						id="email"
+						placeholder={PageContent.email.placeholder}
+						value={this.state.email}
+						onChange={this.handleChange}
+					/>
 
-							<Label>Password:</Label>
-							<Input
-								type="password"
-								id="password"
-								value={this.state.password}
-								onChange={this.handleChange}
-								placeholder="At least 6 characters long"
-							/>
+					<Label>{PageContent.password.label}</Label>
+					<Input
+						type="password"
+						id="password"
+						value={this.state.password}
+						onChange={this.handleChange}
+						placeholder={PageContent.password.register_placeholder}
+					/>
 
-							<Label>Confirm Password:</Label>
-							<Input
-								type="password"
-								id="passwordConfirm"
-								placeholder="Re-type password"
-							/>
-						</Group>
+					<Label>{PageContent.password.confirm_label}</Label>
+					<Input
+						type="password"
+						id="passwordConfirm"
+						placeholder={PageContent.password.confirm_placeholder}
+					/>
 
-						<Button
-							className="register"
-							id="buttonRegister"
-							block
-							onClick={this.handleSubmit}
-						>
-							Create Account
-						</Button>
-					</div>
+					<Button
+						className="button"
+						id="buttonRegister"
+						block
+						onClick={this.handleSubmit}
+					>
+						Create Account
+					</Button>
 				</div>
-			</Form>
+			</div>
 		);
 	}
 }

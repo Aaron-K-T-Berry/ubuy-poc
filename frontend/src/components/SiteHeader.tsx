@@ -24,13 +24,13 @@ export default class SiteHeader extends React.Component<
             </Row>
             <Row>
               <Col>
-                <Link to="/login"> Login </Link>
+                <Link to="/login"> <h2> Login </h2></Link>
               </Col>
               <Col>
-                <Link to="/register"> Register </Link>
+                <Link to="/register"> <h2> Register </h2> </Link>
               </Col>
               <Col>
-                <Link to="/account"> Account </Link>
+                <Link to="/account"> <h2> Account </h2> </Link>
               </Col>
             </Row>
           </Container>
