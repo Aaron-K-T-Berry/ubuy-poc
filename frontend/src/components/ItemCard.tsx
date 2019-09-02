@@ -12,9 +12,6 @@ export interface ItemProp {
 }
 
 export default class ItemCard extends React.Component<ItemProp, {}> {
-	constructor(props: any) {
-		super(props);
-	}
 
 	render() {
 		return (
