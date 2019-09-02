@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import PageNotFound from "./pages/PageNotFound";
+import RegisterInternalUser from "./pages/RegisterInternalUser";
 
 const App: React.FC = () => {
 	return (
@@ -19,6 +20,7 @@ const App: React.FC = () => {
 						<Route path="/" exact component={HomePage} />
 						<Route path="/login" exact component={LoginForm} />
 						<Route path="/account" exact component={AccountInfo} />
+						<Route path="/register/internal" component={RegisterInternalUser} />
 						<Route path="/register" component={RegisterCustomer} />
 						<Route component={PageNotFound} />
 					</Switch>
