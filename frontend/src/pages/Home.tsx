@@ -1,13 +1,27 @@
 import React from "react";
 import "../styles/App.css";
-import SiteHeader from "../components/SiteHeader";
-import SiteFooter from "../components/SiteFooter";
+import ItemViewer from "../components/ItemViewer";
+import Search from "../components/Search";
+import {Container} from "react-bootstrap"
+import { Row, Col } from "react-bootstrap";
 
 export default class HomePage extends React.Component {
   render() {
     return (
       <div>
-        <p>This is the home page</p>
+        <Container className="homeBody">
+          <Row className="search">
+            <Col>
+              <Search />
+            </Col>
+          </Row>
+          <Row>
+            <h2>Recommendations</h2>
+          </Row>
+          <Row>
+            <ItemViewer />
+          </Row>          
+        </Container>
       </div>
     );
   }

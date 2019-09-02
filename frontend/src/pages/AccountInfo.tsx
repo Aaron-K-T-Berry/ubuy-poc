@@ -48,37 +48,35 @@ export default class AccountInfo extends React.Component<
 
 	render() {
 		return (
-			<div>
+			<div className="registerBody">
 				<div className="h1">Account Information</div>
-				<div className="input-wrapper">
-					<div className="input">
-						<Group>
-							<Label>First Name:</Label>
-							<Input
-								type="text"
-								placeholder="This should be acc first name."
-								value={this.state.firstName}
-								disabled
-							/>
+				<div className="input">
+					<Group>
+						<Label>First Name:</Label>
+						<Input
+							type="text"
+							placeholder="This should be acc first name."
+							value={this.state.firstName}
+							disabled
+						/>
 
-							<Label>Last Name:</Label>
-							<Input
-								type="text"
-								value={this.state.lastName}
-								placeholder="Should be user's last name"
-								disabled
-							/>
+						<Label>Last Name:</Label>
+						<Input
+							type="text"
+							value={this.state.lastName}
+							placeholder="Should be user's last name"
+							disabled
+						/>
 
-							<Label>Email:</Label>
-							<Input
-								type="text"
-								placeholder="User's email"
-								disabled
-								value={this.state.email}
-							/>
-						</Group>
-						<Button>Edit</Button>
-					</div>
+						<Label>Email:</Label>
+						<Input
+							type="text"
+							placeholder="User's email"
+							disabled
+							value={this.state.email}
+						/>
+					</Group>
+					<Button>Edit</Button>
 				</div>
 			</div>
 		);
