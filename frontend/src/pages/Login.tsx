@@ -1,9 +1,9 @@
 import React from "react";
 import "../styles/App.css";
+import PageContent from "../PageContent";
 import { Link, Redirect } from "react-router-dom";
 import {
   Button,
-  Form,
   FormGroup as Group,
   FormControl as Input,
   FormLabel as Label,
@@ -34,7 +34,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.test = this.test.bind(this);
   }
 
   handleChange(event: any) {
@@ -57,33 +56,27 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
       this.setState({ loginSuccess: true });
     }
   }
-  async test(event: any) {
-    // TODO get the endpoint from config
-    const res = await axios.get("http://localhost:4000/auth/checkToken", {
-      withCredentials: true
-    });
-  }
-
+ 
   render() {
     return (
-      <Container className="homeBody" fluid={true}>
+      <Container className="content-body" fluid={true}>
         <Row>
-          <Col className="homeBody">
-            <h2>Existing Customer?</h2>
+          <Col className="content-body">
+            <div className="body-heading">{PageContent.loginPage.existing_cust_label}</div>
             <div className="input-wrapper">
               <Group className="input">
-                <Label> Email Address:</Label>
+                <Label>{PageContent.email.label}</Label>
                 <Input
                   type="text"
-                  placeholder="name@example.com"
+                  placeholder={PageContent.email.placeholder}
                   id="email"
                   onChange={this.handleChange}
                 />
 
-                <Label> Password: </Label>
+                <Label>{PageContent.password.label}</Label>
                 <Input
                   type="password"
-                  placeholder="Password"
+                  placeholder={PageContent.password.login_placeholder}
                   id="password"
                   onChange={this.handleChange}
                 />
@@ -92,18 +85,18 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                 className="button"
                 id="buttonLogin"
                 onClick={this.handleSubmit}
-              >
+                >
                 Log In
-              </Button>
-              {this.state.loginSuccess && <Redirect to={"/account"} />}
+                </Button>
+                {this.state.loginSuccess && <Redirect to={"/account"} />}
               </Group>
-            </div>            
+            </div>
           </Col>
-          <Col className="homeBody">
-            <h2>New Customer?</h2>
+          <Col className="content-body">
+            <div className="body-heading">{PageContent.loginPage.new_cust_label}</div>
             <div className="input">
               <Link to="/register">
-                <Button className="button-register" id="buttonRegisterUser">
+                <Button className="button" id="buttonRegisterUser">
                   Register
                 </Button>
               </Link>
