@@ -1,5 +1,6 @@
 import React from "react";
 import "../styles/App.css";
+import PageContent from "../PageContent";
 import {
 	Button,
 	Form,
@@ -56,54 +57,54 @@ export default class RegisterCustomer extends React.Component<
 
 	render() {
 		return (
-			<div className="registerBody">
-				<div className="h1"> Create New Account </div>
+			<div className="content-body flex-center">
+				<div className="body-heading">Create New Account</div>
 				<div className="input">
-					<Label>First Name:</Label>
+					<Label>{PageContent.firstName.label}</Label>
 					<Input
 						type="text"
 						id="firstName"
-						placeholder="William"
+						placeholder={PageContent.firstName.placeholder}
 						value={this.state.firstName}
 						onChange={this.handleChange}
 					/>
 
-					<Label>Last Name:</Label>
+					<Label>{PageContent.lastName.label}</Label>
 					<Input
 						type="text"
 						id="lastName"
-						placeholder="Perdormo"
+						placeholder={PageContent.lastName.placeholder}
 						value={this.state.lastName}
 						onChange={this.handleChange}
 					/>
 
-					<Label>Email:</Label>
+					<Label>{PageContent.email.label}</Label>
 					<Input
 						type="text"
 						id="email"
-						placeholder="name@example.com"
+						placeholder={PageContent.email.placeholder}
 						value={this.state.email}
 						onChange={this.handleChange}
 					/>
 
-					<Label>Password:</Label>
+					<Label>{PageContent.password.label}</Label>
 					<Input
 						type="password"
 						id="password"
 						value={this.state.password}
 						onChange={this.handleChange}
-						placeholder="At least 6 characters long"
+						placeholder={PageContent.password.register_placeholder}
 					/>
 
-					<Label>Confirm Password:</Label>
+					<Label>{PageContent.password.confirm_label}</Label>
 					<Input
 						type="password"
 						id="passwordConfirm"
-						placeholder="Re-type password"
+						placeholder={PageContent.password.confirm_placeholder}
 					/>
 				
 					<Button
-						className="register"
+						className="button"
 						id="buttonRegister"
 						block
 						onClick={this.handleSubmit}
