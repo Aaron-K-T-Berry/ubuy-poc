@@ -4,7 +4,6 @@ import PageContent from "../PageContent";
 import { Link, Redirect } from "react-router-dom";
 import {
   Button,
-  Form,
   FormGroup as Group,
   FormControl as Input,
   FormLabel as Label,
@@ -35,7 +34,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.test = this.test.bind(this);
   }
 
   handleChange(event: any) {
@@ -58,13 +56,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
       this.setState({ loginSuccess: true });
     }
   }
-  async test(event: any) {
-    // TODO get the endpoint from config
-    const res = await axios.get("http://localhost:4000/auth/checkToken", {
-      withCredentials: true
-    });
-  }
-
+ 
   render() {
     return (
       <Container className="content-body" fluid={true}>
@@ -98,7 +90,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                 </Button>
                 {this.state.loginSuccess && <Redirect to={"/account"} />}
               </Group>
-            </div>            
+            </div>
           </Col>
           <Col className="content-body">
             <div className="body-heading">{PageContent.loginPage.new_cust_label}</div>

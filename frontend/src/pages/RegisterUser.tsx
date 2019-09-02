@@ -3,8 +3,6 @@ import "../styles/App.css";
 import PageContent from "../PageContent";
 import {
 	Button,
-	Form,
-	FormGroup as Group,
 	FormControl as Input,
 	FormLabel as Label
 } from "react-bootstrap";
@@ -102,7 +100,7 @@ export default class RegisterCustomer extends React.Component<
 						id="passwordConfirm"
 						placeholder={PageContent.password.confirm_placeholder}
 					/>
-				
+
 					<Button
 						className="button"
 						id="buttonRegister"
