@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import userModel, { User, UserModel } from "../../model/user.model";
+import userModel, { UserModel } from "../../model/user.model";
 import responseBuilder from "../../common/response-builder";
 
 export interface AuthRequest extends Request {
@@ -10,16 +10,16 @@ export default class UserController {
 	constructor() {}
 
 	public async handleGetUser(req: AuthRequest, res: Response) {
-		const result: UserModel = (await userModel.findOne({
+		const result: UserModel = ((await userModel.findOne({
 			email: req.email
-		})) as UserModel;
+		})) as unknown) as UserModel;
 
-		const user: User = {
+		const user: UserModel = {
 			email: result.email,
 			firstName: result.firstName,
 			lastName: result.lastName,
-			address: "not implemented",
-			userType: "not implemented"
+			address: result.address,
+			userMeta: result.userMeta
 		};
 
 		res.send({ user });
@@ -40,5 +40,10 @@ export default class UserController {
 				responseBuilder.buildSuccess(res, "Welcome to the club!");
 			}
 		});
+	}
+
+	public handleRegisterInternalUser(req: Request, res: Response) {
+		// const { firstName, lastName, email, password, address, userType, branchID } = req.body;
+		console.log(req.body);
 	}
 }

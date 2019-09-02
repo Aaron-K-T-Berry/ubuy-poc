@@ -8,4 +8,5 @@ export const UserRoute = (app: Express, controller: UserController) => {
 		res.send(await controller.handleGetUser(req as AuthRequest, res));
 	});
 	app.post("/user/register", controller.handleRegisterUser);
+	app.post("/user/register/internal", controller.handleRegisterInternalUser);
 };
