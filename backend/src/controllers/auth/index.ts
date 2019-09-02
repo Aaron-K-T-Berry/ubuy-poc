@@ -11,8 +11,6 @@ export default class AuthController {
 		responseBuilder.buildSuccess(res, "Your token is valid");
 	}
 
-	
-
 	public handleAuthenticate(req: Request, res: Response) {
 		const { email, password } = req.body;
 		User.findOne({ email }, function(err, user: UserModel) {
