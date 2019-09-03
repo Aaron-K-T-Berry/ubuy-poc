@@ -27,7 +27,7 @@ export default class SiteHeader extends React.Component<
                 <Link to="/login"> <h2> Login </h2></Link>
               </Col>
               <Col>
-                <Link to="/register"> <h2> Register </h2> </Link>
+                <Link to="/register/user"> <h2> Register </h2> </Link>
               </Col>
               <Col>
                 <Link to="/account"> <h2> Account </h2> </Link>

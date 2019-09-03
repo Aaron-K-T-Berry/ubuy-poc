@@ -56,7 +56,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
       this.setState({ loginSuccess: true });
     }
   }
- 
+
   render() {
     return (
       <Container className="content-body" fluid={true}>
@@ -95,7 +95,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
           <Col className="content-body">
             <div className="body-heading">{PageContent.loginPage.new_cust_label}</div>
             <div className="input">
-              <Link to="/register">
+              <Link to="/register/user">
                 <Button className="button" id="buttonRegisterUser">
                   Register
                 </Button>
