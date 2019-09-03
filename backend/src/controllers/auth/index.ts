@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import User, { UserModel } from "../../model/user.model";
+import userModel, { User } from "../../model/user.model";
 import jwt from "jsonwebtoken";
 import env from "../../common/config-helper";
 import responseBuilder from "../../common/response-builder";
@@ -13,7 +13,7 @@ export default class AuthController {
 
 	public handleAuthenticate(req: Request, res: Response) {
 		const { email, password } = req.body;
-		User.findOne({ email }, function(err, user: UserModel) {
+		userModel.findOne({ email }, function(err, user: User) {
 			if (err) {
 				responseBuilder.buildError(res, err, "Internal error please try again");
 			} else if (!user) {

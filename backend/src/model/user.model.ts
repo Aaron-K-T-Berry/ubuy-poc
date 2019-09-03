@@ -2,11 +2,10 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 const saltRounds = 10;
 
-export interface UserModel {
+export interface User {
 	firstName: string;
 	lastName: string;
 	email: string;
-	// Todo i feel like this needs to be handled better
 	password?: string;
 	address: string | undefined;
 	userMeta: InternalUserType | undefined;
@@ -32,7 +31,7 @@ UserSchema.pre("save", function(next) {
 	if (this.isNew || this.isModified("password")) {
 		// @ts-ignore
 		// Saving reference to this because of changing scopes
-		const document: UserModel = this;
+		const document: User = this;
 		bcrypt.hash(document.password, saltRounds, function(err, hashedPassword) {
 			if (err) {
 				next(err);
