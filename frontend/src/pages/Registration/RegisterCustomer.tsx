@@ -41,8 +41,9 @@ export default class RegisterCustomer extends React.Component<
 		}
 	}
 
-	notify = (errorCode: string) =>
+	notify = (errorCode: string) => {
 		toast("There was an error submitting: " + errorCode);
+	};
 
 	render() {
 		const validationKeys = [

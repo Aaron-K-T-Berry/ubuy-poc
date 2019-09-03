@@ -6,6 +6,7 @@ import UserRegistrationForm, {
 	UserRegistrationFormState
 } from "../../components/UserRegistrationForm";
 import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 // Add state here
 export interface RegisterState {}
@@ -13,12 +14,14 @@ export interface RegisterState {}
 // Add passed in props here
 export interface RegisterProps {}
 
-export default class RegisterBranchUser extends React.Component<
+export default class RegisterAdminUser extends React.Component<
 	RegisterProps,
 	RegisterState
 > {
 	constructor(props: any) {
 		super(props);
+
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	async handleSubmit(state: UserRegistrationFormState) {
@@ -41,8 +44,9 @@ export default class RegisterBranchUser extends React.Component<
 		}
 	}
 
-	notify = (errorCode: string) =>
+	notify(errorCode: string) {
 		toast("There was an error submitting: " + errorCode);
+	}
 
 	render() {
 		const validationKeys = [
@@ -56,9 +60,9 @@ export default class RegisterBranchUser extends React.Component<
 
 		return (
 			<div className="content-body flex-center">
-				<div className="h3"> Create New Branch User </div>
+				<div className="h3"> Create New Admin User </div>
 				<UserRegistrationForm
-					userType={UserTypes.Internal}
+					userType={UserTypes.Admin}
 					handleRegister={this.handleSubmit}
 					validationKeys={validationKeys}
 				/>

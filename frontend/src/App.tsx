@@ -1,16 +1,16 @@
 import React from "react";
 import "./styles/App.css";
-import LoginForm from "./pages/Login";
-import AccountInfo from "./pages/AccountInfo";
-import RegisterCustomer from "./pages/Registration/RegisterCustomer";
-import HomePage from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import PageNotFound from "./pages/PageNotFound";
+import { ToastContainer } from "react-toastify";
 import SiteHeader from "./components/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
-import PageNotFound from "./pages/PageNotFound";
-import RegisterBranchUser from "./pages/Registration/RegisterBranchUser";
-import { ToastContainer } from "react-toastify";
-import RegisterAdminUser from "./pages/Registration/RegisterAdminUser";
+import HomePage from "./pages/Home";
+import LoginForm from "./pages/Login";
+import AccountInfo from "./pages/AccountInfo";
+import RegisterBranchUser from "./pages/Registration/RegisterBranch";
+import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
+import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 
 const App: React.FC = () => {
 	return (
