@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import userModel, { User } from "../../model/user.model";
+import userModel, { User, InternalUserType } from "../../model/user.model";
 import responseBuilder, { ApiCode } from "../../common/response-builder";
 import { MongoError } from "mongodb";
 
@@ -70,7 +70,24 @@ export default class UserController {
 	}
 
 	public handleRegisterInternalUser(req: Request, res: Response) {
-		// const { firstName, lastName, email, password, address, userType, branchID } = req.body;
-		console.log(req.body);
+		const newUserRequest = new userModel({
+			firstName: req.body.firstName,
+			lastName: req.body.lastName,
+			password: req.body.password,
+			email: req.body.email,
+			address: req.body.address,
+			userMeta: {
+				type: req.body.userType,
+				branchID: req.body.branchId
+			} as InternalUserType
+		} as any);
+
+		newUserRequest.save(function(err: MongoError) {
+			if (err) {
+				handleMongoError(err, res);
+			} else {
+				responseBuilder.buildSuccess(res, "Welcome to the club!");
+			}
+		});
 	}
 }
