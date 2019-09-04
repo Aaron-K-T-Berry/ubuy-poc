@@ -1,4 +1,4 @@
-import mongoose, { Document } from "mongoose";
+import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 const saltRounds = 10;
 
@@ -6,33 +6,32 @@ export interface User {
 	firstName: string;
 	lastName: string;
 	email: string;
-	// customer | admin | employee
-	// TODO validate against this
-	address: string;
-	userType: string;
+	password?: string;
+	address: string | undefined;
+	userMeta: InternalUserType | undefined;
+	isCorrectPassword?: Function;
 }
 
-export interface UserModel extends Document {
-	firstName: string;
-	lastName: string;
-	email: string;
-	password: string;
-	isCorrectPassword: Function;
+export interface InternalUserType {
+	type: string; // admin or employee
+	branchID: string | undefined; // id of branch or undefined for admin
 }
 
 const UserSchema = new mongoose.Schema({
 	firstName: { type: String, required: true },
 	lastName: { type: String, required: true },
 	email: { type: String, required: true, unique: true },
-	password: { type: String, required: true }
+	password: { type: String, required: true },
+	address: { type: String },
+	userMeta: { type: Object }
 });
 
 UserSchema.pre("save", function(next) {
 	// Check if document is new or a new password has been set
 	if (this.isNew || this.isModified("password")) {
-		// Saving reference to this because of changing scopes
 		// @ts-ignore
-		const document: UserModel = this;
+		// Saving reference to this because of changing scopes
+		const document: User = this;
 		bcrypt.hash(document.password, saltRounds, function(err, hashedPassword) {
 			if (err) {
 				next(err);
