@@ -41,7 +41,7 @@ export default class AuthController {
 						});
 						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");
 						res.cookie("token", token, { httpOnly: true });
-						responseBuilder.buildSuccess(res);
+						responseBuilder.buildSuccess(res, "authenticated");
 					}
 				});
 			}
