@@ -36,7 +36,7 @@ export default class AuthController {
 					} else {
 						// Issue token
 						const payload = { email };
-						const token = jwt.sign(payload, env.SECRET, {
+						const token = jwt.sign(payload, env.TOKEN_SECRET, {
 							expiresIn: "1h"
 						});
 						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");
