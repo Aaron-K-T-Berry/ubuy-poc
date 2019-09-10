@@ -39,7 +39,7 @@ const verifyUser = async (
 	} else {
 		const userObj = await getUserObj(token);
 		console.log(userObj);
-		
+
 
 		if (userObj !== undefined && userObj.userMeta !== undefined) {
 			if (!deniedPaths.includes(userObj.userMeta.type)) {
@@ -52,7 +52,7 @@ const verifyUser = async (
 		} else {
 			res
 				.status(401)
-				.send(`Unauthorized: User type not defined and defaulted to customer`);
+				.send(`Unauthorized: User type not defined for this user`);
 		}
 	}
 };
