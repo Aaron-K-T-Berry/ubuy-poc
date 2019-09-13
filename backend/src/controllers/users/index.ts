@@ -48,7 +48,7 @@ export default class UserController {
 			email,
 			password,
 			address,
-			userMeta
+			userType
 		} = req.body;
 
 		const user = new userModel({
@@ -57,7 +57,9 @@ export default class UserController {
 			email,
 			password,
 			address,
-			userMeta
+			userMeta: {
+				userType
+			}
 		} as any);
 
 		user.save(function(err: MongoError) {

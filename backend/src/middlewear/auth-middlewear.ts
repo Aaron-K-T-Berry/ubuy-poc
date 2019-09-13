@@ -1,29 +1,68 @@
 import jwt from "jsonwebtoken";
 import { Request, Response } from "express";
+import userModel, { User } from "../model/user.model";
+import config from "../common/config-helper";
 
-// TODO import this from config
-const secret = "mysecretsshhh";
+export const customerAuth = async (req: Request, res: Response, next: any) => {
+	const deniedPaths: never[] | string[] = [];
+	await verifyUser(deniedPaths, req, res, next);
+};
+export const branchAuth = async (req: Request, res: Response, next: any) => {
+	const deniedPaths = ["CUSTOMER"];
+	await verifyUser(deniedPaths, req, res, next);
+};
 
-const withAuth = function(req: Request, res: Response, next: any) {
-	const token =
+export const adminAuth = async (req: Request, res: Response, next: any) => {
+	const deniedPaths = ["CUSTOMER", "INTERNAL"];
+	await verifyUser(deniedPaths, req, res, next);
+};
+
+const getToken = (req: Request) => {
+	return (
 		req.body.token ||
 		req.query.token ||
 		req.headers["x-access-token"] ||
-		req.cookies.token;
+		req.cookies.token
+	);
+};
+
+const verifyUser = async (
+	deniedPaths: string[],
+	req: Request,
+	res: Response,
+	next: any
+) => {
+	const token = getToken(req);
+
 	if (!token) {
-		res.status(401).send("Unauthorized: No token provided");
+		res.status(401).send("Unauthorized: Invalid token");
 	} else {
-		// TODO remove any type
-		jwt.verify(token, secret, function(err: Error, decoded: any) {
-			if (err) {
-				res.status(401).send("Unauthorized: Invalid token");
-			} else {
-        // @ts-ignore
-				req.email = decoded.email;
+		const userObj = await getUserObj(token);
+		console.log(userObj);
+
+
+		if (userObj !== undefined && userObj.userMeta !== undefined) {
+			if (!deniedPaths.includes(userObj.userMeta.type)) {
 				next();
+			} else {
+				res
+					.status(401)
+					.send(`Unauthorized: User type ${userObj.userMeta.type} invalid`);
 			}
-		});
+		} else {
+			res
+				.status(401)
+				.send(`Unauthorized: User type not defined for this user`);
+		}
 	}
 };
 
-export default withAuth;
+const getUserObj = async (token: string): Promise<User | undefined> => {
+	try {
+		const verifiedJWT = jwt.verify(token, config.TOKEN_SECRET);
+		// @ts-ignore
+		return await userModel.findOne({ email: verifiedJWT.email });
+	} catch (err) {
+		return undefined;
+	}
+};
