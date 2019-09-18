@@ -38,8 +38,6 @@ const verifyUser = async (
 		res.status(401).send("Unauthorized: Invalid token");
 	} else {
 		const userObj = await getUserObj(token);
-		console.log(userObj);
-
 
 		if (userObj !== undefined && userObj.userMeta !== undefined) {
 			if (!deniedPaths.includes(userObj.userMeta.type)) {
