@@ -1,7 +1,6 @@
 import mongoose, { Document } from "mongoose";
 
 export interface Item {
-	id: string;
 	name: string;
 	// Need to work out how to handle ingesting photos
 	description: string;
@@ -12,7 +11,6 @@ export interface Item {
 }
 
 export interface ItemModel extends Document {
-	id: string;
 	name: string;
 	description: string;
 	photo: string;
@@ -22,7 +20,6 @@ export interface ItemModel extends Document {
 }
 
 const ItemSchema = new mongoose.Schema({
-	id: { type: String, required: true, unique: true },
 	name: { type: String, required: true },
 	description: { type: String, required: true },
 	photo: { type: String, required: true },
