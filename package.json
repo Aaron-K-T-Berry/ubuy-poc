@@ -1,0 +1,23 @@
+{
+	"name": "ubuy-poc",
+	"version": "1.0.0",
+	"main": "dist/api/app.js",
+	"repository": "git@github.com:Aaron-K-T-Berry/ubuy-poc.git",
+	"license": "MIT",
+	"scripts": {
+		"install-all": "cd ./frontend && yarn && cd ../backend && yarn",
+		"dev-db": "cd ./db && yarn run start",
+		"dev-frontend": "cd ./frontend && yarn run start",
+		"dev-backend": "cd ./backend && yarn run dev",
+		"commit": "git-cz"
+	},
+	"devDependencies": {
+		"commitizen": "^4.0.3",
+		"cz-emoji": "^1.1.2"
+	},
+	"config": {
+    "commitizen": {
+      "path": "./node_modules/cz-emoji"
+    }
+  }
+}
