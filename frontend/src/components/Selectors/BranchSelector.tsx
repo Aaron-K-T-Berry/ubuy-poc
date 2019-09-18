@@ -18,7 +18,7 @@ export default class BranchSelector extends React.Component<{}, BranchState>{
     render() {
         return (
             <DropdownButton 
-                            title="Select Branches" 
+                            title="Select From Branches" 
                             id="branch"
                             variant="info"
             >
