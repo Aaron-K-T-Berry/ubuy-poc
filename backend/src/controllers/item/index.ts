@@ -29,10 +29,10 @@ export default class ItemController {
 
 	public async handleReadSingle(req: Request, res: Response) {
 		try {
-			const allItems = await itemModel.findOne({
+			const item = await itemModel.findOne({
 				_id: req.params.itemId
 			});
-			responseBuilder.buildSuccess(res, allItems);
+			responseBuilder.buildSuccess(res, item);
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);
 		}
@@ -43,13 +43,49 @@ export default class ItemController {
 		responseBuilder.buildSuccess(res, allItems);
 	}
 
-	public handleUpdate(req: Request, res: Response) {
-		console.log("Not implemented");
-		res.sendStatus(500);
+	public async handleUpdate(req: Request, res: Response) {
+		try {
+			const id = req.params.itemId;
+			const response: {
+				n: number;
+				nModified: number;
+				ok: number;
+			} = await itemModel.update({ _id: id }, req.body);
+
+			responseBuilder.buildSuccess(res, {
+				msg: `Successfully updated item with id: ${id}`,
+				updatedStats: response
+			});
+		} catch (err) {
+			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);
+		}
 	}
 
-	public handleDestroy(req: Request, res: Response) {
-		console.log("Not implemented");
-		res.sendStatus(500);
+	public async handleDestroy(req: Request, res: Response) {
+		try {
+			const id = req.params.itemId;
+			const response: {
+				n?: number;
+				deletedCount?: number;
+				ok?: number;
+			} = await itemModel.deleteOne({ _id: id }, req.body);
+
+			responseBuilder.buildSuccess(res, {
+				msg: `Successfully deleted item with id: ${id}`,
+				deletedStats: response
+			});
+		} catch (err) {
+			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);
+		}
+	}
+
+	public async handleSearch(req: Request, res: Response) {
+		try {
+			const queryString = req.body.query;
+			const response = await itemModel.find({ name: { $regex: queryString } });
+			responseBuilder.buildSuccess(res, response);
+		} catch (err) {
+			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);
+		}
 	}
 }
