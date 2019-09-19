@@ -37,7 +37,7 @@ html {
 
 .page-wrapper {
   border: 10pt solid transparent;
-  background-color: #f5f5f5;
+  background-color: #efefef;
   align-items: center;
   justify-content: center;
 }
@@ -85,6 +85,16 @@ html {
 
 .card {
   margin: 20px;
+  background-color: #17202A;
+  color: #ffffff;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  color: #C0C0C0;
 }
 
 .item-wrapper{
