@@ -12,7 +12,6 @@ export interface ItemProp {
 }
 
 export default class ItemCard extends React.Component<ItemProp, {}> {
-
 	render() {
 		return (
 			<Card style={{ width: "18rem" }}>
