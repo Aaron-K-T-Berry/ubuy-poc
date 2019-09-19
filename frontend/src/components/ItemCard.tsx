@@ -25,7 +25,7 @@ export default class ItemCard extends React.Component<ItemProp, {}> {
 					<Card.Subtitle>${this.props.item.price}</Card.Subtitle>
 					<Card.Text>{this.props.item.desc}</Card.Text>
 				</Card.Body>
-				<Button className="button-card" variant="success">
+				<Button className="button-card" variant="info">
 					Add to cart
 				</Button>
 			</Card>
