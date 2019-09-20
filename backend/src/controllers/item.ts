@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import itemModel from "../../model/item.model";
+import itemModel from "../model/item.model";
 import { MongoError } from "mongodb";
-import responseBuilder, { ApiCode } from "../../common/response-builder";
-import handleMongoError from "../../common/mongo-errors";
+import responseBuilder, { ApiCode } from "../common/response-builder";
+import handleMongoError from "../common/mongo-errors";
 
 export default class ItemController {
 	constructor() {}

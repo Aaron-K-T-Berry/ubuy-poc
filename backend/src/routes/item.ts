@@ -1,5 +1,5 @@
 import { Express } from "express";
-import ItemController from "../controllers/item/index";
+import ItemController from "../controllers/item";
 import {branchAuth} from "../middlewear/auth-middlewear"
 
 export const ItemRoute = (app: Express, controller: ItemController) => {

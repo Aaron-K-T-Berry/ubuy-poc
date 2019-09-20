@@ -2,7 +2,6 @@ import mongoose, { Document } from "mongoose";
 
 export interface Item {
 	name: string;
-	// Need to work out how to handle ingesting photos
 	description: string;
 	photo: string;
 	quantity: number;
