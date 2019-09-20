@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
@@ -19,7 +19,7 @@ export default class SiteHeader extends React.Component<
           <Container>
             <Row>
               <Link to="/">
-                <h1>uBuy</h1>
+                <h1><img src="./placeholder_assets/logo.jpg" width="50" height="50" ></img>Buy</h1>
               </Link>
             </Row>
             <Row>
@@ -31,6 +31,9 @@ export default class SiteHeader extends React.Component<
               </Col>
               <Col>
                 <Link to="/account"> <h2> Account </h2> </Link>
+              </Col>
+              <Col>
+                <Link to="/cart"> <h2> Cart </h2> </Link>
               </Col>
             </Row>
           </Container>

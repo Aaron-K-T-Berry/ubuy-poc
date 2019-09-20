@@ -1,5 +1,5 @@
 h1 {
-  color: #0074d9;
+  color: #3288FF;
   margin-bottom: 10pt;
   font-size: 50pt;
 }
@@ -26,7 +26,7 @@ html {
 }
 
 .site-header {
-  background-color: #34b7eb6b;
+  background-color: #212121;
 }
 
 .content-body {
@@ -37,7 +37,7 @@ html {
 
 .page-wrapper {
   border: 10pt solid transparent;
-  background-color: #f5f5f5;
+  background-color: #efefef;
   align-items: center;
   justify-content: center;
 }
@@ -85,6 +85,16 @@ html {
 
 .card {
   margin: 20px;
+  background-color: #17202A;
+  color: #ffffff;
+}
+
+.card-title {
+  font-weight: bold;
+}
+
+.card-text {
+  color: #C0C0C0;
 }
 
 .item-wrapper{
@@ -100,4 +110,12 @@ html {
 .flex-center {
   display: flex;
   justify-content: center;
+}
+
+.checkbox{
+  margin-left: 5%;
+}
+
+.item-adder {
+  width: 50%;
 }
