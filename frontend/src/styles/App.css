@@ -139,3 +139,11 @@ html {
 .item-adder {
   width: 50%;
 }
+
+.logo-img {
+  transition: .5s;
+}
+
+.logo-img:hover {
+  transform: scale(1.2);
+}
