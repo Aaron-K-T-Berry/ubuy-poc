@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Button } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import "../styles/App.css";
 
@@ -18,22 +18,22 @@ export default class SiteHeader extends React.Component<
         <Navbar>
           <Container>
             <Row>
-              <Link to="/">
+              <Link style={{ textDecoration: 'none' }} to="/">
                 <h1><img src="./placeholder_assets/logo.jpg" width="50" height="50" ></img>Buy</h1>
               </Link>
             </Row>
             <Row>
               <Col>
-                <Link to="/login"> <h2> Login </h2></Link>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/login"> <h2> Login </h2></NavLink>
               </Col>
               <Col>
-                <Link to="/register/user"> <h2> Register </h2> </Link>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/register/user"> <h2> Register </h2> </NavLink>
               </Col>
               <Col>
-                <Link to="/account"> <h2> Account </h2> </Link>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/account"> <h2> Account </h2> </NavLink>
               </Col>
               <Col>
-                <Link to="/cart"> <h2> Cart </h2> </Link>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/cart"> <h2> Cart </h2> </NavLink>
               </Col>
             </Row>
           </Container>

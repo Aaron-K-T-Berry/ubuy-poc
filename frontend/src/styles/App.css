@@ -10,6 +10,10 @@ h2 {
   font-size: 20pt;
 }
 
+h2:hover {
+  color: steelblue;
+}
+
 h3 {
   color: 0074d9;
   font-size: 18pt;
