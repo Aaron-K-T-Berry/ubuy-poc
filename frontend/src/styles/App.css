@@ -39,7 +39,7 @@ html {
 }
 
 .body-heading {
-  color: black;
+  color: midnightblue;
   font-size: 30pt;
   font-weight: 600;
 }
@@ -146,4 +146,5 @@ html {
 
 .logo-img:hover {
   transform: scale(1.2);
+  color: steelblue;
 }
