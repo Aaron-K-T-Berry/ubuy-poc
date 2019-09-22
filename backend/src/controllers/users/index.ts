@@ -65,7 +65,7 @@ export default class UserController {
 			email: req.body.email,
 			address: req.body.address,
 			userMeta: {
-				type: req.body.userType,
+				userType: req.body.userType,
 				branchID: req.body.branchId
 			} as InternalUserType
 		} as any);

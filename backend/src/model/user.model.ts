@@ -13,7 +13,7 @@ export interface User {
 }
 
 export interface InternalUserType {
-	type: string; // admin or employee
+	userType: string; // admin or employee
 	branchID: string | undefined; // id of branch or undefined for admin
 }
 
