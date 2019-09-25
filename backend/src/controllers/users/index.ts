@@ -13,7 +13,7 @@ export default class UserController {
 
 	public async handleGetUser(req: AuthRequest, res: Response) {
 		const result: User = ((await userModel.findOne({
-			email: req.email
+			email: req.body.email
 		})) as unknown) as User;
 
 		const user: User = {
