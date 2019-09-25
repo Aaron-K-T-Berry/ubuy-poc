@@ -36,6 +36,7 @@ export default class UserController {
 			address,
 			userType
 		} = req.body;
+		
 
 		const user = new userModel({
 			firstName,
