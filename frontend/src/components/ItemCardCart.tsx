@@ -11,22 +11,17 @@ export interface ItemProp {
 	};
 }
 
-export default class ItemCard extends React.Component<ItemProp, {}> {
+export default class ItemCardCart extends React.Component<ItemProp, {}> {
+
 	render() {
 		return (
-			<Card style={{ width: "18rem" }}>
-				<Card.Img
-					variant="top"
-					src={`./placeholder_assets/${this.props.item.img}`}
-				/>
+			<Card style={{ width: "280px", height: "200px"}}>
 				<Card.Body>
 					<Card.Title>{this.props.item.name}</Card.Title>
 					<Card.Subtitle>${this.props.item.price}</Card.Subtitle>
 					<Card.Text>{this.props.item.desc}</Card.Text>
 				</Card.Body>
-				<Button className="button-card" variant="info">
-					Add to cart
-				</Button>
+				<Button className="button-card" variant="danger">Remove</Button>
 			</Card>
 		);
 	}

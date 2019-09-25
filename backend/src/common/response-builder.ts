@@ -2,7 +2,9 @@ import { Response } from "express";
 import logger from "../loaders/logger";
 
 export enum ApiCode {
-	MongoDuplicateKey = "API-400"
+	MongoDuplicateKey = "API-400",
+	MongoNotFound = "API-404",
+	UnknownError = "API-500"
 }
 
 export default {

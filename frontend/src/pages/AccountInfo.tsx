@@ -35,8 +35,6 @@ export default class AccountInfo extends React.Component<
 		const res = await axios.get("http://localhost:4000/user", {
 			withCredentials: true
 		});
-		console.log(res);
-
 		const user: AccountInfoState = {
 			firstName: res.data.user.firstName,
 			lastName: res.data.user.lastName,
