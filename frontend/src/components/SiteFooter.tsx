@@ -10,6 +10,16 @@ export default class SiteFooter extends React.Component<
   SiteFooterState
 > {
   render() {
-    return <div></div>;
+    return(
+    <div>
+      <footer className="py-4 bg-dark flex-shrink-0">
+        <div className="container text-center">
+                <h4 className="text-muted">
+                  &copy; 2019 <strong>uBuy</strong>
+                </h4>
+        </div>
+      </footer>
+    </div>
+    );
   }
 }

@@ -10,29 +10,50 @@ h2 {
   font-size: 20pt;
 }
 
+h2:hover {
+  color: steelblue;
+}
+
 h3 {
   color: 0074d9;
   font-size: 18pt;
 }
 
+h4 {
+  font-size: 12pt;
+  text-decoration: none;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 70px;
+  width: 100%;
+}
+
 html {
-  background-color: #f5f5f5;
+  background-color: #efefef;
+  min-height: 100%;
+  position: relative;
+  overflow-y: scroll;
 }
 
 .body-heading {
-  color: black;
+  color: midnightblue;
   font-size: 30pt;
   font-weight: 600;
 }
 
 .site-header {
-  background-color: #212121;
+  background-color: #16202A;
 }
 
 .content-body {
   max-width: 80%;
   margin-left: 10%;
   margin-right: 10%;
+  margin-bottom: 100px;
 }
 
 .page-wrapper {
@@ -118,4 +139,13 @@ html {
 
 .item-adder {
   width: 50%;
+}
+
+.logo {
+  transition: .5s;
+}
+
+.logo:hover {
+  transform: scale(1.2);
+  color: steelblue;
 }
