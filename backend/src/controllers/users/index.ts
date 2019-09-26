@@ -1,26 +1,12 @@
 import { Request, Response } from "express";
 import userModel, { User, InternalUserType } from "../../model/user.model";
-import responseBuilder, { ApiCode } from "../../common/response-builder";
+import responseBuilder from "../../common/response-builder";
 import { MongoError } from "mongodb";
+import handleMongoError from "../../common/mongo-errors";
 
 export interface AuthRequest extends Request {
 	email: string;
 }
-
-const handleMongoError = (err: MongoError, res: Response) => {
-	switch (err.code) {
-		case 11000: //Duplicate key
-			responseBuilder.buildAPIError(res, ApiCode.MongoDuplicateKey);
-			break;
-		default:
-			responseBuilder.buildError(
-				res,
-				err,
-				"Unknown error registering new user please try again."
-			);
-			break;
-	}
-};
 
 export default class UserController {
 	constructor() {}
@@ -79,7 +65,7 @@ export default class UserController {
 			email: req.body.email,
 			address: req.body.address,
 			userMeta: {
-				type: req.body.userType,
+				userType: req.body.userType,
 				branchID: req.body.branchId
 			} as InternalUserType
 		} as any);

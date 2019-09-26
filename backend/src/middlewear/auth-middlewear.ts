@@ -33,26 +33,20 @@ const verifyUser = async (
 	next: any
 ) => {
 	const token = getToken(req);
-
 	if (!token) {
 		res.status(401).send("Unauthorized: Invalid token");
 	} else {
 		const userObj = await getUserObj(token);
-		console.log(userObj);
-
-
 		if (userObj !== undefined && userObj.userMeta !== undefined) {
-			if (!deniedPaths.includes(userObj.userMeta.type)) {
+			if (!deniedPaths.includes(userObj.userMeta.userType)) {
 				next();
 			} else {
 				res
 					.status(401)
-					.send(`Unauthorized: User type ${userObj.userMeta.type} invalid`);
+					.send(`Unauthorized: User type ${userObj.userMeta.userType} invalid`);
 			}
 		} else {
-			res
-				.status(401)
-				.send(`Unauthorized: User type not defined for this user`);
+			res.status(401).send(`Unauthorized: User type not defined for this user`);
 		}
 	}
 };
