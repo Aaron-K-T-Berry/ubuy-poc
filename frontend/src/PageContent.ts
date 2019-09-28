@@ -23,7 +23,7 @@ export default {
         new_cust_label: "New Customer?"
     },
     checkoutPage: {
-        cart_cust_label: "Your Cart",
+        cart_cust_label: "Total",
         checkout_cust_label: "Checkout" ,
         checkout_payment_label: "Payment"
     },
