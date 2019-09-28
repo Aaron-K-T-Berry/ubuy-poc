@@ -11,36 +11,22 @@ import {ButtonToolbar,Button
   FormLabel as Label} from "react-bootstrap";
   import {ButtonGroup,Dropdown ,DropdownButton} from "react-bootstrap";
 import PageContent from "../PageContent";
-
+import dummy_data, { Item } from "../../src/components/ItemViewer/data/itemsStub";
 export default class CartView extends React.Component {
+  
   render() {
+    
     return (
       <div>
         <Container className="content-body">
+          
 <Row>
 
           <Col className='content-body'>
-         <div className="body-heading">{PageContent.checkoutPage.cart_cust_label}</div>
+         <div className="body-heading">{PageContent.checkoutPage.cart_cust_label}
           
-          <table>
-  <thead>
-    <tr>
-      
-      <th scope="col">Item</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Price</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-     
-      <td>Item</td>
-      <td>piece</td>
-      <td>$</td>
-    </tr>
-  </tbody>
-</table>
-
+  <data><text>  :$88</text></data>
+  </div>
             <Col>
             <div className="body-heading">{PageContent.checkoutPage.checkout_cust_label}</div>
           <div className="input">

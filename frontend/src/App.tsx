@@ -15,6 +15,8 @@ import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import CartView from "./pages/CartView";
 import AdminView from "./pages/AdminView";
 import AddItem from "./pages/AddItem";
+import AccountM from "./pages/AccountM";
+
 
 const App: React.FC = () => {
 	return (
@@ -29,6 +31,8 @@ const App: React.FC = () => {
 						<Route path="/cartview" exact component={CartView} />
 						<Route path="/adminview" exact component={AdminView} />
 						<Route path="/cart" exact component={Cart} />
+						<Route path="/accountm" exact component={AccountM} />
+						
 						<Route
 							path="/register/internal/branch"
 							component={RegisterBranchUser}

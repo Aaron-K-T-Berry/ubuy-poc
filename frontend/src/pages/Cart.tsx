@@ -45,10 +45,15 @@ export default class AccountInfo extends React.Component<
             <div className="body-heading">Shopping Cart</div>
 			</Row>
           <Row>
-            <div><ItemViewerCart /></div>
+            <div><ItemViewerCart />
+			</div>
+			
           </Row>
         </Container>
+	
       </div>
+	  
 		);
+		
 	}
 }

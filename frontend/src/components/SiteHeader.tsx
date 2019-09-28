@@ -35,14 +35,12 @@ export default class SiteHeader extends React.Component<
 
 
               <Col>
-                <Link to="/cartView">
+                <Link to="/cart">
                   <h2> Cart  <img width="20%" height="20%" alt="Shopping Cart" src="./placeholder_assets/credit_card_shopping.png" /></h2>
                   
                 </Link>
                 </Col>
-              <Col>
-                <Link to="/cart"> <h2> Cart </h2> </Link>
-              </Col>
+             
             </Row>
           </Container>
         </Navbar>
