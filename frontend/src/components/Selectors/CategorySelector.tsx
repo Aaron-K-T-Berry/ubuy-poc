@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/App.css";
 import dummy_category_data, { Category } from "./data/categoryStub";
-import { Form, Dropdown } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 
 export interface CategoryState {
     categories: Category[];

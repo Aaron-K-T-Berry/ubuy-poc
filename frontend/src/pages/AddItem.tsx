@@ -1,6 +1,5 @@
 import React from "react";
 import "../styles/App.css";
-import axois from "axios";
 import ItemAdder from '../components/ItemAdder';
 
 export interface AddItemState {
