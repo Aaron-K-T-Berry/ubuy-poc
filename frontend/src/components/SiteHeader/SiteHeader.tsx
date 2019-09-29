@@ -3,7 +3,9 @@ import { Container } from "react-bootstrap";
 import { Row, Col } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
-import "../styles/App.css";
+import "../../styles/App.css";
+import "./styles/Animations.css"
+import "./styles/SiteHeader.css"
 
 export interface SiteHeaderProps {}
 export interface SiteHeaderState {}
