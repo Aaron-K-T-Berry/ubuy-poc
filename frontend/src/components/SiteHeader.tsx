@@ -35,7 +35,7 @@ export default class SiteHeader extends React.Component<
                 <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/account"> <h2> Account </h2> </NavLink>
               </Col>
               <Col>
-                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="/cart"> <h2> Cart </h2> </NavLink>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue', borderBottom: "1px, solid, red" }} to="/cart"> <h2> Cart </h2> </NavLink>
               </Col>
             </Row>
           </Container>
