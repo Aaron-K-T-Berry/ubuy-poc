@@ -33,18 +33,6 @@
 	display: inline-block;
 }
 
-.content-body-2 {
-	max-width: 500px;
-	height: 600px;
-	margin-left: 17.5%;
-	margin-right: 0;
-	padding: 20px;
-	background: lightgrey;
-	border-top-left-radius: 10px;
-	border-bottom-left-radius: 10px;
-	display: block;
-}
-
 .img-split {
 	height: 600px;
 	border-top-right-radius: 10px;
