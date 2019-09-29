@@ -61,7 +61,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
     return (
       <Container className="content-body" fluid={true}>
         <Row>
-          <Col className="content-body">
+          <Col className="content-body-2">
             <div className="body-heading">{PageContent.loginPage.existing_cust_label}</div>
             <div className="input-wrapper">
               <Group className="input">
@@ -91,8 +91,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                 {this.state.loginSuccess && <Redirect to={"/account"} />}
               </Group>
             </div>
-          </Col>
-          <Col className="content-body">
             <div className="body-heading">{PageContent.loginPage.new_cust_label}</div>
             <div className="input">
               <Link to="/register/user">
@@ -101,6 +99,9 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                 </Button>
               </Link>
             </div>
+          </Col>
+          <Col className="login-col">
+          <img src="./placeholder_assets/login-image.jpg" className="img-split" alt="uBay-logo"></img>
           </Col>
         </Row>
       </Container>

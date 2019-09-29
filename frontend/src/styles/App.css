@@ -55,9 +55,35 @@ html {
 
 .content-body {
   max-width: 80%;
+  margin-top: 20px;
   margin-left: 10%;
-  margin-right: 10%;
+  margin-right: 0;
   margin-bottom: 100px;
+  display: inline-block;
+}
+
+.content-body-2 {
+  max-width: 450px;
+  height: 500px;
+  margin-left: 20%;
+  margin-right: 0;
+  padding: 20px;
+  background: lightgrey;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.img-split {
+  height:500px;
+  display: flex;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  opacity: 0.75;
+}
+
+.login-col {
+  padding-right: 0;
+  padding-left: 0;
 }
 
 .page-wrapper {
