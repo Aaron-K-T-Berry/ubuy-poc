@@ -13,6 +13,7 @@ import {
 	Row
 } from "react-bootstrap";
 import axios from "axios";
+import tokenStorage from "../common/TokenStorage";
 
 // Add state here
 export interface LoginState {
@@ -55,6 +56,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		);
 		if (res.status === 200) {
 			this.setState({ loginSuccess: true });
+			tokenStorage.setToken(res.data.token);
 		}
 	}
 

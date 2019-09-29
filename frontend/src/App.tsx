@@ -13,6 +13,7 @@ import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 
 const App: React.FC = () => {
 	return (
@@ -21,20 +22,25 @@ const App: React.FC = () => {
 				<SiteHeader />
 				<div className="router-wrapper">
 					<Switch>
+						{/* Public routes */}
 						<Route path="/" exact component={HomePage} />
 						<Route path="/login" exact component={LoginForm} />
-						<Route path="/account" exact component={AccountInfo} />
-						<Route path="/cart" exact component={Cart} />
-						<Route
+						<Route path="/register/user" component={RegisterCustomer} />
+
+						{/* Authenticated routes */}
+						<PrivateRoute path="/account" exact component={AccountInfo} />
+						<PrivateRoute path="/cart" exact component={Cart} />
+						<PrivateRoute
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
 						/>
-						<Route
+						<PrivateRoute
 							path="/register/internal/admin"
 							component={RegisterAdminUser}
 						/>
-						<Route path="/register/user" component={RegisterCustomer} />
-						<Route path="/additem/admin" component={AddItem} />
+						<PrivateRoute path="/additem/admin" component={AddItem} />
+
+						{/* 404 */}
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
