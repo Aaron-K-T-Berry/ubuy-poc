@@ -49,7 +49,7 @@ export default class AccountInfo extends React.Component<
 		return (
 			<div className="main-body flex-center">
 				<div className="body-heading">Account Information</div>
-				<div className="main-body-2 input">
+				<div className="main-content input">
 					<Group>
 						<Label>{PageContent.firstName.label}</Label>
 						<Input
@@ -77,8 +77,8 @@ export default class AccountInfo extends React.Component<
 					</Group>
 					<Button>Edit </Button>
 
-					
-					
+
+
 				</div>
 				<a href="/adminview"  role="button"  aria-disabled="true">Admin</a>
 			</div>

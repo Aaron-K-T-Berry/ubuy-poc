@@ -32,7 +32,7 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 					Shopping Cart
 					<Button className="button">Continue to Checkout</Button>
 				</div>
-				<div className="main-body-2">
+				<div className="main-content">
 					<ItemViewerCart />
 				</div>
 			</div>
