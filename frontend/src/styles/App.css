@@ -49,20 +49,9 @@ html {
   min-height: 100%;
   position: relative;
   overflow-y: scroll;
-  display: inline-block;
 }
 
-.content-body-2 {
-  max-width: 500px;
-  height: 600px;
-  margin-left: 17.5%;
-  margin-right: 0;
-  padding: 20px;
-  background: lightgrey;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  display: block;
-}
+
 
 .body-heading {
   color: midnightblue;

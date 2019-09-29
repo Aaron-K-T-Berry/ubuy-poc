@@ -12,6 +12,7 @@ import {
   Row
 } from "react-bootstrap";
 import axios from "axios";
+import "./styles/Login.css"
 
 // Add state here
 export interface LoginState {
@@ -61,7 +62,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
     return (
       <Container className="content-body" fluid={true}>
         <Row>
-          <Col className="content-body-2">
+          <Col className="login-body">
             <div className="body-heading">{PageContent.loginPage.existing_cust_label}</div>
             <div className="input">
               <Group>
