@@ -35,6 +35,7 @@ export default class RegisterCustomer extends React.Component<
 				userType: state.userType,
 				password: state.password
 			});
+			console.log(res);
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);
@@ -55,14 +56,15 @@ export default class RegisterCustomer extends React.Component<
 		];
 
 		return (
-			<div className="content-body flex-center">
+			<div className="main-body flex-center">
 				<div className="body-heading">Create New Account</div>
-
-				<UserRegistrationForm
-					userType={UserTypes.Customer}
-					handleRegister={this.handleSubmit}
-					validationKeys={validationKeys}
-				/>
+				<div className="main-body-2">
+					<UserRegistrationForm
+						userType={UserTypes.Customer}
+						handleRegister={this.handleSubmit}
+						validationKeys={validationKeys}
+					/>
+				</div>
 			</div>
 		);
 	}

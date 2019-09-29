@@ -61,10 +61,10 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
     return (
       <Container className="content-body" fluid={true}>
         <Row>
-          <Col className="content-body">
+          <Col className="content-body-2">
             <div className="body-heading">{PageContent.loginPage.existing_cust_label}</div>
-            <div className="input-wrapper">
-              <Group className="input">
+            <div className="input">
+              <Group>
                 <Label>{PageContent.email.label}</Label>
                 <Input
                   type="text"
@@ -91,16 +91,19 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
                 {this.state.loginSuccess && <Redirect to={"/account"} />}
               </Group>
             </div>
-          </Col>
-          <Col className="content-body">
             <div className="body-heading">{PageContent.loginPage.new_cust_label}</div>
             <div className="input">
               <Link to="/register/user">
-                <Button className="button" id="buttonRegisterUser">
+                <Button className="button btn-outline-primary" id="buttonRegisterUser">
                   Register
                 </Button>
               </Link>
             </div>
+          </Col>
+          <Col className="login-col">
+            <div>
+          <img src="./images/login/login-image.jpg" className="img-split" alt=""></img>
+          </div>
           </Col>
         </Row>
       </Container>

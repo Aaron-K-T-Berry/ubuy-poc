@@ -1,8 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import axios from "axios";
 import {
-	Form,
 	Button,
 	FormControl as Input,
 	FormLabel as Label,
@@ -39,27 +37,17 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
     }
 
     render() {
-        const itemDetails = [
-            "name",
-            "price",
-            "desc",
-            "quantity",
-            "photoPath",
-            "categories",
-            "branch"
-        ]
-
         return (
             <div className="input">
                 <div className="item-adder">
-                    
+
                 <Label>Item Name:</Label>
                 <InputGroup className="mb-3">
                     <Input
                         type="text"
                         id="name"
                         placeholder="Item Name"
-                    />                    
+                    />
                 </InputGroup>
 
                 <Label>Price:</Label>
@@ -70,7 +58,7 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
                     <Input
                         placeholder="0.00"
                     >
-                    
+
                     </Input>
                 </InputGroup>
 
@@ -101,12 +89,12 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
 
                 <Label>Upload Photo:</Label>
                 <InputGroup className="mb-3">
-                    <Button id="uploadPhoto" variant="info">Upload</Button>               
+                    <Button id="uploadPhoto" variant="info">Upload</Button>
                 </InputGroup>
 
                 <Label>Branch:</Label>
                 <BranchSelector />
-                
+
                 </div>
             </div>
         );
