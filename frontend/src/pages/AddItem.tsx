@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import ItemAdder from '../components/ItemAdder';
+import ItemAdder from '../components/ItemAdder/ItemAdder';
 
 export interface AddItemState {
 

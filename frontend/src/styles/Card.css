@@ -1,0 +1,19 @@
+.card {
+	margin: 20px;
+	background-color: #17202a;
+	color: #ffffff;
+}
+
+.card-title {
+	font-weight: bold;
+}
+
+.card-text {
+	color: #c0c0c0;
+}
+
+.card-img-top {
+	width: 100%;
+	height: 15vw;
+	object-fit: cover;
+}

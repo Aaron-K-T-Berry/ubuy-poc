@@ -1,5 +1,6 @@
 import React from "react";
-import "../styles/App.css";
+import "../../styles/App.css";
+import "./styles/ItemCard.css"
 import { Card, Button } from "react-bootstrap";
 
 export interface ItemProp {

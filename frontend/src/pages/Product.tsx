@@ -1,7 +1,7 @@
 import React from "react";
 import "../styles/App.css";
 import ItemViewer from "../components/ItemViewer/ItemViewer";
-import Search from "../components/Search";
+import Search from "../components/Search/Search";
 import {Container} from "react-bootstrap"
 import { Row, Col } from "react-bootstrap";
 
