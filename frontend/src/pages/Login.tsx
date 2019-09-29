@@ -102,7 +102,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
           </Col>
           <Col className="login-col">
             <div>
-          <img src="./placeholder_assets/login-image.jpg" className="img-split" alt="Loign-Image"></img>
+          <img src="./placeholder_assets/login-image.jpg" className="img-split" alt=""></img>
           </div>
           </Col>
         </Row>
