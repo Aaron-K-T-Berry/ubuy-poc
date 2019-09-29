@@ -1,5 +1,6 @@
 import React from "react";
-import "../styles/App.css";
+import "../../styles/App.css";
+import "./styles/Search.css"
 import { Button, InputGroup, FormControl } from "react-bootstrap";
 
 export default class Search extends React.Component {

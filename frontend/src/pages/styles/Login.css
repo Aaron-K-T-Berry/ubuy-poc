@@ -16,3 +16,8 @@
 	border-bottom-right-radius: 10px;
 	opacity: 0.75;
 }
+
+.login-col {
+	padding-right: 0;
+	padding-left: 0;
+}

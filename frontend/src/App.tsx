@@ -19,7 +19,7 @@ const App: React.FC = () => {
 		<div>
 			<Router>
 				<SiteHeader />
-				<div className="page-wrapper">
+				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/login" exact component={LoginForm} />
