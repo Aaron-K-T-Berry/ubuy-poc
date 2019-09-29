@@ -93,7 +93,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 								>
 									Log In
 								</Button>
-								{this.state.loginSuccess && <Redirect to={"/account"} />}
+								{this.state.loginSuccess && <Redirect to={"/"} />}
 							</Group>
 						</div>
 						<div className="body-heading">
