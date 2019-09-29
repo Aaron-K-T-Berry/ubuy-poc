@@ -1,13 +1,5 @@
 import React from "react";
 import "../styles/App.css";
-import {Container} from "react-bootstrap"
-import { Row, Col ,Button ,
-  FormGroup as Group,
-	FormControl as Input,
-	FormLabel as Label } from "react-bootstrap";
-import  {User} from "../../../backend/src/model/user.model";
-import PageContent from "../PageContent";
-import axios from "axios";
 
 export default class AdminView extends React.Component
 
