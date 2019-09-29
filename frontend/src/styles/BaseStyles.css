@@ -1,0 +1,36 @@
+h1 {
+	color: #3288ff;
+	margin-bottom: 10pt;
+	font-size: 50pt;
+}
+
+h2 {
+	margin-top: 10pt;
+	margin-bottom: 10pt;
+	font-size: 20pt;
+	border-bottom: 2px solid #16202a;
+	padding-bottom: 5px;
+	transition: 0.5s;
+}
+
+h2:hover {
+	color: steelblue;
+	border-bottom: 2px solid skyblue;
+}
+
+h3 {
+	color: 0074d9;
+	font-size: 18pt;
+}
+
+h4 {
+	font-size: 12pt;
+	text-decoration: none;
+}
+
+html {
+	background-color: #efefef;
+	min-height: 100%;
+	position: relative;
+	overflow-y: scroll;
+}
