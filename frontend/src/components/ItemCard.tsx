@@ -17,7 +17,7 @@ export default class ItemCard extends React.Component<ItemProp, {}> {
 			<Card style={{ width: "18rem" }}>
 				<Card.Img
 					variant="top"
-					src={`./placeholder_assets/${this.props.item.img}`}
+					src={`./images/placeholder_assets/${this.props.item.img}`}
 				/>
 				<Card.Body>
 					<Card.Title>{this.props.item.name}</Card.Title>

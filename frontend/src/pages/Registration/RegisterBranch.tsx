@@ -22,7 +22,6 @@ export default class RegisterBranchUser extends React.Component<
 		super(props);
 
 		this.handleSubmit = this.handleSubmit.bind(this);
-
 	}
 
 	async handleSubmit(state: UserRegistrationFormState) {
@@ -39,6 +38,7 @@ export default class RegisterBranchUser extends React.Component<
 					branchID: state.branchID
 				}
 			);
+			console.log(res);
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);

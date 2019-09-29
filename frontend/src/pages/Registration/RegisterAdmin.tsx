@@ -38,6 +38,7 @@ export default class RegisterAdminUser extends React.Component<
 					branchID: state.branchID
 				}
 			);
+			console.log(res);
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);

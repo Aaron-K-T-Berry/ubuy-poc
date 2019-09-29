@@ -3,7 +3,7 @@ import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
-import SiteHeader from "./components/SiteHeader";
+import SiteHeader from "./components/SiteHeader/SiteHeader";
 import SiteFooter from "./components/SiteFooter";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
