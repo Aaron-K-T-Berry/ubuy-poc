@@ -47,9 +47,9 @@ export default class AccountInfo extends React.Component<
 
 	render() {
 		return (
-			<div className="main-body flex-center">
+			<div className="body-wrapper flex-center">
 				<div className="body-heading">Account Information</div>
-				<div className="main-body-2 input">
+				<div className="body-content input">
 					<Group>
 						<Label>{PageContent.firstName.label}</Label>
 						<Input

@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
-import SiteFooter from "./components/SiteFooter";
+import SiteFooter from "./components/SiteFooter/SiteFooter";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
 import AccountInfo from "./pages/AccountInfo";
@@ -19,7 +19,7 @@ const App: React.FC = () => {
 		<div>
 			<Router>
 				<SiteHeader />
-				<div className="page-wrapper">
+				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/login" exact component={LoginForm} />

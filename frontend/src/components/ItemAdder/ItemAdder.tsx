@@ -1,13 +1,14 @@
 import React from "react";
-import "../styles/App.css";
+import "../../styles/App.css";
+import "./styles/ItemAdder.css"
 import {
 	Button,
 	FormControl as Input,
 	FormLabel as Label,
     InputGroup
 } from "react-bootstrap";
-import BranchSelector from "./Selectors/BranchSelector";
-import CategorySelector from "./Selectors/CategorySelector";
+import BranchSelector from "../Selectors/BranchSelector";
+import CategorySelector from "../Selectors/CategorySelector";
 
 // Add state here
 export interface ItemAdderState {

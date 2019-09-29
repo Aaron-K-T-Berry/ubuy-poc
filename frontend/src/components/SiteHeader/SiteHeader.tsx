@@ -22,7 +22,7 @@ export default class SiteHeader extends React.Component<
             <Row>
               <Col>
               <Link style={{ textDecoration: 'none' }} to="/">
-                <h1 className="logo"><img src="./images/branding/logo.jpg" width="50" height="50" alt="uBay-logo"></img>Buy</h1>
+                <h1 className="logo"><img src="/images/branding/logo.jpg" width="50" height="50" alt="uBay-logo"></img>Buy</h1>
               </Link>
               </Col>
             </Row>

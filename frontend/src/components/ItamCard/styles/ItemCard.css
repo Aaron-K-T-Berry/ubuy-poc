@@ -1,0 +1,7 @@
+.button-card {
+	border: -1pt;
+	width: 100%;
+	border-top-left-radius: 0%;
+	border-top-right-radius: 0%;
+	justify-content: center;
+}
