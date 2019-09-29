@@ -27,12 +27,12 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 
 	render() {
 		return (
-			<div className="main-body flex-center">
+			<div className="body-wrapper flex-center">
 				<div className="body-heading">
 					Shopping Cart
 					<Button className="button">Continue to Checkout</Button>
 				</div>
-				<div className="main-body-2">
+				<div className="body-content">
 					<ItemViewerCart />
 				</div>
 			</div>

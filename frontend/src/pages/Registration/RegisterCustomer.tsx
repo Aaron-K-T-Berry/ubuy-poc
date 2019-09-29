@@ -56,9 +56,9 @@ export default class RegisterCustomer extends React.Component<
 		];
 
 		return (
-			<div className="main-body flex-center">
+			<div className="body-wrapper flex-center">
 				<div className="body-heading">Create New Account</div>
-				<div className="main-body-2">
+				<div className="body-content">
 					<UserRegistrationForm
 						userType={UserTypes.Customer}
 						handleRegister={this.handleSubmit}
