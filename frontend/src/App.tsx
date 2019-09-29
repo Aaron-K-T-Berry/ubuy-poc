@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
-import SiteFooter from "./components/SiteFooter";
+import SiteFooter from "./components/SiteFooter/SiteFooter";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
 import AccountInfo from "./pages/AccountInfo";
