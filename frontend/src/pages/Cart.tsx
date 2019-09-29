@@ -39,16 +39,14 @@ export default class AccountInfo extends React.Component<
 
 	render() {
 		return (
-		<div className="content-body flex-center">
-        <Container>
-		  <Row>
-            <div className="body-heading">Shopping Cart</div>
-			</Row>
-          <Row>
-            <div><ItemViewerCart /></div>
-          </Row>
-        </Container>
+		<div className="main-body flex-center">
+			<div className="body-heading">Shopping Cart
+				<Button className="button">Continue to Checkout</Button>
+			</div>
+			<div className="main-body-2">
+        <ItemViewerCart />
       </div>
+	  </div>
 		);
 	}
 }
