@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import tokenStorage from "../../common/TokenStorage";
+import authHelper from "../../common/AuthHelper";
 
 export enum RouteUserTypes {
 	USER = "USER",
@@ -8,11 +8,8 @@ export enum RouteUserTypes {
 	ADMIN = "ADMIN"
 }
 
-const isLogin = (authLevel: string | undefined) => {
-	if (tokenStorage.getToken() !== null) {
-		return true;
-	}
-	return false;
+const isLogin = () => {
+	return authHelper.isAuthenticated();
 };
 
 const PrivateRoute = ({
@@ -24,7 +21,7 @@ const PrivateRoute = ({
 		<Route
 			{...rest}
 			render={props =>
-				isLogin(authLevel) ? <Component {...props} /> : <Redirect to="/login" />
+				isLogin() ? <Component {...props} /> : <Redirect to="/login" />
 			}
 		/>
 	);
