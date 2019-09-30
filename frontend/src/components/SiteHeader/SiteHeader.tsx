@@ -40,9 +40,8 @@ export default class SiteHeader extends React.Component<
 							</Col>
 						</Row>
 						<Row>
-							{/* Only show these when the user is authenticated */}
-
 							{isAuthenticated() ? (
+                // Show when the user is authenticated
 								<>
 									<Col>
 										<NavLink
@@ -69,6 +68,7 @@ export default class SiteHeader extends React.Component<
 									</Col>
 								</>
 							) : (
+                // What to show when unauthenticated
 								<>
 									<Col>
 										<NavLink
