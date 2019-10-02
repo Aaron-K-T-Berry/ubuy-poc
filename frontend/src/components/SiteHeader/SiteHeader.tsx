@@ -9,6 +9,7 @@ import "./styles/SiteHeader.css";
 import AuthHelper from "../../common/AuthHelper";
 
 export interface SiteHeaderProps {
+	isAuthenticated: boolean
 }
 export interface SiteHeaderState {}
 
@@ -37,7 +38,8 @@ export default class SiteHeader extends React.Component<
 							</Col>
 						</Row>
 						<Row>
-							{true ? (
+							
+							{this.props.isAuthenticated ? (
 								// Show when the user is authenticated
 								<>
 									<Col>

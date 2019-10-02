@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
@@ -16,15 +16,21 @@ import AddItem from "./pages/AddItem";
 import PrivateRoute, { RouteUserTypes } from "./components/PrivateRoute";
 
 const App: React.FC = () => {
+	const [authedState, setAuthedSate] = useState(false);
+
 	return (
 		<div>
 			<Router>
-				<SiteHeader />
+				<SiteHeader isAuthenticated={authedState} />
 				<div className="router-wrapper">
 					<Switch>
 						{/* Public routes */}
 						<Route path="/" exact component={HomePage} />
-						<Route path="/login" exact component={LoginForm} />
+						<Route
+							path="/login"
+							exact
+							render={(props) => <LoginForm {...props} authFunc={setAuthedSate} />}
+						/>
 						<Route path="/register/user" component={RegisterCustomer} />
 
 						{/* Authenticated routes */}
