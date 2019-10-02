@@ -23,9 +23,7 @@ export default class ItemViewerCart extends React.Component<{}, ItemState> {
 						{this.state.items.map(item => {
 							return <ItemCardCart key={item.id} item={item} />;
 						})}
-							<Button className="button" href="/CartView" id="buttonCheckout">
-                  Checkout
-                </Button>
+				
 					</Row>
 				
 				</Container>

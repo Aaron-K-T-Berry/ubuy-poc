@@ -17,15 +17,15 @@ export default class CartView extends React.Component {
 					<Row>
 						<Col className="content-body">
 							<div className="body-heading">
-								{PageContent.checkoutPage.cart_cust_label}
+								{PageContent.checkoutPage.checkout_cust_label}
 
-								<data>
-									<text> :$88</text>
-								</data>
 							</div>
 							<Col>
 								<div className="body-heading">
-									{PageContent.checkoutPage.checkout_cust_label}
+									{PageContent.checkoutPage.cart_cust_label}
+										<data>
+									<text> :$88</text>
+								</data>
 								</div>
 								<div className="input">
 									<h2>Billing address</h2>
