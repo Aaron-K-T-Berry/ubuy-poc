@@ -14,6 +14,7 @@ import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
 import ViewAllItems from "./pages/ViewAllItems";
+import ViewItem from "./pages/ViewItem";
 
 const App: React.FC = () => {
 	return (
@@ -35,6 +36,7 @@ const App: React.FC = () => {
 							component={RegisterAdminUser}
 						/>
 						<Route path="/register/user" component={RegisterCustomer} />
+						<Route path="/viewitem" component={ViewItem} />
 						<Route path="/item/add/admin" component={AddItem} />
 						<Route path="/item/viewall/admin" component={ViewAllItems} />
 						<Route component={PageNotFound} />
