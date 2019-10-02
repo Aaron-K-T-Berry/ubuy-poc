@@ -2,15 +2,15 @@ import React from "react";
 import "../styles/App.css";
 import ItemTable from "../components/ItemViewer/ItemViewerTable";
 
-export interface ViewItemState {
+export interface ViewAllItemsState {
 
 }
 
-export interface ViewItemProps {
+export interface ViewAllItemsProps {
 
 }
 
-export default class ViewAllItems extends React.Component<ViewItemProps, ViewItemState> {
+export default class ViewAllItems extends React.Component<ViewAllItemsProps, ViewAllItemsState> {
     constructor(props: any){
         super(props);
     }
