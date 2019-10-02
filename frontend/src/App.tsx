@@ -13,7 +13,7 @@ import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
-import PrivateRoute from "./components/PrivateRoute";
+import PrivateRoute, {RouteUserTypes} from "./components/PrivateRoute";
 
 const App: React.FC = () => {
 	return (

@@ -1,6 +1,6 @@
-import React from "react";
-import { Route, Redirect } from "react-router-dom";
-import authHelper from "../../common/AuthHelper";
+import React, { Component } from "react";
+import { Route, Redirect, withRouter } from "react-router-dom";
+import Axios from "axios";
 
 export enum RouteUserTypes {
 	USER = "USER",
@@ -8,23 +8,72 @@ export enum RouteUserTypes {
 	ADMIN = "ADMIN"
 }
 
-const isLogin = () => {
-	return authHelper.isAuthenticated();
+const apiHostname = "http://localhost:4000";
+
+const apiCheckTokenPaths = {
+	USER: "/auth/checkTokenCustomer",
+	BRANCH: "/auth/checkTokenBranch",
+	ADMIN: "/auth/checkTokenAdmin"
 };
 
-const PrivateRoute = ({
-	component: Component,
-	userType: authLevel,
-	...rest
-}: any) => {
-	return (
-		<Route
-			{...rest}
-			render={props =>
-				isLogin() ? <Component {...props} /> : <Redirect to="/login" />
-			}
-		/>
-	);
-};
+class PrivateRoute extends Component<
+	{ userRole?: RouteUserTypes; history?: any },
+	{}
+> {
+	state = {
+		haveAccess: false,
+		loaded: false
+	};
 
-export default PrivateRoute;
+	componentDidMount() {
+		this.checkAccess();
+	}
+
+	checkAccess = () => {
+		let { userRole, history } = this.props;
+		let { haveAccess: haveAccess } = this.state;
+
+		// Default to user auth if userRole is undefined
+		if (userRole === undefined) {
+			userRole = RouteUserTypes.USER;
+		}
+		Axios.get(apiHostname + apiCheckTokenPaths[userRole], {
+			withCredentials: true
+		})
+			.then(res => {
+				this.setState({
+					haveAccess: true,
+					loaded: true
+				});
+			})
+			.catch(err => {
+				history.push("/login");
+			});
+	};
+
+	render() {
+		//@ts-ignore
+		const { component: Component, ...rest } = this.props;
+		const { loaded, haveAccess: haveAccess } = this.state;
+		if (!loaded) return null;
+		return (
+			<Route
+				{...rest}
+				render={props => {
+					return haveAccess ? (
+						<Component {...props} />
+					) : (
+						<Redirect
+							to={{
+								pathname: "/"
+							}}
+						/>
+					);
+				}}
+			/>
+		);
+	}
+}
+
+// @ts-ignore
+export default withRouter(PrivateRoute);

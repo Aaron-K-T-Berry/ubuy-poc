@@ -8,12 +8,9 @@ import "./styles/Animations.css";
 import "./styles/SiteHeader.css";
 import AuthHelper from "../../common/AuthHelper";
 
-export interface SiteHeaderProps {}
+export interface SiteHeaderProps {
+}
 export interface SiteHeaderState {}
-
-const isAuthenticated = () => {
-	return AuthHelper.isAuthenticated();
-};
 
 export default class SiteHeader extends React.Component<
 	SiteHeaderProps,
@@ -40,8 +37,8 @@ export default class SiteHeader extends React.Component<
 							</Col>
 						</Row>
 						<Row>
-							{isAuthenticated() ? (
-                // Show when the user is authenticated
+							{true ? (
+								// Show when the user is authenticated
 								<>
 									<Col>
 										<NavLink
@@ -68,7 +65,7 @@ export default class SiteHeader extends React.Component<
 									</Col>
 								</>
 							) : (
-                // What to show when unauthenticated
+								// What to show when unauthenticated
 								<>
 									<Col>
 										<NavLink
