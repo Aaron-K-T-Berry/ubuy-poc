@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/App.css";
+import "./styles/ItemViewerTable.css";
 import { Button, ButtonGroup } from "react-bootstrap";
 
 export interface ItemProp {
@@ -16,27 +17,27 @@ export default class ItemRow extends React.Component<ItemProp, {}> {
     render() {
         return(
             <tr>
-                <td>
+                <td className="table-column-id">
                     {this.props.item.id}
                 </td>
 
-                <td>
+                <td className="table-column-name">
                     {this.props.item.name}
                 </td>
 
-                <td>
+                <td className="table-column-price">
                     ${this.props.item.price}
                 </td>
 
-                <td>
+                <td className="table-column-desc">
                     {this.props.item.desc}
                 </td>
 
-                <td>
+                <td className="table-column-branch">
                     {this.props.item.branch}
                 </td>
 
-                <td>
+                <td className="table-column-button">
                     <ButtonGroup>
                         <Button variant="info">View</Button>
                         <Button variant="warning">Edit</Button>

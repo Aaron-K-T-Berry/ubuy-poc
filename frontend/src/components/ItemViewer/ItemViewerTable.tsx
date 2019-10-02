@@ -1,5 +1,6 @@
 import React from "react";
 import "../../styles/App.css";
+import "./styles/ItemViewerTable.css";
 import dummy_data, { ItemRow as Item } from "./data/itemsStub";
 import Table from 'react-bootstrap/Table';
 import ItemRow from "./ItemRow";
@@ -18,7 +19,7 @@ export default class ItemViewerTable extends React.Component<{}, ItemState> {
     
 	render() {
 		return (
-            <Table striped bordered>
+            <Table striped bordered className="table">
                 <thead>
                     <tr>
                         <th>ID</th>
