@@ -13,7 +13,7 @@ import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
-import PrivateRoute, {RouteUserTypes} from "./components/PrivateRoute";
+import PrivateRoute, { RouteUserTypes } from "./components/PrivateRoute";
 
 const App: React.FC = () => {
 	return (
@@ -33,6 +33,7 @@ const App: React.FC = () => {
 						<PrivateRoute
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
+							userRole={RouteUserTypes.BRANCH}
 						/>
 						<PrivateRoute
 							path="/register/internal/admin"
