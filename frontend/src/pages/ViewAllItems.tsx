@@ -10,9 +10,6 @@ export default class ViewAllItems extends React.Component<
 	ViewItemProps,
 	ViewItemState
 > {
-	constructor(props: any) {
-		super(props);
-	}
 
 	render() {
 		return (

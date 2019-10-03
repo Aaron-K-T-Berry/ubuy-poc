@@ -10,12 +10,6 @@ export interface ItemState {
 }
 
 export default class ItemViewerTable extends React.Component<{}, ItemState> {
-	constructor(props: any) {
-		super(props);
-		this.state = {
-			items: dummy_data
-		};
-	}
 
 	render() {
 		return (
@@ -31,7 +25,7 @@ export default class ItemViewerTable extends React.Component<{}, ItemState> {
 					</tr>
 				</thead>
 				<tbody>
-					{this.state.items.map(item => {
+					{dummy_data.map(item => {
 						return <ItemRow item={item} />;
 					})}
 				</tbody>
