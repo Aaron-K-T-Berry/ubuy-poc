@@ -11,7 +11,9 @@ export default class AddItem extends React.Component {
 		return (
 			<div className="content-body flex-center">
 				<div className="body-heading">Add New Item</div>
-				<ItemAdder />
+				<div className="body-content">
+					<ItemAdder />
+				</div>
 			</div>
 		);
 	}

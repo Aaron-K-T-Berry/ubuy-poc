@@ -15,6 +15,8 @@ import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
 import PrivateRoute, { RouteUserTypes } from "./Components/PrivateRoute";
 import authHelper from "./common/AuthHelper";
+import ViewAllItems from "./pages/ViewAllItems";
+import { UserTypes } from "./Components/UserRegistrationForm";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -49,7 +51,22 @@ const App: React.FC = () => {
 							path="/register/internal/admin"
 							component={RegisterAdminUser}
 						/>
-						<PrivateRoute path="/additem/admin" component={AddItem} />
+
+						<PrivateRoute
+							userRole={UserTypes.Admin}
+							path="/additem/admin"
+							component={AddItem}
+						/>
+						<PrivateRoute
+							userRole={UserTypes.Admin}
+							path="/item/add/admin"
+							component={AddItem}
+						/>
+						<PrivateRoute
+							userRole={UserTypes.Admin}
+							path="/item/viewall/admin"
+							component={ViewAllItems}
+						/>
 
 						{/* 404 */}
 						<Route component={PageNotFound} />
