@@ -21,5 +21,11 @@ export default {
     loginPage: {
         existing_cust_label: "Existing Customer?",
         new_cust_label: "New Customer?"
-    }
+    },
+    checkoutPage: {
+        cart_cust_label: "Total",
+        checkout_cust_label: "Checkout" ,
+        checkout_payment_label: "Payment"
+    },
+   
 };
