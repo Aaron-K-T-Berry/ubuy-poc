@@ -13,6 +13,8 @@ export default class AdminView extends React.Component
         <h5 >Account Info</h5>
         <p >For Admin only ,edit/add/delete accounts</p>
         <a href="/viewallaccount" >Admin</a>
+        <p >For Admin only ,edit/add/delete accounts and products</p>
+        <a href="/accountm" >Admin</a>
       </div>
     </div>
   </div>
