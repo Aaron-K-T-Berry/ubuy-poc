@@ -16,7 +16,7 @@ import CartView from "./pages/CartView";
 import AdminView from "./pages/AdminView";
 import AddItem from "./pages/AddItem";
 import AccountM from "./pages/AccountM";
-
+import ViewAllItems from "./pages/ViewAllItems";
 
 const App: React.FC = () => {
 	return (
@@ -42,7 +42,8 @@ const App: React.FC = () => {
 							component={RegisterAdminUser}
 						/>
 						<Route path="/register/user" component={RegisterCustomer} />
-						<Route path="/additem/admin" component={AddItem} />
+						<Route path="/item/add/admin" component={AddItem} />
+						<Route path="/item/viewall/admin" component={ViewAllItems} />
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>

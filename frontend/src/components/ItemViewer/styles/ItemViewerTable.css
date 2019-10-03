@@ -1,0 +1,29 @@
+.table {
+    width: 100%;
+}
+
+.table-column-id {
+    width: 3%;
+}
+
+.table-column-name {
+    width: 20%;
+}
+
+.table-column-price {
+    width: 10%;
+}
+
+.table-column-desc {
+    width: 30%;
+}
+
+.table-column-branch {
+    width: 15%;
+}
+
+.table-column-button {
+    width: 15%;
+}
+
+
