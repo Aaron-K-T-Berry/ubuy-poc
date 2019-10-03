@@ -13,6 +13,7 @@ import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
+import ViewAllItems from "./pages/ViewAllItems";
 
 const App: React.FC = () => {
 	return (
@@ -34,7 +35,8 @@ const App: React.FC = () => {
 							component={RegisterAdminUser}
 						/>
 						<Route path="/register/user" component={RegisterCustomer} />
-						<Route path="/additem/admin" component={AddItem} />
+						<Route path="/item/add/admin" component={AddItem} />
+						<Route path="/item/viewall/admin" component={ViewAllItems} />
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
