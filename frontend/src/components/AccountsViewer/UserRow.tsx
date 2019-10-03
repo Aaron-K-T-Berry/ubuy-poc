@@ -1,37 +1,38 @@
 import React from "react";
 import "../../styles/App.css";
-import "./styles/ItemViewerTable.css";
+import "./../AccountsViewer/styles/AccountsViewerTable.css";
 import { Button, ButtonGroup } from "react-bootstrap";
 
-export interface ItemProp {
-	item: {
-        id: number;
-		name: string;
-        price: string;
-        branch: string;
-        desc: string;
+export interface UserProp {
+	user: {
+        firstName: string;
+        lastName: string;
+        email: string;
+        password?: string;
+        address: string | undefined;
 	};
 }
 
-export default class ItemRow extends React.Component<ItemProp, {}> {
+export default class UserRow extends React.Component<UserProp, {}> {
     render() {
         return(
             <tr>
                 <td className="table-column-id">
-                    {this.props.item.id}
+                    {this.props.user.firstName}
                 </td>
 
                 <td className="table-column-name">
-                    {this.props.item.name}
+                    {this.props.user.lastName}
                 </td>
 
                 <td className="table-column-price">
-                    ${this.props.item.price}
+                    ${this.props.user.email}
                 </td>
 
                 <td className="table-column-desc">
-                    {this.props.item.desc}
+                    {this.props.user.address}
                 </td>
+             
 
              
 
