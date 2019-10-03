@@ -6,10 +6,10 @@ import { Navbar } from "react-bootstrap";
 import "../../styles/App.css";
 import "./styles/Animations.css";
 import "./styles/SiteHeader.css";
-import AuthHelper from "../../common/AuthHelper";
+import Search from "../Search";
 
 export interface SiteHeaderProps {
-	isAuthenticated: boolean
+	isAuthenticated: boolean;
 }
 export interface SiteHeaderState {}
 
@@ -26,10 +26,8 @@ export default class SiteHeader extends React.Component<
 							<Col>
 								<Link style={{ textDecoration: "none" }} to="/">
 									<h1 className="logo">
-										<img
+										<img className="logo-image"
 											src="/images/branding/logo.jpg"
-											width="50"
-											height="50"
 											alt="uBay-logo"
 										></img>
 										Buy
@@ -38,7 +36,11 @@ export default class SiteHeader extends React.Component<
 							</Col>
 						</Row>
 						<Row>
-							
+							<Col>
+								<Search />
+							</Col>
+						</Row>
+						<Row>
 							{this.props.isAuthenticated ? (
 								// Show when the user is authenticated
 								<>

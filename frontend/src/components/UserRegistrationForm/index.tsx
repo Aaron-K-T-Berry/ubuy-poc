@@ -1,5 +1,5 @@
 import React from "react";
-import "../styles/App.css";
+import "../../styles/App.css";
 import {
 	Form,
 	Button,
@@ -69,7 +69,7 @@ export default class UserRegistrationForm extends React.Component<
 	}
 
 	validateForm(): boolean {
-		const validationKeys = this.props.validationKeys
+		const validationKeys = this.props.validationKeys;
 		let returnValue = true;
 		const errors = [];
 

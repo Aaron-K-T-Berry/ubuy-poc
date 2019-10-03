@@ -4,9 +4,10 @@ import axios from "axios";
 import UserRegistrationForm, {
 	UserTypes,
 	UserRegistrationFormState
-} from "../../components/UserRegistrationForm";
+} from "../../Components/UserRegistrationForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import env from "../../common/ConfigHelper";
 
 // Add state here
 export interface RegisterState {}
@@ -26,19 +27,15 @@ export default class RegisterBranchUser extends React.Component<
 
 	async handleSubmit(state: UserRegistrationFormState) {
 		try {
-			const res = await axios.post(
-				"http://localhost:4000/user/register/internal",
-				{
-					firstName: state.firstName,
-					lastName: state.lastName,
-					email: state.email,
-					address: state.address,
-					password: state.password,
-					userType: state.userType,
-					branchID: state.branchID
-				}
-			);
-			console.log(res);
+			await axios.post(`${env.API_HOSTNAME}/user/register/internal`, {
+				firstName: state.firstName,
+				lastName: state.lastName,
+				email: state.email,
+				address: state.address,
+				password: state.password,
+				userType: state.userType,
+				branchID: state.branchID
+			});
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);

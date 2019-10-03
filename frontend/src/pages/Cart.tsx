@@ -1,8 +1,9 @@
 import React from "react";
 import "../styles/App.css";
-import ItemViewerCart from "../components/ItemViewer/ItemViewerCart";
+import ItemViewerCart from "../Components/ItemViewer/ItemViewerCart";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 
 export interface CartProps {}
 
@@ -10,11 +11,9 @@ export interface CartState {}
 
 export default class AccountInfo extends React.Component<CartProps, CartState> {
 	async componentDidMount() {
-		const res = await axios.get("http://localhost:4000/cart", {
+		const res = await axios.get(`${env.API_HOSTNAME}/cart`, {
 			withCredentials: true
 		});
-		console.log(res);
-
 		const user: CartState = {
 			firstName: res.data.user.firstName,
 			lastName: res.data.user.lastName,
@@ -22,8 +21,6 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 		};
 		this.setState({ ...user });
 	}
-
-	componentWillUnmount() {}
 
 	render() {
 		return (

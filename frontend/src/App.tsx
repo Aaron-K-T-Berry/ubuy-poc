@@ -3,8 +3,8 @@ import "./styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import PageNotFound from "./pages/PageNotFound";
 import { ToastContainer } from "react-toastify";
-import SiteHeader from "./components/SiteHeader/SiteHeader";
-import SiteFooter from "./components/SiteFooter/SiteFooter";
+import SiteHeader from "./Components/SiteHeader/SiteHeader";
+import SiteFooter from "./Components/SiteFooter/SiteFooter";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
 import AccountInfo from "./pages/AccountInfo";
@@ -13,10 +13,12 @@ import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import AddItem from "./pages/AddItem";
-import PrivateRoute, { RouteUserTypes } from "./components/PrivateRoute";
+import PrivateRoute, { RouteUserTypes } from "./Components/PrivateRoute";
+import authHelper from "./common/AuthHelper";
 
 const App: React.FC = () => {
-	const [authedState, setAuthedSate] = useState(false);
+	// Setup react hooks
+	const [authedState, setAuthedSate] = useState(authHelper.isAuthed);
 
 	return (
 		<div>
@@ -29,7 +31,9 @@ const App: React.FC = () => {
 						<Route
 							path="/login"
 							exact
-							render={(props) => <LoginForm {...props} authFunc={setAuthedSate} />}
+							render={props => (
+								<LoginForm {...props} authFunc={setAuthedSate} />
+							)}
 						/>
 						<Route path="/register/user" component={RegisterCustomer} />
 

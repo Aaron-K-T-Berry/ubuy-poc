@@ -13,6 +13,7 @@ import {
 	Row
 } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 
 // Add state here
 export interface LoginState {
@@ -48,7 +49,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 	async handleSubmit(event: any) {
 		// TODO get the endpoint from config
 		const res = await axios.post(
-			"http://localhost:4000/auth/authenticate",
+			`${env.API_HOSTNAME}/auth/authenticate`,
 			{
 				email: this.state.email,
 				password: this.state.password
@@ -57,15 +58,11 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		);
 		if (res.status === 200) {
 			this.setState({ loginSuccess: true });
-			// tokenStorage.setToken(res.data.token);
-			// authHelper.setAuthenticated(true);
 			this.props.authFunc(true);
 		}
 	}
 
 	render() {
-		console.log(this.props);
-
 		return (
 			<Container className="content-body" fluid={true}>
 				<Row>
