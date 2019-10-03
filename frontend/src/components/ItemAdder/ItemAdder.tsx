@@ -1,6 +1,5 @@
 import React from "react";
 import "../../styles/App.css";
-import "./styles/ItemAdder.css"
 import {
 	Button,
 	FormControl as Input,
@@ -40,10 +39,8 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
     render() {
         return (
             <div className="input">
-                <div className="item-adder">
-
                 <Label>Item Name:</Label>
-                <InputGroup className="mb-3">
+                <InputGroup>
                     <Input
                         type="text"
                         id="name"
@@ -52,7 +49,7 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
                 </InputGroup>
 
                 <Label>Price:</Label>
-                <InputGroup className="mb-3">
+                <InputGroup>
                     <InputGroup.Prepend>
                         <InputGroup.Text>$</InputGroup.Text>
                     </InputGroup.Prepend>
@@ -64,7 +61,7 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
                 </InputGroup>
 
                 <Label>Description:</Label>
-                <InputGroup className="mb-3">
+                <InputGroup>
                     <Input
                         as="textarea"
                         id="desc"
@@ -89,14 +86,12 @@ export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdder
                 <CategorySelector />
 
                 <Label>Upload Photo:</Label>
-                <InputGroup className="mb-3">
+                <InputGroup>
                     <Button id="uploadPhoto" variant="info">Upload</Button>
                 </InputGroup>
 
                 <Label>Branch:</Label>
                 <BranchSelector />
-
-                </div>
             </div>
         );
     }
