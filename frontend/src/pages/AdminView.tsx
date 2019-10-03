@@ -21,7 +21,7 @@ export default class AdminView extends React.Component
       <div >
         <h5 >Branch Info</h5>
         <p >Products management </p>
-        <a href="/brm" >Branch</a>
+        <a href="/viewallaccountseller" >Branch</a>
       </div>
     </div>
   </div>

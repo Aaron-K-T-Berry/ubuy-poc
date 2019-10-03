@@ -1,0 +1,19 @@
+.table {
+    width: 100%;
+}
+
+.table-column-id {
+    width: 3%;
+}
+
+.table-column-name {
+    width: 20%;
+}
+
+.table-column-address {
+    width: 30%;
+}
+
+.table-column-button {
+    width: 15%;
+}

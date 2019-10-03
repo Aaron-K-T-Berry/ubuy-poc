@@ -19,8 +19,7 @@ import AccountM from "./pages/AccountM";
 
 import ViewAllItems from "./pages/ViewAllItems";
 import ViewAllAccount from "./pages/ViewAllAccount";
-
-
+import ViewAllAccountSeller from "./pages/ViewAllAccountSeller";
 const App: React.FC = () => {
 	return (
 		<div>
@@ -36,6 +35,8 @@ const App: React.FC = () => {
 						<Route path="/cart" exact component={Cart} />
 						<Route path="/accountm" exact component={AccountM} />
 						<Route path="/viewallaccount" exact component={ViewAllAccount} />
+						<Route path="/viewallaccountseller" exact component={ViewAllAccountSeller} />
+						
 						
 						<Route
 							path="/register/internal/branch"
