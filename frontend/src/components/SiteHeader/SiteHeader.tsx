@@ -39,8 +39,17 @@ export default class SiteHeader extends React.Component<
               <Col>
                 <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue', borderBottom: "1px, solid, red"  }} to="/cart">  <img src="/images/branding/credit_card_shopping.png" width="50" height="50" alt="uBay-logo"/> </NavLink>
               </Col>
+              <Col>
+                <NavLink style={{ textDecoration: 'none' }} activeStyle={{ color: 'steelblue' }} to="//#endregion"> <h3 className="outsign">Logout</h3> </NavLink>
+              </Col>
+             
+              
+              
             </Row>
+           
+           
           </Container>
+         
         </Navbar>
       </div>
     );
