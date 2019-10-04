@@ -1,7 +1,6 @@
 import React from "react";
 import "../../styles/App.css";
-import dummy_data, { User } from "./data/UsersStub";
-import ItemCard from "../ItamCard/ItemCard";
+import dummy_data, { UserRow as User } from "./data/UsersStub";
 import { Container, Row } from "react-bootstrap";
 
 export interface UserState {
