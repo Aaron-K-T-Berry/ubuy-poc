@@ -23,8 +23,11 @@ export default class ViewItem extends React.Component<ViewItemProps, ViewItemSta
     render(){
         return(
             <div className="content-body flex-center">
-                    <div>
-                        <img className="product-img height" src={`../images/placeholder_assets/${this.state.items[0].img}`}/>
+                    <div className="img-container">
+                        <img alt="Product Image" className="product-img height" src={`../../images/placeholder_assets/${this.state.items[0].img}`}/>
+                        <div className="middle">
+                            <Button className="hover-button"> Click to view larger image </Button>
+                        </div>
                     </div>
                     <div className="item-content height">
                         <div className="item-name">
