@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/App.css";
-import {Jumbotron, Container} from "react-bootstrap";
+import "./styles/ViewItem.css";
+import {Jumbotron, Container, Button} from "react-bootstrap";
 import dummy_data, {Item} from "../components/ItemViewer/data/itemsStub";
 
 export interface ViewItemState {
@@ -21,17 +22,23 @@ export default class ViewItem extends React.Component<ViewItemProps, ViewItemSta
 
     render(){
         return(
-            <Jumbotron fluid>
-                <Container>
+            <div className="content-body flex-center">
                     <div>
-                        <img src={`./images/placeholder_assets/${this.state.items[1].img}`}/>
+                        <img className="product-img height" src={`../images/placeholder_assets/${this.state.items[0].img}`}/>
                     </div>
-                    <div>
-                        <h1>{this.state.items[1].name}</h1>
-                        
+                    <div className="item-content height">
+                        <div className="item-name">
+                            {this.state.items[0].name}
+                        </div>
+                        <div className="item-body">
+                            <em className="price">
+                                ${this.state.items[0].price}  
+                            </em>
+                            <Button className="button-cart" variant="success"> Add to cart </Button>
+                        </div>                        
+                        <b> Description: </b>{this.state.items[0].desc}
                     </div>
-                </Container>
-            </Jumbotron>
+            </div>  
         );
     }
 }

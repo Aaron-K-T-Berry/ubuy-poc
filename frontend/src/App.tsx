@@ -18,6 +18,7 @@ import AddItem from "./pages/AddItem";
 import AccountM from "./pages/AccountM";
 import ViewAllItems from "./pages/ViewAllItems";
 import ViewAllAccount from "./pages/ViewAllAccount";
+import ViewItem from "./pages/ViewItem";
 
 
 const App: React.FC = () => {
@@ -44,8 +45,11 @@ const App: React.FC = () => {
 							path="/register/internal/admin"
 							component={RegisterAdminUser}
 						/>
+
 						<Route path="/register/user" component={RegisterCustomer} />
+						
 						<Route path="/item/add/admin" component={AddItem} />
+						<Route path="/item/view" component={ViewItem} />
 						<Route path="/item/viewall/admin" component={ViewAllItems} />
 						<Route path="/item/viewall/adminaccount" component={ViewAllAccount} />
 						<Route component={PageNotFound} />
