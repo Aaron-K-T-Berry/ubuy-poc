@@ -1,20 +1,15 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/AccountsViewerTable.css";
-import dummy_data, { UserRow as User } from "./data/UsersStub";
 import Table from 'react-bootstrap/Table';
 import UserRow from "./UserRow";
 
 export interface UserState {
-	users: User[];
 }
 
 export default class UserViewerTable extends React.Component<{}, UserState> {
 	constructor(props: any) {
 		super(props);
-		this.state = {
-			users: dummy_data
-		};
     }
     
 	render() {
@@ -31,9 +26,6 @@ export default class UserViewerTable extends React.Component<{}, UserState> {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.users.map(user => {
-                        return <UserRow user={user} />
-                    })}
                 </tbody>
             </Table>
 		);
