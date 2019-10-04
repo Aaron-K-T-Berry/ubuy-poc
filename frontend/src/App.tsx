@@ -12,8 +12,13 @@ import Cart from "./pages/Cart";
 import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
+import CartView from "./pages/CartView";
+import AdminView from "./pages/AdminView";
 import AddItem from "./pages/AddItem";
+import AccountM from "./pages/AccountM";
 import ViewAllItems from "./pages/ViewAllItems";
+import ViewAllAccount from "./pages/ViewAllAccount";
+
 
 const App: React.FC = () => {
 	return (
@@ -25,7 +30,12 @@ const App: React.FC = () => {
 						<Route path="/" exact component={HomePage} />
 						<Route path="/login" exact component={LoginForm} />
 						<Route path="/account" exact component={AccountInfo} />
+						<Route path="/cartview" exact component={CartView} />
+						<Route path="/adminview" exact component={AdminView} />
 						<Route path="/cart" exact component={Cart} />
+						<Route path="/accountm" exact component={AccountM} />
+						<Route path="/viewallaccount" exact component={ViewAllAccount} />
+						
 						<Route
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
@@ -37,6 +47,7 @@ const App: React.FC = () => {
 						<Route path="/register/user" component={RegisterCustomer} />
 						<Route path="/item/add/admin" component={AddItem} />
 						<Route path="/item/viewall/admin" component={ViewAllItems} />
+						<Route path="/item/viewall/adminaccount" component={ViewAllAccount} />
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>
