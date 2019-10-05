@@ -47,7 +47,6 @@ const App: React.FC = () => {
 						/>
 
 						<Route path="/register/user" component={RegisterCustomer} />
-						
 						<Route path="/item/edit/admin" component={EditItem} />
 						<Route path="/item/add/admin" component={AddItem} />
 						<Route path="/item/view" component={ViewItem} />
