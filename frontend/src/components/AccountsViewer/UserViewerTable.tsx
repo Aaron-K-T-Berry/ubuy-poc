@@ -6,13 +6,13 @@ import Table from 'react-bootstrap/Table';
 import UserRow from "./UserRow";
 
 export interface UserState {
-	users: User[];
+    users: User[];
 }
 
 export default class UserViewerTable extends React.Component<{}, UserState> {
 	constructor(props: any) {
-		super(props);
-		this.state = {
+        super(props);
+        this.state = {
 			users: dummy_data
 		};
     }
