@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import ItemTable from "../Components/ItemViewer/ItemViewerTable";
+import ItemTable from "../components/ItemViewer/ItemViewerTable";
 
 export interface ViewItemState {}
 

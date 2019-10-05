@@ -1,6 +1,6 @@
 import React from "react";
 import "../styles/App.css";
-import ItemViewerCart from "../Components/ItemViewer/ItemViewerCart";
+import ItemViewerCart from "../components/ItemViewer/ItemViewerCart";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import env from "../common/ConfigHelper";

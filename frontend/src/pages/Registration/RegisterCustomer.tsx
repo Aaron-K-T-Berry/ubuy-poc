@@ -4,7 +4,7 @@ import axios from "axios";
 import UserRegistrationForm, {
 	UserTypes,
 	UserRegistrationFormState
-} from "../../Components/UserRegistrationForm";
+} from "../../components/UserRegistrationForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import env from "../../common/ConfigHelper";
