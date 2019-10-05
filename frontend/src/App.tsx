@@ -35,7 +35,6 @@ const App: React.FC = () => {
 				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
-						<Route path="/cart" exact component={Cart} />
 						<Route
 							path="/login"
 							exact
@@ -75,26 +74,24 @@ const App: React.FC = () => {
 						/>
 
 						<Route path="/item/view" component={ViewItem} />
-						<Route path="/item/edit/admin" component={EditItem} />
-						<Route path="/item/add/admin" component={AddItem} />
-						<Route path="/item/viewall/admin" component={ViewAllItems} />
-						<Route
-							path="/item/viewall/adminaccount"
+						<PrivateRoute
+							path="/admin/item/edit"
+							component={EditItem}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/admin/item/add"
+							component={AddItem}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/admin/item/view/all"
+							userRole={UserTypes.Admin}
 							component={ViewAllAccount}
 						/>
 						<PrivateRoute
 							userRole={UserTypes.Admin}
-							path="/additem/admin"
-							component={AddItem}
-						/>
-						<PrivateRoute
-							userRole={UserTypes.Admin}
-							path="/item/add/admin"
-							component={AddItem}
-						/>
-						<PrivateRoute
-							userRole={UserTypes.Admin}
-							path="/item/viewall/admin"
+							path="/admin/item/view/all"
 							component={ViewAllItems}
 						/>
 

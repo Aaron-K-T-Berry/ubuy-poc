@@ -31,7 +31,7 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 					<data>
 									<text> :$88</text>
 								</data>
-								<NavLink to="/cartview"><Button className="button">Continue to Checkout</Button></NavLink>
+								<NavLink to="/cart/view"><Button className="button">Continue to Checkout</Button></NavLink>
 				</div>
 
 				<div className="body-content">
