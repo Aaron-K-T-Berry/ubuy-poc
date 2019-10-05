@@ -21,7 +21,6 @@ import ViewAllAccount from "./pages/ViewAllAccount";
 import ViewItem from "./pages/ViewItem";
 import EditItem from "./pages/EditItem";
 
-
 const App: React.FC = () => {
 	return (
 		<div>
@@ -37,7 +36,7 @@ const App: React.FC = () => {
 						<Route path="/cart" exact component={Cart} />
 						<Route path="/accountm" exact component={AccountM} />
 						<Route path="/viewallaccount" exact component={ViewAllAccount} />
-						
+
 						<Route
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
@@ -53,7 +52,10 @@ const App: React.FC = () => {
 						<Route path="/item/add/admin" component={AddItem} />
 						<Route path="/item/view" component={ViewItem} />
 						<Route path="/item/viewall/admin" component={ViewAllItems} />
-						<Route path="/item/viewall/adminaccount" component={ViewAllAccount} />
+						<Route
+							path="/item/viewall/adminaccount"
+							component={ViewAllAccount}
+						/>
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>

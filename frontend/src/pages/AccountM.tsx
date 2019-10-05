@@ -75,18 +75,6 @@ export default class AccountM extends React.Component<
 											<td>Madrid</td>
 											<td>
 												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-											</td>
-											<td>
-												<span>
 													<button type="button">Remove</button>
 												</span>
 											</td>
@@ -98,18 +86,6 @@ export default class AccountM extends React.Component<
 											<td>Insectus</td>
 											<td></td>
 											<td>San Francisco</td>
-											<td>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-											</td>
 											<td>
 												<span>
 													<button type="button">Remove</button>
@@ -125,18 +101,6 @@ export default class AccountM extends React.Component<
 											<td>Frankfurt am Main</td>
 											<td>
 												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-											</td>
-											<td>
-												<span>
 													<button type="button">Remove</button>
 												</span>
 											</td>
@@ -148,18 +112,6 @@ export default class AccountM extends React.Component<
 											<td>Portica</td>
 											<td></td>
 											<td>London</td>
-											<td>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-												<span>
-													<a href="#">
-														<i aria-hidden="true"></i>
-													</a>
-												</span>
-											</td>
 											<td>
 												<span>
 													<button type="button">Remove</button>
