@@ -31,7 +31,7 @@ const App: React.FC = () => {
 	return (
 		<div>
 			<Router>
-				<SiteHeader isAuthenticated={authedState} />
+				<SiteHeader isAuthenticated={authedState} authFunc={setAuthedSate} />
 				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />

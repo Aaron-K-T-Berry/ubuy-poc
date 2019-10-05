@@ -11,6 +11,7 @@ import AuthHelper from "../../common/AuthHelper";
 
 export interface SiteHeaderProps {
 	isAuthenticated: boolean;
+	authFunc: Function;
 }
 export interface SiteHeaderState {}
 
@@ -80,6 +81,7 @@ export default class SiteHeader extends React.Component<
 											activeStyle={{ color: "steelblue" }}
 											onClick={() => {
 												AuthHelper.logout();
+												this.props.authFunc(false);
 											}}
 											to="/"
 										>
