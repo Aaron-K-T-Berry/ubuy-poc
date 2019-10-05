@@ -21,3 +21,9 @@
 	height: 50px;
 	width: 50px;
 }
+
+.outsign {
+	position: relative;
+	left: 85px;
+	top: 13px;
+}

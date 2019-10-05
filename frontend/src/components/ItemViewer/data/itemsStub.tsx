@@ -56,12 +56,5 @@ export interface Item {
 	price: string;
 	desc: string;
 	img: string;
-}
-
-export interface ItemRow{
-	id: number;
-	name: string;
-	price: string;
 	branch: string;
-	desc: string;
 }

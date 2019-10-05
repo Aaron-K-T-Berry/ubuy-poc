@@ -1,8 +1,8 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
-import dummy_data, { ItemRow as Item } from "./data/itemsStub";
-import Table from "react-bootstrap/Table";
+import dummy_data, { Item } from "./data/itemsStub";
+import Table from 'react-bootstrap/Table';
 import ItemRow from "./ItemRow";
 
 export interface ItemState {

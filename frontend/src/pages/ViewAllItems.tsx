@@ -2,15 +2,13 @@ import React from "react";
 import "../styles/App.css";
 import ItemTable from "../components/ItemViewer/ItemViewerTable";
 
-export interface ViewItemState {}
-
-export interface ViewItemProps {}
+export interface ViewAllItemsState {}
+export interface ViewAllItemsProps {}
 
 export default class ViewAllItems extends React.Component<
-	ViewItemProps,
-	ViewItemState
+	ViewAllItemsProps,
+	ViewAllItemsState
 > {
-
 	render() {
 		return (
 			<div className="content-body">

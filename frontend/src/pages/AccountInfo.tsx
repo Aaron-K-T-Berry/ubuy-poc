@@ -74,8 +74,12 @@ export default class AccountInfo extends React.Component<
 							value={this.state.email}
 						/>
 					</Group>
-					<Button>Edit</Button>
+					<Button>Edit </Button>
+
+
+
 				</div>
+				<a href="/adminview"  role="button"  aria-disabled="true">Admin</a>
 			</div>
 		);
 	}

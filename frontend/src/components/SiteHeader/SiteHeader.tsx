@@ -26,7 +26,8 @@ export default class SiteHeader extends React.Component<
 							<Col>
 								<Link style={{ textDecoration: "none" }} to="/">
 									<h1 className="logo">
-										<img className="logo-image"
+										<img
+											className="logo-image"
 											src="/images/branding/logo.jpg"
 											alt="uBay-logo"
 										></img>
@@ -64,7 +65,22 @@ export default class SiteHeader extends React.Component<
 											to="/cart"
 										>
 											{" "}
-											<h2> Cart </h2>{" "}
+											<img
+												src="/images/branding/credit_card_shopping.png"
+												width="50"
+												height="50"
+												alt="uBay-logo"
+											/>{" "}
+										</NavLink>
+									</Col>
+									<Col>
+										<NavLink
+											style={{ textDecoration: "none" }}
+											activeStyle={{ color: "steelblue" }}
+											to="//#endregion"
+										>
+											{" "}
+											<h3 className="outsign">Logout</h3>{" "}
 										</NavLink>
 									</Col>
 								</>
