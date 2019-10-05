@@ -7,5 +7,8 @@ export default {
 			return true;
 		}
 		return false;
+	},
+	logout: () => {
+		cookies.remove("token");
 	}
 };

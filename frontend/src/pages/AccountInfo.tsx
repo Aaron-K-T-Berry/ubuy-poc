@@ -79,7 +79,7 @@ export default class AccountInfo extends React.Component<
 
 
 				</div>
-				<a href="/adminview"  role="button"  aria-disabled="true">Admin</a>
+				<a href="/account/m"  role="button"  aria-disabled="true">Admin</a>
 			</div>
 		);
 	}

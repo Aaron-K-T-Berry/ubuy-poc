@@ -7,6 +7,7 @@ import "../../styles/App.css";
 import "./styles/Animations.css";
 import "./styles/SiteHeader.css";
 import Search from "../Search";
+import AuthHelper from "../../common/AuthHelper";
 
 export interface SiteHeaderProps {
 	isAuthenticated: boolean;
@@ -49,7 +50,7 @@ export default class SiteHeader extends React.Component<
 										<NavLink
 											style={{ textDecoration: "none" }}
 											activeStyle={{ color: "steelblue" }}
-											to="/account"
+											to="/account/user"
 										>
 											{" "}
 											<h2> Account </h2>{" "}
@@ -77,7 +78,10 @@ export default class SiteHeader extends React.Component<
 										<NavLink
 											style={{ textDecoration: "none" }}
 											activeStyle={{ color: "steelblue" }}
-											to="//#endregion"
+											onClick={() => {
+												AuthHelper.logout();
+											}}
+											to="/"
 										>
 											{" "}
 											<h3 className="outsign">Logout</h3>{" "}
