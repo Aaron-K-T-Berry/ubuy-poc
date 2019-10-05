@@ -5,11 +5,3 @@
 	border-top-right-radius: 0%;
 	justify-content: center;
 }
-
-.card {
-	width: 18rem;
-}
-
-.link:hover {
-	text-decoration: none;
-}

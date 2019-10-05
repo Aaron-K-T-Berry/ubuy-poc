@@ -1,16 +1,17 @@
 import React from "react";
 import "../styles/App.css";
-import ItemSingleView from "../components/ItemViewer/ItemSingleView";
+import EditItem from "../components/ItemViewer/ItemEdit";
 import dummy_data from "../components/ItemViewer/data/itemsStub";
 
-export interface ViewItemState {}
-export interface ViewItemProps {
+export interface EditItemState {}
+
+export interface EditItemProps {
 	itemID: number;
 }
 
 export default class ViewItem extends React.Component<
-	ViewItemProps,
-	ViewItemState
+	EditItemProps,
+	EditItemState
 > {
 	constructor(props: any) {
 		super(props);
@@ -20,6 +21,6 @@ export default class ViewItem extends React.Component<
 	}
 
 	render() {
-		return <ItemSingleView itemID={101} />;
+		return <EditItem itemID={101} />;
 	}
 }

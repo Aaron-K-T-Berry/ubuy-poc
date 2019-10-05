@@ -1,8 +1,8 @@
 import React from "react";
 import "../../styles/App.css";
-import "./styles/ItemCard.css"
-import { Link } from "react-router-dom";
+import "./styles/ItemCard.css";
 import { Card, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export interface ItemProp {
 	item: {
@@ -17,18 +17,20 @@ export interface ItemProp {
 export default class ItemCard extends React.Component<ItemProp, {}> {
 	render() {
 		return (
-			<Link className="link" 
+			<Link
+				className="link"
 				to={{
-					pathname: "/viewitem",
+					pathname: "/item/view",
 					state: {
 						id: this.props.item.id
 					}
-				}} >
+				}}
+			>
 				<Card style={{ width: "18rem" }}>
 					<Card.Img
 						variant="top"
 						src={`./images/placeholder_assets/${this.props.item.img}`}
-						/>
+					/>
 					<Card.Body>
 						<Card.Title>{this.props.item.name}</Card.Title>
 						<Card.Subtitle>${this.props.item.price}</Card.Subtitle>
