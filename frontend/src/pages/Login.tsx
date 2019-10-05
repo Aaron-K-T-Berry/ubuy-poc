@@ -13,6 +13,7 @@ import {
 	Row
 } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 import "./styles/Login.css"
 
 // Add state here
@@ -23,7 +24,9 @@ export interface LoginState {
 }
 
 // Add passed in props here
-export interface LoginProps {}
+export interface LoginProps {
+	authFunc: any;
+}
 
 export default class LoginForm extends React.Component<LoginProps, LoginState> {
 	constructor(props: any) {
@@ -47,7 +50,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 	async handleSubmit(event: any) {
 		// TODO get the endpoint from config
 		const res = await axios.post(
-			"http://localhost:4000/auth/authenticate",
+			`${env.API_HOSTNAME}/auth/authenticate`,
 			{
 				email: this.state.email,
 				password: this.state.password
@@ -56,6 +59,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		);
 		if (res.status === 200) {
 			this.setState({ loginSuccess: true });
+			this.props.authFunc(true);
 		}
 	}
 
@@ -92,7 +96,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 								>
 									Log In
 								</Button>
-								{this.state.loginSuccess && <Redirect to={"/account"} />}
+								{this.state.loginSuccess && <Redirect to={"/"} />}
 							</Group>
 						</div>
 						<div className="body-heading">

@@ -8,6 +8,7 @@ import {
 	FormLabel as Label
 } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 
 export interface AccountInfoProps {}
 
@@ -32,7 +33,7 @@ export default class AccountInfo extends React.Component<
 	}
 
 	async componentDidMount() {
-		const res = await axios.get("http://localhost:4000/user", {
+		const res = await axios.get(`${env.API_HOSTNAME}/user`, {
 			withCredentials: true
 		});
 		const user: AccountInfoState = {
@@ -42,8 +43,6 @@ export default class AccountInfo extends React.Component<
 		};
 		this.setState({ ...user });
 	}
-
-	componentWillUnmount() {}
 
 	render() {
 		return (
@@ -80,7 +79,7 @@ export default class AccountInfo extends React.Component<
 
 
 				</div>
-				<a href="/adminview"  role="button"  aria-disabled="true">Admin</a>
+				<a href="/account/m"  role="button"  aria-disabled="true">Admin</a>
 			</div>
 		);
 	}

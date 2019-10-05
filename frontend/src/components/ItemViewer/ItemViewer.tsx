@@ -1,7 +1,7 @@
 import React from "react";
 import "../../styles/App.css";
 import dummy_data, { Item } from "./data/itemsStub";
-import ItemCard from "../ItamCard/ItemCard";
+import ItemCard from "../ItemCard/ItemCard";
 import { Container, Row } from "react-bootstrap";
 
 export interface ItemState {

@@ -40,8 +40,11 @@ export default class AuthController {
 							expiresIn: "1h"
 						});
 						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");
-						res.cookie("token", token, { httpOnly: true });
-						responseBuilder.buildSuccess(res, "authenticated");
+						res.cookie("token", token, { httpOnly: false });
+						responseBuilder.buildSuccess(res, {
+							msg: "Authenticated",
+							token: token
+						});
 					}
 				});
 			}

@@ -3,6 +3,7 @@ import "../styles/App.css";
 import ItemViewerCart from "../components/ItemViewer/ItemViewerCart";
 import { Button } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 import { NavLink } from "react-router-dom";
 
 export interface CartProps {}
@@ -11,11 +12,9 @@ export interface CartState {}
 
 export default class AccountInfo extends React.Component<CartProps, CartState> {
 	async componentDidMount() {
-		const res = await axios.get("http://localhost:4000/cart", {
+		const res = await axios.get(`${env.API_HOSTNAME}/cart`, {
 			withCredentials: true
 		});
-		console.log(res);
-
 		const user: CartState = {
 			firstName: res.data.user.firstName,
 			lastName: res.data.user.lastName,
@@ -23,8 +22,6 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 		};
 		this.setState({ ...user });
 	}
-
-	componentWillUnmount() {}
 
 	render() {
 		return (
@@ -34,9 +31,9 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 					<data>
 									<text> :$88</text>
 								</data>
-								<NavLink to="/cartview"><Button className="button">Continue to Checkout</Button></NavLink>
+								<NavLink to="/cart/view"><Button className="button">Continue to Checkout</Button></NavLink>
 				</div>
-				
+
 				<div className="body-content">
 					<ItemViewerCart />
 				</div>

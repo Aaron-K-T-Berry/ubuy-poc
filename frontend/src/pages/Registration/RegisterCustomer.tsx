@@ -7,6 +7,7 @@ import UserRegistrationForm, {
 } from "../../components/UserRegistrationForm";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import env from "../../common/ConfigHelper";
 
 // Add state here
 export interface RegisterState {}
@@ -28,14 +29,13 @@ export default class RegisterCustomer extends React.Component<
 	async handleSubmit(state: UserRegistrationFormState) {
 		// TODO get the endpoint from config
 		try {
-			const res = await axios.post("http://localhost:4000/user/register", {
+			await axios.post(`${env.API_HOSTNAME}/user/register`, {
 				firstName: state.firstName,
 				lastName: state.lastName,
 				email: state.email,
 				userType: state.userType,
 				password: state.password
 			});
-			console.log(res);
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);
