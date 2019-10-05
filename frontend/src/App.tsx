@@ -16,7 +16,6 @@ import CartView from "./pages/CartView";
 import AdminView from "./pages/AdminView";
 import AddItem from "./pages/AddItem";
 import AccountM from "./pages/AccountM";
-
 import ViewAllItems from "./pages/ViewAllItems";
 import ViewAllAccount from "./pages/ViewAllAccount";
 import ViewAllAccountSeller from "./pages/ViewAllAccountSeller";
