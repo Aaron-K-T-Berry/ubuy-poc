@@ -18,7 +18,7 @@ export default class ViewItem extends React.Component<
 > {
 	constructor(props: any) {
 		super(props);
-		this.state = {
+		this.state = { 
 			items: dummy_data
 		};
 	}
@@ -30,7 +30,7 @@ export default class ViewItem extends React.Component<
 					<img
 						alt="Product"
 						className="product-img height"
-						src={`../../images/placeholder_assets/${this.state.items[0].img}`}
+						src={`../../images/placeholder_assets/${this.state.items[0].photo}`}
 					/>
 					<div className="middle">
 						<Button className="hover-button">

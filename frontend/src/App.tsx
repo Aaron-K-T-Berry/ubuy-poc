@@ -46,16 +46,15 @@ const App: React.FC = () => {
 						<PrivateRoute path="/account/user" exact component={AccountInfo} />
 						<Route path="/account/admin" exact component={AdminView} />
 						<PrivateRoute
-							path="/account/view-all"
-							userRole={RouteUserTypes.ADMIN}
-							exact
-							component={ViewAllAccount}
-						/>
-						<PrivateRoute
 							path="/account/m"
 							userRole={RouteUserTypes.ADMIN}
 							exact
 							component={AccountM}
+						/>
+						<PrivateRoute
+							path="/admin/account/view/all"
+							userRole={UserTypes.Admin}
+							component={ViewAllAccount}
 						/>
 
 						<PrivateRoute path="/cart" exact component={Cart} />
@@ -83,11 +82,6 @@ const App: React.FC = () => {
 							path="/admin/item/add"
 							component={AddItem}
 							userRole={UserTypes.Admin}
-						/>
-						<PrivateRoute
-							path="/admin/item/view/all"
-							userRole={UserTypes.Admin}
-							component={ViewAllAccount}
 						/>
 						<PrivateRoute
 							userRole={UserTypes.Admin}

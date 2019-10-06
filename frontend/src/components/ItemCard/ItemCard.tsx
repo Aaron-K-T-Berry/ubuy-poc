@@ -6,11 +6,11 @@ import { Link } from "react-router-dom";
 
 export interface ItemProp {
 	item: {
-		id: number;
+		_id: number;
 		name: string;
 		price: string;
 		desc: string;
-		img: string;
+		photo: string;
 	};
 }
 
@@ -22,14 +22,14 @@ export default class ItemCard extends React.Component<ItemProp, {}> {
 				to={{
 					pathname: "/item/view",
 					state: {
-						id: this.props.item.id
+						id: this.props.item._id
 					}
 				}}
 			>
 				<Card style={{ width: "18rem" }}>
 					<Card.Img
 						variant="top"
-						src={`./images/placeholder_assets/${this.props.item.img}`}
+						src={this.props.item.photo}
 					/>
 					<Card.Body>
 						<Card.Title>{this.props.item.name}</Card.Title>

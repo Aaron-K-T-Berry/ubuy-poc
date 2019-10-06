@@ -38,7 +38,7 @@ export default class EditItem extends React.Component<
 					<img
 						alt="Product"
 						className="product-img height"
-						src={`../../images/placeholder_assets/${this.state.items[0].img}`}
+						src={`../../images/placeholder_assets/${this.state.items[0].photo}`}
 					/>
 					<div className="middle">
 						<Button className="hover-button"> Change image </Button>

@@ -5,11 +5,11 @@ import { Button, ButtonGroup } from "react-bootstrap";
 
 export interface ItemProp {
 	item: {
-		id: number;
+		_id: number;
 		name: string;
 		price: string;
 		branch: string;
-		desc: string;
+		desc: string; 
 	};
 }
 
@@ -17,7 +17,7 @@ export default class ItemRow extends React.Component<ItemProp, {}> {
 	render() {
 		return (
 			<tr>
-				<td className="table-column-id">{this.props.item.id}</td>
+				<td className="table-column-id">{this.props.item._id}</td>
 
 				<td className="table-column-name">{this.props.item.name}</td>
 

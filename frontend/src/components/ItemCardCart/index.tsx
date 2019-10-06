@@ -7,7 +7,7 @@ export interface ItemProp {
 		name: string;
 		price: string;
 		desc: string;
-		img: string;
+		photo: string;
 	};
 }
 
