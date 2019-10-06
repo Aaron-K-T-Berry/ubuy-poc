@@ -6,7 +6,7 @@ import { Button, InputGroup, FormControl } from "react-bootstrap";
 export default class Search extends React.Component {
 	render() {
 		return (
-			<div>
+			<div className="search">
 				<InputGroup>
 					<FormControl placeholder="Search..." />
 					<InputGroup.Append>

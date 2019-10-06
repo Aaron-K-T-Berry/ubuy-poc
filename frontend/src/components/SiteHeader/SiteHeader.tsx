@@ -1,7 +1,6 @@
 import React from "react";
-import { Container } from "react-bootstrap";
-import { Row, Col } from "react-bootstrap";
-import { Link, NavLink } from "react-router-dom";
+import { Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import { Navbar } from "react-bootstrap";
 import "../../styles/App.css";
 import "./styles/Animations.css";
@@ -22,101 +21,84 @@ export default class SiteHeader extends React.Component<
 	render() {
 		return (
 			<div className="site-header">
-				<Navbar>
-					<Container>
-						<Row>
-							<Col>
-								<Link style={{ textDecoration: "none" }} to="/">
-									<h1 className="logo">
-										<img
-											className="logo-image"
-											src="/images/branding/logo.jpg"
-											alt="uBay-logo"
-										></img>
-										Buy
-									</h1>
-								</Link>
-							</Col>
-						</Row>
-						<Row>
-							<Col>
-								<Search />
-							</Col>
-						</Row>
-						<Row>
-							{this.props.isAuthenticated ? (
-								// Show when the user is authenticated
-								<>
-									<Col>
-										<NavLink
-											style={{ textDecoration: "none" }}
-											activeStyle={{ color: "steelblue" }}
-											to="/account/user"
-										>
-											{" "}
-											<h2> Account </h2>{" "}
-										</NavLink>
-									</Col>
-									<Col>
-										<NavLink
-											style={{ textDecoration: "none" }}
-											activeStyle={{
-												color: "steelblue",
-												borderBottom: "1px, solid, red"
-											}}
-											to="/cart"
-										>
-											{" "}
-											<img
-												src="/images/branding/credit_card_shopping.png"
-												width="50"
-												height="50"
-												alt="uBay-logo"
-											/>{" "}
-										</NavLink>
-									</Col>
-									<Col>
-										<NavLink
-											style={{ textDecoration: "none" }}
-											activeStyle={{ color: "steelblue" }}
-											onClick={() => {
-												AuthHelper.logout();
-												this.props.authFunc(false);
-											}}
-											to="/"
-										>
-											{" "}
-											<h3 className="outsign">Logout</h3>{" "}
-										</NavLink>
-									</Col>
-								</>
-							) : (
-								// What to show when unauthenticated
-								<>
-									<Col>
-										<NavLink
-											style={{ textDecoration: "none" }}
-											activeStyle={{ color: "steelblue" }}
-											to="/register/user"
-										>
-											{" "}
-											<h2> Register </h2>{" "}
-										</NavLink>
-									</Col>
-									<Col>
-										<NavLink
-											style={{ textDecoration: "none" }}
-											activeStyle={{ color: "steelblue" }}
-											to="/login"
-										>
-											{" "}
-											<h2> Login </h2>
-										</NavLink>
-									</Col>
-								</>
-							)}
-						</Row>
-					</Container>
+				<Navbar className="navbar">
+					<Navbar.Brand href="/">
+						<h1 className="logo">
+							<img
+								className="logo-image"
+								src="/images/branding/logo.jpg"
+								alt="uBay-logo"
+							></img>
+							Buy
+						</h1>
+					</Navbar.Brand>
+					<Search />
+					<Nav>
+						{this.props.isAuthenticated ? (
+							// Show when authed
+							<>
+								<NavLink
+									className="navlink"
+									style={{ textDecoration: "none" }}
+									activeStyle={{ color: "steelblue" }}
+									to="/account/user"
+								>
+									<h2> Account </h2>
+								</NavLink>
+
+								<NavLink
+									className="navlink"
+									style={{ textDecoration: "none" }}
+									activeStyle={{
+										color: "steelblue",
+										borderBottom: "1px, solid, red"
+									}}
+									to="/cart"
+								>
+									<img
+										src="/images/branding/credit_card_shopping.png"
+										width="50"
+										height="50"
+										alt="uBay-logo"
+									/>
+								</NavLink>
+
+								<NavLink
+									className="navlink"
+									style={{ textDecoration: "none" }}
+									activeStyle={{ color: "steelblue" }}
+									onClick={() => {
+										AuthHelper.logout();
+										this.props.authFunc(false);
+									}}
+									to="/logout"
+								>
+									<h2>Logout</h2>
+								</NavLink>
+							</>
+						) : (
+							// Show when un authed
+							<>
+								<NavLink
+									className="navlink"
+									style={{ textDecoration: "none" }}
+									activeStyle={{ color: "steelblue" }}
+									to="/register/user"
+								>
+									<h2> Register </h2>
+								</NavLink>
+
+								<NavLink
+									className="navlink"
+									style={{ textDecoration: "none" }}
+									activeStyle={{ color: "steelblue" }}
+									to="/login"
+								>
+									<h2> Login </h2>
+								</NavLink>
+							</>
+						)}
+					</Nav>
 				</Navbar>
 			</div>
 		);
