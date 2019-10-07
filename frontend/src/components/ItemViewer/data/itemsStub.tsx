@@ -1,6 +1,6 @@
 export default [
 	{
-		_id: 1,
+		_id: "1",
 		name: "cheese grater",
 		price: "5999.99",
 		desc: "that is base price btw.",
@@ -8,7 +8,7 @@ export default [
 		branch: "Ultimo"
 	},
 	{
-		_id: 2,
+		_id: "2",
 		name: "expensive monitor",
 		price: "4999.99",
 		desc:
@@ -17,7 +17,7 @@ export default [
 		branch: "Ultimo"
 	},
 	{
-		_id: 3,
+		_id: "3",
 		name: "expensive stand",
 		price: "999.99",
 		desc: "monitor stand included",
@@ -25,7 +25,7 @@ export default [
 		branch: "Ultimo"
 	},
 	{
-		_id: 4,
+		_id: "4",
 		name: "greatest mouse",
 		price: "1199.99",
 		desc: "it's balling",
@@ -33,7 +33,7 @@ export default [
 		branch: "Haymarket"
 	},
 	{
-		_id: 5,
+		_id: "5",
 		name: "wow rays",
 		price: "11.99",
 		desc: "wowow",
@@ -41,7 +41,7 @@ export default [
 		branch: "Ultimo"
 	},
 	{
-		_id: 6,
+		_id: "6",
 		name: "gaming mouse",
 		price: "7.99",
 		desc: "wow",
@@ -51,7 +51,7 @@ export default [
 ];
 
 export interface Item {
-	_id: number;
+	_id: string;
 	name: string;
 	price: string;
 	desc: string;

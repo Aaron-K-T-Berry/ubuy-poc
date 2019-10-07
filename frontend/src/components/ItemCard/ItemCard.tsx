@@ -5,32 +5,16 @@ import { Card, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export interface ItemProp {
-	item: {
-		_id: number;
-		name: string;
-		price: string;
-		desc: string;
-		photo: string;
-	};
+	item: any;
 }
 
 export default class ItemCard extends React.Component<ItemProp, {}> {
 	render() {
 		return (
-			<Link
-				className="link"
-				to={{
-					pathname: "/item/view",
-					state: {
-						id: this.props.item._id
-					}
-				}}
-			>
+			<Link className="link" to={`/item/${this.props.item._id}/view/`}>
 				<Card style={{ width: "18rem" }}>
-					<Card.Img
-						variant="top"
-						src={this.props.item.photo}
-					/>
+					{console.log(this.props.item.photo)}
+					<Card.Img variant="top" src={this.props.item.photo} />
 					<Card.Body>
 						<Card.Title>{this.props.item.name}</Card.Title>
 						<Card.Subtitle>${this.props.item.price}</Card.Subtitle>

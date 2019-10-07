@@ -2,18 +2,30 @@ import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { Redirect } from "react-router";
 
-export interface ItemProp {
+export interface ItemRowProp {
 	item: {
 		_id: number;
 		name: string;
 		price: string;
 		branch: string;
-		desc: string; 
+		description: string;
 	};
+	handleViewItem: any;
+	handleEditItem: any;
 }
 
-export default class ItemRow extends React.Component<ItemProp, {}> {
+export interface ItemRowState {}
+
+export default class ItemRow extends React.Component<
+	ItemRowProp,
+	ItemRowState
+> {
+	constructor(props: any) {
+		super(props);
+	}
+
 	render() {
 		return (
 			<tr>
@@ -23,15 +35,28 @@ export default class ItemRow extends React.Component<ItemProp, {}> {
 
 				<td className="table-column-price">${this.props.item.price}</td>
 
-				<td className="table-column-desc">{this.props.item.desc}</td>
+				<td className="table-column-desc">{this.props.item.description}</td>
 
 				<td className="table-column-branch">{this.props.item.branch}</td>
 
 				<td className="table-column-button">
 					<ButtonGroup>
-						<Button variant="info">View</Button>
-						<Button variant="warning">Edit</Button>
-						<Button variant="danger">Delete</Button>
+						<Button
+							variant="info"
+							onClick={() => {
+								this.props.handleViewItem(this.props.item._id);
+							}}
+						>
+							View
+						</Button>
+						<Button
+							variant="warning"
+							onClick={() => {
+								this.props.handleEditItem(this.props.item._id);
+							}}
+						>
+							Edit
+						</Button>
 					</ButtonGroup>
 				</td>
 			</tr>

@@ -1,15 +1,22 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
-import dummy_data, { Item } from "./data/itemsStub";
-import Table from 'react-bootstrap/Table';
+import { Item } from "./data/itemsStub";
+import Table from "react-bootstrap/Table";
 import ItemRow from "./ItemRow";
 
-export interface ItemState {
-	items: Item[];
+export interface ItemViewerTableProps {
+	items: any[];
+	handleViewItem: any;
+	handleEditItem: any;
 }
+export interface ItemViewerTableState {}
 
-export default class ItemViewerTable extends React.Component<{}, ItemState> {
+export default class ItemViewerTable extends React.Component<
+	ItemViewerTableProps,
+	ItemViewerTableState
+> {
+
 
 	render() {
 		return (
@@ -25,8 +32,14 @@ export default class ItemViewerTable extends React.Component<{}, ItemState> {
 					</tr>
 				</thead>
 				<tbody>
-					{dummy_data.map(item => {
-						return <ItemRow item={item} />;
+					{this.props.items.map(item => {
+						return (
+							<ItemRow
+								item={item}
+								handleViewItem={this.props.handleViewItem}
+								handleEditItem={this.props.handleEditItem}
+							/>
+						);
 					})}
 				</tbody>
 			</Table>

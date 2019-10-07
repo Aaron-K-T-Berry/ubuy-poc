@@ -75,9 +75,9 @@ const App: React.FC = () => {
 							userRole={RouteUserTypes.ADMIN}
 						/>
 
-						<Route path="/item/view" component={ViewItem} />
+						<Route path="/item/:id/view" component={ViewItem} />
 						<PrivateRoute
-							path="/admin/item/edit"
+							path="/admin/item/:id/edit"
 							component={EditItem}
 							userRole={UserTypes.Admin}
 						/>

@@ -6,10 +6,10 @@ export interface PageWrapperProps {
 }
 
 export default class PageWrapper extends React.Component<PageWrapperProps, {}> {
-	render() { 
+	render() {
 		return (
 			<>
-        <h3>{this.props.heading}</h3>
+        <h3 className="body-heading">{this.props.heading}</h3>
 				{this.props.children}
 			</>
 		);
