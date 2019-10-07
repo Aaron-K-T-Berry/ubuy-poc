@@ -1,0 +1,11 @@
+{
+	"db": "ubuy",
+	"collection": "branches",
+	"records": [
+		{
+			"_id": "000000000001",
+			"name": "Ultimo",
+			"address": "15 Broadway, Ultimo NSW 2007"
+		}
+	]
+}
