@@ -23,8 +23,8 @@ export default {
 		logger.warn("Sending 401 with error " + msg);
 		res.status(401).send({ msg: msg });
 	},
-	buildAPIError: (res: Response, code: ApiCode) => {
+	buildAPIError: (res: Response, code: ApiCode,  data?: any) => {
 		logger.warn("Sending an api error with code " + code.valueOf());
-		res.status(500).send({ ApiCode: code.valueOf() });
+		res.status(500).send({ ApiCode: code.valueOf(), data });
 	}
 };

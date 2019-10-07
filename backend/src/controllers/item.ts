@@ -29,8 +29,6 @@ export default class ItemController {
 
 	public async handleReadSingle(req: Request, res: Response) {
 		try {
-			console.log("id:", req.params.itemId);
-
 			const item = await itemModel.findOne({
 				_id: req.params.itemId
 			});
