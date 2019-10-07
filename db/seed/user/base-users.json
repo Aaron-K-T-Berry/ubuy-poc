@@ -1,0 +1,33 @@
+{
+	"db": "ubuy",
+	"collection": "users",
+	"records": [
+		{
+      "_id": "1",
+			"firstName": "user",
+			"lastName": "user",
+			"email": "user",
+			"password": "user",
+			"address": "user",
+			"userType": "CUSTOMER"
+		},
+		{
+      "_id": "2",
+			"firstName": "internal",
+			"lastName": "internal",
+			"email": "internal",
+			"password": "internal",
+			"address": "internal",
+			"userType": "INTERNAL"
+		},
+		{
+      "_id": "3",
+			"firstName": "admin",
+			"lastName": "admin",
+			"email": "admin",
+			"password": "admin",
+			"address": "admin",
+			"userType": "ADMIN"
+		}
+	]
+}
