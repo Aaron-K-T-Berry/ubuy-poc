@@ -7,10 +7,12 @@
 		"@types/mongodb": "^3.1.32"
 	},
 	"devDependencies": {
+		"mongodb": "^3.3.2",
 		"ts-node": "^8.3.0"
 	},
 	"scripts": {
 		"start": "mongod --dbpath ./data",
-		"configure": "./node_modules/.bin/ts-node index.ts"
+		"configure": "./node_modules/.bin/ts-node index.ts",
+		"seeder": "node ./index.js"
 	}
 }

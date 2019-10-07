@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import Axios from "axios";
-import env from "../../common/ConfigHelper"
+import env from "../../common/ConfigHelper";
 
 export enum RouteUserTypes {
 	USER = "USER",
-	BRANCH = "BRANCH",
+	INTERNAL = "INTERNAL",
 	ADMIN = "ADMIN"
 }
 
 const apiCheckTokenPaths = {
 	USER: "/auth/checkTokenCustomer",
-	BRANCH: "/auth/checkTokenBranch",
+	INTERNAL: "/auth/checkTokenBranch",
 	ADMIN: "/auth/checkTokenAdmin"
 };
 
@@ -44,6 +44,8 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 		if (userRole === undefined) {
 			userRole = RouteUserTypes.USER;
 		}
+		console.log(env.API_HOSTNAME + apiCheckTokenPaths[userRole]);
+
 		Axios.get(env.API_HOSTNAME + apiCheckTokenPaths[userRole], {
 			withCredentials: true
 		})
@@ -53,8 +55,13 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 					loaded: true
 				});
 			})
-			.catch(() => {
-				history.push("/login");
+			.catch(err => {
+				history.push({
+					pathname: "/login",
+					state: {
+						reason: "Your account does not have permission to access the requested path."
+					}
+				});
 			});
 	};
 
@@ -70,11 +77,7 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 					return this.state.haveAccess ? (
 						<Component {...props} />
 					) : (
-						<Redirect
-							to={{
-								pathname: "/"
-							}}
-						/>
+						<Redirect to={"/"} />
 					);
 				}}
 			/>

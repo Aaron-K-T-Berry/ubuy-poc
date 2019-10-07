@@ -21,7 +21,7 @@ export default class ItemViewerCart extends React.Component<{}, ItemState> {
 				<Container fluid>
 					<Row noGutters={true} className="justify-content-md-center">
 						{this.state.items.map(item => {
-							return <ItemCardCart key={item.id} item={item} />;
+							return <ItemCardCart key={item._id} item={item} />;
 						})}
 					</Row>
 				</Container>

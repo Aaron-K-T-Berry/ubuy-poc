@@ -4,96 +4,120 @@ import {
 	Button,
 	FormControl as Input,
 	FormLabel as Label,
-    InputGroup
+	InputGroup
 } from "react-bootstrap";
-import BranchSelector from "../Selectors/BranchSelector";
-import CategorySelector from "../Selectors/CategorySelector";
+// import BranchSelector from "../Selectors/BranchSelector";
+// import CategorySelector from "../Selectors/CategorySelector";
 
 // Add state here
 export interface ItemAdderState {
-
+	name: string;
+	price: string;
+	description: string;
+	quantity: string;
+	photo: string;
 }
 
 // Add passed in props here
 export interface ItemAdderProps {
-
+	handleSubmit: any;
 }
 
-export default class ItemAdder extends React.Component<ItemAdderProps, ItemAdderState> {
-    constructor(props: any) {
-        super(props);
-        this.handleSubmit = this.handleSubmit.bind(this);
-    }
+export default class ItemAdder extends React.Component<
+	ItemAdderProps,
+	ItemAdderState
+> {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			name: "",
+			price: "",
+			description: "",
+			quantity: "",
+			photo: ""
+		};
 
-    async handleSubmit() {
-        // add item;
-    }
+		this.handleChange = this.handleChange.bind(this);
+	}
 
-    decrementQty() {
+	handleChange(event: any) {
+		// @ts-ignore
+		this.setState({ [event.target.id]: event.target.value });
+	}
 
-    }
+	render() {
+		return (
+			<div className="input">
+				<Label>Item Name:</Label>
 
-    incrementQty() {
-    }
+				<InputGroup>
+					<Input
+						type="text"
+						id="name"
+						value={this.state.name}
+						onChange={this.handleChange}
+					/>
+				</InputGroup>
 
-    render() {
-        return (
-            <div className="input">
-                <Label>Item Name:</Label>
-                <InputGroup>
-                    <Input
-                        type="text"
-                        id="name"
-                        placeholder="Item Name"
-                    />
-                </InputGroup>
+				<Label>Price:</Label>
+				<InputGroup>
+					<InputGroup.Prepend>
+						<InputGroup.Text>$</InputGroup.Text>
+					</InputGroup.Prepend>
+					<Input
+						id="price"
+						type="number"
+						value={this.state.price}
+						onChange={this.handleChange}
+					></Input>
+				</InputGroup>
 
-                <Label>Price:</Label>
-                <InputGroup>
-                    <InputGroup.Prepend>
-                        <InputGroup.Text>$</InputGroup.Text>
-                    </InputGroup.Prepend>
-                    <Input
-                        placeholder="0.00"
-                    >
+				<Label>Description:</Label>
+				<InputGroup>
+					<Input
+						as="textarea"
+						id="description"
+						value={this.state.description}
+						onChange={this.handleChange}
+					/>
+				</InputGroup>
 
-                    </Input>
-                </InputGroup>
+				<Label>Quantity:</Label>
+				<InputGroup>
+					<Input
+						id="quantity"
+						type="number"
+						value={this.state.quantity}
+						onChange={this.handleChange}
+					/>
+				</InputGroup>
 
-                <Label>Description:</Label>
-                <InputGroup>
-                    <Input
-                        as="textarea"
-                        id="desc"
-                        placeholder="Description"
-                        aria-label="With text area"
-                    />
-                </InputGroup>
+				<Label>Upload Photo:</Label>
+				<InputGroup>
+					<Input
+						type="text"
+						id="photo"
+						value={this.state.photo}
+						onChange={this.handleChange}
+						placeholder="/images/products/example-product/example.jpg"
+					/>
+				</InputGroup>
 
-                <Label>Quantity:</Label>
-                <InputGroup>
-                    <Input
-                        id="qty"
-                        value="1"
-                    />
-                    <InputGroup.Append>
-                        <Button id="decrement" onClick={this.decrementQty} variant="danger"> - </Button>
-                        <Button id="increment" onClick={this.incrementQty} variant="success"> + </Button>
-                    </InputGroup.Append>
-                </InputGroup>
+				{/* Below parts not supported by api yet */}
+				{/* <Label>Categories:</Label>
+				<CategorySelector /> */}
 
-                <Label>Categories:</Label>
-                <CategorySelector />
+				{/* <Label>Branch:</Label>
+				<BranchSelector /> */}
 
-                <Label>Upload Photo:</Label>
-                <InputGroup>
-                    <Button id="uploadPhoto" variant="info">Upload</Button>
-                </InputGroup>
-
-                <Label>Branch:</Label>
-                <BranchSelector />
-            </div>
-        );
-    }
-
+				<Button
+					onClick={() => {
+						this.props.handleSubmit(this.state);
+					}}
+				>
+					Add Item
+				</Button>
+			</div>
+		);
+	}
 }

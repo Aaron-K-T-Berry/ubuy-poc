@@ -14,18 +14,21 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import env from "../common/ConfigHelper";
-import "./styles/Login.css"
+import "./styles/Login.css";
+import { toast } from "react-toastify";
 
 // Add state here
 export interface LoginState {
 	email: string;
 	password: string;
 	loginSuccess: boolean;
+	referralError?: string;
 }
 
 // Add passed in props here
 export interface LoginProps {
 	authFunc: any;
+	location?: any;
 }
 
 export default class LoginForm extends React.Component<LoginProps, LoginState> {
@@ -37,6 +40,13 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 			loginSuccess: false
 		};
 
+		if (this.props.location.state) {
+			this.state = {
+				...this.state,
+				referralError: this.props.location.state.reason
+			};
+		}
+
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
@@ -47,7 +57,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		this.setState({ [event.target.id]: event.target.value });
 	}
 
-	async handleSubmit(event: any) {
+	async handleSubmit() {
 		// TODO get the endpoint from config
 		const res = await axios.post(
 			`${env.API_HOSTNAME}/auth/authenticate`,
@@ -59,13 +69,19 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		);
 		if (res.status === 200) {
 			this.setState({ loginSuccess: true });
-			this.props.authFunc(true);
+			this.props.authFunc({ isAuthed: true, userType: res.data.userType });
 		}
 	}
+
+	buildReferralError = () => {
+		const errorMessage = this.state.referralError;
+		toast(errorMessage);
+	};
 
 	render() {
 		return (
 			<Container className="content-body" fluid={true}>
+				{this.state.referralError && this.buildReferralError()}
 				<Row>
 					<Col className="login-body">
 						<div className="body-heading">
@@ -116,7 +132,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 					<Col className="login-col">
 						<div>
 							<img
-								src="./images/login/login-image.jpg"
+								src="./images/branding/login-image.jpg"
 								className="img-split"
 								alt=""
 							></img>

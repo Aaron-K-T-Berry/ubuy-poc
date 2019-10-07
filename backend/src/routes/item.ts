@@ -1,6 +1,6 @@
 import { Express } from "express";
 import ItemController from "../controllers/item";
-import {branchAuth} from "../middlewear/auth-middlewear"
+import { branchAuth } from "../middlewear/auth-middlewear";
 
 export const ItemRoute = (app: Express, controller: ItemController) => {
 	app.put("/item", branchAuth, controller.handleCreate); // Create an item

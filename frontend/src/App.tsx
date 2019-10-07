@@ -23,15 +23,21 @@ import ViewAllItems from "./pages/ViewAllItems";
 import ViewAllAccount from "./pages/ViewAllAccount";
 import ViewItem from "./pages/ViewItem";
 import EditItem from "./pages/EditItem";
+import AdminManagement from "./pages/management/Admin";
+import BranchManagement from "./pages/management/Branch";
+import Success from "./pages/common/success";
 
 const App: React.FC = () => {
 	// Setup react hooks
-	const [authedState, setAuthedSate] = useState(authHelper.isAuthed);
+	const [authedState, setAuthedSate] = useState({
+		isAuthed: authHelper.hasToken(),
+		userType: authHelper.getUserRole()
+	});
 
 	return (
 		<div>
 			<Router>
-				<SiteHeader isAuthenticated={authedState} authFunc={setAuthedSate} />
+				<SiteHeader authContext={authedState} authFunc={setAuthedSate} />
 				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
@@ -46,16 +52,15 @@ const App: React.FC = () => {
 						<PrivateRoute path="/account/user" exact component={AccountInfo} />
 						<Route path="/account/admin" exact component={AdminView} />
 						<PrivateRoute
-							path="/account/view-all"
-							userRole={RouteUserTypes.ADMIN}
-							exact
-							component={ViewAllAccount}
-						/>
-						<PrivateRoute
 							path="/account/m"
 							userRole={RouteUserTypes.ADMIN}
 							exact
 							component={AccountM}
+						/>
+						<PrivateRoute
+							path="/admin/account/view/all"
+							userRole={UserTypes.Admin}
+							component={ViewAllAccount}
 						/>
 
 						<PrivateRoute path="/cart" exact component={Cart} />
@@ -65,7 +70,7 @@ const App: React.FC = () => {
 						<PrivateRoute
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
-							userRole={RouteUserTypes.BRANCH}
+							userRole={RouteUserTypes.INTERNAL}
 						/>
 						<PrivateRoute
 							path="/register/internal/admin"
@@ -73,27 +78,35 @@ const App: React.FC = () => {
 							userRole={RouteUserTypes.ADMIN}
 						/>
 
-						<Route path="/item/view" component={ViewItem} />
+						<Route path="/item/:id/view" component={ViewItem} />
 						<PrivateRoute
-							path="/admin/item/edit"
+							path="/item/:id/edit"
 							component={EditItem}
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
-							path="/admin/item/add"
+							path="/item/add"
 							component={AddItem}
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
-							path="/admin/item/view/all"
 							userRole={UserTypes.Admin}
-							component={ViewAllAccount}
-						/>
-						<PrivateRoute
-							userRole={UserTypes.Admin}
-							path="/admin/item/view/all"
+							path="/item/view/all"
 							component={ViewAllItems}
 						/>
+
+						<PrivateRoute
+							path="/management/admin"
+							component={AdminManagement}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/management/internal"
+							component={BranchManagement}
+							userRole={UserTypes.Internal}
+						/>
+
+						<Route path="/common/success" component={Success} />
 
 						{/* 404 */}
 						<Route component={PageNotFound} />

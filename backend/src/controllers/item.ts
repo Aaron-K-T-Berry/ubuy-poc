@@ -29,6 +29,8 @@ export default class ItemController {
 
 	public async handleReadSingle(req: Request, res: Response) {
 		try {
+			console.log("id:", req.params.itemId);
+
 			const item = await itemModel.findOne({
 				_id: req.params.itemId
 			});
@@ -39,7 +41,7 @@ export default class ItemController {
 	}
 
 	public async handleReadAll(req: Request, res: Response) {
-		const allItems = await itemModel.find({});
+		const allItems = await itemModel.find({}).lean();
 		responseBuilder.buildSuccess(res, allItems);
 	}
 
