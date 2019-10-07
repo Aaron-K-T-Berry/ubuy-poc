@@ -99,7 +99,7 @@ export default class ItemAdder extends React.Component<
 						id="photo"
 						value={this.state.photo}
 						onChange={this.handleChange}
-						placeholder="/images/products/example.jpg"
+						placeholder="/images/products/example-product/example.jpg"
 					/>
 				</InputGroup>
 

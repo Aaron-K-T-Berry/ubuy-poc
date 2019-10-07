@@ -73,7 +73,7 @@ export default class SiteHeader extends React.Component<
 					to="/cart"
 				>
 					<img
-						src="/images/branding/credit_card_shopping.png"
+						src="/images/branding/cart.png"
 						width="50"
 						height="50"
 						alt="uBay-logo"
