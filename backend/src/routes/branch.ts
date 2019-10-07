@@ -1,13 +1,11 @@
-import { Express, Request, Response } from "express";
+import { Express } from "express";
 import BranchController from "../controllers/branch";
+import { branchAuth } from "../middlewear/auth-middlewear";
 
-export const BranchRoute = (api: Express, controller: BranchController) => {
-	api
-		.route("/branch")
-		.get(async (req: Request, res: Response) => {
-			await controller.handleGetBranch(req, res);
-		})
-		.post(async (req: Request, res: Response) => {
-			await controller.handleCreateBranch(req, res);
-		});
+export const BranchRoute = (app: Express, controller: BranchController) => {
+	app.put("/branch", branchAuth, controller.handleCreate); // Create branch
+	app.get("/branch/:branchId", controller.handGet); // Read single branch
+	app.get("/branch", controller.handGetAll); // Read all branches
+	app.patch("/branch/:branchId", branchAuth, controller.handleUpdate); // Update branch
+	app.delete("/branch/:branchId", branchAuth, controller.handleDelete); // Delete branch
 };
