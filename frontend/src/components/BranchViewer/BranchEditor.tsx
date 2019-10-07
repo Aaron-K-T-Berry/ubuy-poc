@@ -7,7 +7,6 @@ import {
 	FormGroup as Group,
 	FormControl as Input,
 	FormLabel as Label,
-	InputGroup,
 	ButtonGroup
 } from "react-bootstrap";
 import Axios from "axios";
