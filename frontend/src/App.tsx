@@ -95,6 +95,23 @@ const App: React.FC = () => {
 							component={ViewAllItems}
 						/>
 
+						<Route path="/branch/:id/view" component={ViewItem} />
+						<PrivateRoute
+							path="/branch/:id/edit"
+							component={EditItem}
+							userRole={UserTypes.Internal}
+						/>
+						<PrivateRoute
+							path="/branch/add"
+							component={AddItem}
+							userRole={UserTypes.Internal}
+						/>
+						<PrivateRoute
+							userRole={UserTypes.Internal}
+							path="/branch/view/all"
+							component={ViewAllItems}
+						/>
+
 						<PrivateRoute
 							path="/management/admin"
 							component={AdminManagement}
