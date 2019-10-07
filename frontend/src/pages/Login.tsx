@@ -15,17 +15,20 @@ import {
 import axios from "axios";
 import env from "../common/ConfigHelper";
 import "./styles/Login.css";
+import { toast } from "react-toastify";
 
 // Add state here
 export interface LoginState {
 	email: string;
 	password: string;
 	loginSuccess: boolean;
+	referralError?: string;
 }
 
 // Add passed in props here
 export interface LoginProps {
 	authFunc: any;
+	location?: any;
 }
 
 export default class LoginForm extends React.Component<LoginProps, LoginState> {
@@ -36,6 +39,13 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 			password: "",
 			loginSuccess: false
 		};
+
+		if (this.props.location.state) {
+			this.state = {
+				...this.state,
+				referralError: this.props.location.state.reason
+			};
+		}
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
@@ -63,9 +73,15 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		}
 	}
 
+	buildReferralError = () => {
+		const errorMessage = this.state.referralError;
+		toast(errorMessage);
+	};
+
 	render() {
 		return (
 			<Container className="content-body" fluid={true}>
+				{this.state.referralError && this.buildReferralError()}
 				<Row>
 					<Col className="login-body">
 						<div className="body-heading">

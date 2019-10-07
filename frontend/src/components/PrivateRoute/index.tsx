@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import Axios from "axios";
-import env from "../../common/ConfigHelper"
+import env from "../../common/ConfigHelper";
 
 export enum RouteUserTypes {
 	USER = "USER",
@@ -40,8 +40,6 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 	checkAccess = () => {
 		let { userRole, history } = this.props;
 
-
-
 		// Default to user auth if userRole is undefined
 		if (userRole === undefined) {
 			userRole = RouteUserTypes.USER;
@@ -57,9 +55,13 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 					loaded: true
 				});
 			})
-			.catch((err) => {
-
-				history.push("/login");
+			.catch(err => {
+				history.push({
+					pathname: "/login",
+					state: {
+						reason: "Your account does not have permission to access the requested path."
+					}
+				});
 			});
 	};
 
@@ -75,11 +77,7 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 					return this.state.haveAccess ? (
 						<Component {...props} />
 					) : (
-						<Redirect
-							to={{
-								pathname: "/"
-							}}
-						/>
+						<Redirect to={"/"} />
 					);
 				}}
 			/>
