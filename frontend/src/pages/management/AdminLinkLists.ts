@@ -25,9 +25,14 @@ export default {
 		}
 	],
 
-	AccountLinks: [
+	BranchLinks: [
 		{
-			title: "Current account"
+			title: "Add branch",
+			path: "/branch/add"
+		},
+		{
+			title: "View all branches",
+			path: "/branch/view/all"
 		}
 	]
 };

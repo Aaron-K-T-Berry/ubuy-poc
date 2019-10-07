@@ -29,6 +29,18 @@ const run = () => {
 		const fileData = require(path);
 		applyRecords(fileData.db, fileData.collection, fileData.records);
 	});
+
+	// Get branches seed files
+	const branchFilePath = "./seed/branches";
+	const branchFilePaths = getFiles(branchFilePath).map(file => {
+		return `${branchFilePath}/${file}`;
+	});
+
+	// Apply branches
+	branchFilePaths.forEach(path => {
+		const fileData = require(path);
+		applyRecords(fileData.db, fileData.collection, fileData.records);
+	});
 };
 
 // UTIL
