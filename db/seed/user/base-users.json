@@ -3,31 +3,37 @@
 	"collection": "users",
 	"records": [
 		{
-      "_id": "1",
+			"_id": "1",
 			"firstName": "user",
 			"lastName": "user",
 			"email": "user",
-			"password": "user",
+			"password": "$2b$10$S89jVFsWTqv1d9jT0YJax.sGAp2uiw4HIfqp6YOdhrHX3yFZsOsTy",
 			"address": "user",
-			"userType": "CUSTOMER"
+			"userMeta": {
+				"userType": "CUSTOMER"
+			}
 		},
 		{
-      "_id": "2",
+			"_id": "2",
 			"firstName": "internal",
 			"lastName": "internal",
 			"email": "internal",
-			"password": "internal",
+			"password": "$2b$10$gz.MmfNoIVgzNYOltdQw3u6qtfxcOrpX7s.n6nkx.x0q8Tuw9/Za.",
 			"address": "internal",
-			"userType": "INTERNAL"
+			"userMeta": {
+				"userType": "INTERNAL"
+			}
 		},
 		{
-      "_id": "3",
+			"_id": "3",
 			"firstName": "admin",
 			"lastName": "admin",
 			"email": "admin",
-			"password": "admin",
+			"password": "$2b$10$5IusXK/s9S020oX2AyYueuWhWeeEcYelIqUhNHBSp54Aq0O217pPC",
 			"address": "admin",
-			"userType": "ADMIN"
+			"userMeta": {
+				"userType": "ADMIN"
+			}
 		}
 	]
 }

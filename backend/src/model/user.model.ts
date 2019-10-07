@@ -1,5 +1,6 @@
 import mongoose from "mongoose";
 import bcrypt from "bcrypt";
+const uniqueValidator = require("mongoose-unique-validator");
 const saltRounds = 10;
 
 export interface User {
@@ -11,7 +12,7 @@ export interface User {
 	userMeta: InternalUserType | undefined;
 	isCorrectPassword?: Function;
 }
-
+ 
 export interface InternalUserType {
 	userType: string; // admin or employee
 	branchID: string | undefined; // id of branch or undefined for admin
@@ -58,4 +59,5 @@ UserSchema.methods.isCorrectPassword = function(
 	});
 };
 
+UserSchema.plugin(uniqueValidator);
 export default mongoose.model("User", UserSchema);

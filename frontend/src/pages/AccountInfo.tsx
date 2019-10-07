@@ -75,11 +75,7 @@ export default class AccountInfo extends React.Component<
 						/>
 					</Group>
 					<Button>Edit </Button>
-
-
-
 				</div>
-				<a href="/account/m"  role="button"  aria-disabled="true">Admin</a>
 			</div>
 		);
 	}
