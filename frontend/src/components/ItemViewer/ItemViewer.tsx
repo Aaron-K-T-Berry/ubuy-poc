@@ -1,13 +1,12 @@
 import React from "react";
 import "../../styles/App.css";
-import { Item } from "./data/itemsStub";
 import ItemCard from "../ItemCard/ItemCard";
 import { Container, Row } from "react-bootstrap";
 import Axios from "axios";
 import env from "../../common/ConfigHelper";
 
-export interface ItemState {
-	items: Item[];
+export interface ItemState { 
+	items: any[];
 }
 
 export default class ItemViewer extends React.Component<{}, ItemState> {

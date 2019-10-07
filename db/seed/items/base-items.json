@@ -3,15 +3,13 @@
 	"collection": "items",
 	"records": [
 		{
-			"_id": "1",
+			"_id": "000000000001",
 			"name": "Acer Nitro 15.6inch Core i7 Gaming Laptop",
 			"description": "Acer Nitro Gaming Laptop, i7-9750H, 16GB RAM, 512GB M.2 PCIE SSD, 15.6inch FHD IPS Slim Bezel, GeForce GTX 1660-Ti-6GB, WiFi, BT, Win10 Home",
 			"photo": "/images/products/acer-nitro/main.jpg",
 			"quantity": 100,
-      "price": 1699.0,
-      "branch": [
-        "test"
-      ]
+			"price": 1699.0,
+			"branch": ["test"]
 		}
 	]
 }

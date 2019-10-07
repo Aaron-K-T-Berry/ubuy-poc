@@ -1,7 +1,6 @@
 import React from "react";
 import "../styles/App.css";
 import EditItem from "../components/ItemViewer/ItemEdit";
-import dummy_data from "../components/ItemViewer/data/itemsStub";
 
 export interface EditItemState {
 	itemId: string;

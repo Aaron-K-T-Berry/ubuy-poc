@@ -8,7 +8,6 @@ export default class AuthController {
 	constructor() {}
 
 	public handleCheckToken(req: Request, res: Response) {
-		console.log(req);
 		responseBuilder.buildSuccess(res, "Your token is valid");
 	}
 

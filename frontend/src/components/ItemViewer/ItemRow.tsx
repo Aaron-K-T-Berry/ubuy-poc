@@ -2,7 +2,6 @@ import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
 import { Button, ButtonGroup } from "react-bootstrap";
-import { Redirect } from "react-router";
 
 export interface ItemRowProp {
 	item: {
@@ -22,9 +21,6 @@ export default class ItemRow extends React.Component<
 	ItemRowProp,
 	ItemRowState
 > {
-	constructor(props: any) {
-		super(props);
-	}
 
 	render() {
 		return (

@@ -1,4 +1,5 @@
 const fs = require("fs");
+var ObjectId = require("mongodb").ObjectID;
 const MongoClient = require("mongodb").MongoClient;
 const url = "mongodb://localhost:27017/";
 
@@ -15,9 +16,9 @@ const run = () => {
 	userFilePaths.forEach(path => {
 		const fileData = require(path);
 		applyRecords(fileData.db, fileData.collection, fileData.records);
-  });
+	});
 
-  // Get items seed files
+	// Get items seed files
 	const itemFilePath = "./seed/items";
 	const itemFilePaths = getFiles(itemFilePath).map(file => {
 		return `${itemFilePath}/${file}`;
@@ -46,12 +47,17 @@ const applyRecords = (rootDb, collection, records) => {
 					console.log(err.errmsg);
 				}
 				var dbo = db.db(rootDb);
-				dbo.collection(collection).insertOne(record, function(err, res) {
-					if (err) {
-						console.log(err.errmsg);
-					}
-					db.close();
-				});
+				dbo
+					.collection(collection)
+					.insertOne({ ...record, _id: ObjectId(record._id) }, function(
+						err,
+						res
+					) {
+						if (err) {
+							console.log(err.errmsg);
+						}
+						db.close();
+					});
 			}
 		);
 	});

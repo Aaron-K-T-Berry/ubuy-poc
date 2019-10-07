@@ -1,7 +1,6 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
-import { Item } from "./data/itemsStub";
 import Table from "react-bootstrap/Table";
 import ItemRow from "./ItemRow";
 

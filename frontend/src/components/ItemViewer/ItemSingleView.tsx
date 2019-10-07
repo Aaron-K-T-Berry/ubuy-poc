@@ -1,7 +1,6 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemSingleView.css";
-import dummy_data, { Item } from "./data/itemsStub";
 import { Button } from "react-bootstrap";
 import Axios from "axios";
 import env from "../../common/ConfigHelper";
