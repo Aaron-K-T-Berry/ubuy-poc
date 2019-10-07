@@ -6,14 +6,22 @@ import {
 	FormLabel as Label,
 	InputGroup
 } from "react-bootstrap";
-import BranchSelector from "../Selectors/BranchSelector";
-import CategorySelector from "../Selectors/CategorySelector";
+// import BranchSelector from "../Selectors/BranchSelector";
+// import CategorySelector from "../Selectors/CategorySelector";
 
 // Add state here
-export interface ItemAdderState {}
+export interface ItemAdderState {
+	name: string;
+	price: string;
+	description: string;
+	quantity: string;
+	photo: string;
+}
 
 // Add passed in props here
-export interface ItemAdderProps {}
+export interface ItemAdderProps {
+	handleSubmit: any;
+}
 
 export default class ItemAdder extends React.Component<
 	ItemAdderProps,
@@ -21,19 +29,34 @@ export default class ItemAdder extends React.Component<
 > {
 	constructor(props: any) {
 		super(props);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		this.state = {
+			name: "",
+			price: "",
+			description: "",
+			quantity: "",
+			photo: ""
+		};
+
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	async handleSubmit() {
-		// add item;
+	handleChange(event: any) {
+		// @ts-ignore
+		this.setState({ [event.target.id]: event.target.value });
 	}
 
 	render() {
 		return (
 			<div className="input">
 				<Label>Item Name:</Label>
+
 				<InputGroup>
-					<Input type="text" id="newItemName" />
+					<Input
+						type="text"
+						id="name"
+						value={this.state.name}
+						onChange={this.handleChange}
+					/>
 				</InputGroup>
 
 				<Label>Price:</Label>
@@ -41,31 +64,59 @@ export default class ItemAdder extends React.Component<
 					<InputGroup.Prepend>
 						<InputGroup.Text>$</InputGroup.Text>
 					</InputGroup.Prepend>
-					<Input placeholder="0.00" id="newItemPrice"></Input>
+					<Input
+						id="price"
+						type="number"
+						value={this.state.price}
+						onChange={this.handleChange}
+					></Input>
 				</InputGroup>
 
 				<Label>Description:</Label>
 				<InputGroup>
-					<Input as="textarea" id="newItemDesc" placeholder="Description" />
+					<Input
+						as="textarea"
+						id="description"
+						value={this.state.description}
+						onChange={this.handleChange}
+					/>
 				</InputGroup>
 
 				<Label>Quantity:</Label>
 				<InputGroup>
-					<Input id="newItemQuantity" value="1" />
+					<Input
+						id="quantity"
+						type="number"
+						value={this.state.quantity}
+						onChange={this.handleChange}
+					/>
 				</InputGroup>
-
-				<Label>Categories:</Label>
-				<CategorySelector />
 
 				<Label>Upload Photo:</Label>
 				<InputGroup>
-					<Button id="uploadPhoto" variant="info">
-						Upload
-					</Button>
+					<Input
+						type="text"
+						id="photo"
+						value={this.state.photo}
+						onChange={this.handleChange}
+						placeholder="/images/products/example.jpg"
+					/>
 				</InputGroup>
-				<Label>Branch:</Label>
 
-				<BranchSelector />
+				{/* Below parts not supported by api yet */}
+				{/* <Label>Categories:</Label>
+				<CategorySelector /> */}
+
+				{/* <Label>Branch:</Label>
+				<BranchSelector /> */}
+
+				<Button
+					onClick={() => {
+						this.props.handleSubmit(this.state);
+					}}
+				>
+					Add Item
+				</Button>
 			</div>
 		);
 	}

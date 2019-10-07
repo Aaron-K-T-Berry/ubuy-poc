@@ -23,6 +23,9 @@ import ViewAllItems from "./pages/ViewAllItems";
 import ViewAllAccount from "./pages/ViewAllAccount";
 import ViewItem from "./pages/ViewItem";
 import EditItem from "./pages/EditItem";
+import AdminManagement from "./pages/management/Admin";
+import BranchManagement from "./pages/management/Branch";
+import Success from "./pages/common/success";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -88,6 +91,19 @@ const App: React.FC = () => {
 							path="/admin/item/view/all"
 							component={ViewAllItems}
 						/>
+
+						<PrivateRoute
+							path="/management/admin"
+							component={AdminManagement}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/management/branch"
+							component={BranchManagement}
+							userRole={UserTypes.Internal}
+						/>
+
+						<Route path="/common/success" component={Success} />
 
 						{/* 404 */}
 						<Route component={PageNotFound} />
