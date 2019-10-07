@@ -1,22 +1,20 @@
 import React from "react";
 import "../../styles/App.css";
-import "./styles/ItemViewerTable.css";
+import "./styles/BranchViewerTable.css";
 import Table from "react-bootstrap/Table";
-import ItemRow from "./ItemRow";
+import BranchRow from "./BranchRow";
 
-export interface ItemViewerTableProps {
+export interface BranchViewerTableProps {
 	items: any[];
 	handleViewItem: any;
 	handleEditItem: any;
 }
-export interface ItemViewerTableState {}
+export interface BranchViewerTableState {}
 
-export default class ItemViewerTable extends React.Component<
-	ItemViewerTableProps,
-	ItemViewerTableState
+export default class BranchViewerTable extends React.Component<
+	BranchViewerTableProps,
+	BranchViewerTableState
 > {
-
-
 	render() {
 		return (
 			<Table striped bordered className="table">
@@ -24,16 +22,15 @@ export default class ItemViewerTable extends React.Component<
 					<tr>
 						<th>ID</th>
 						<th>Name</th>
-						<th>Price</th>
-						<th>Description</th>
-						<th>Branch</th>
+						<th>Address</th>
+						<th>Items</th>
 						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					{this.props.items.map(item => {
 						return (
-							<ItemRow
+							<BranchRow
 								item={item}
 								handleViewItem={this.props.handleViewItem}
 								handleEditItem={this.props.handleEditItem}

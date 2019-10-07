@@ -20,6 +20,7 @@ export default class ManageAdmin extends React.Component<
 						<Row>
 							<Col>{LinkList("User management", AdminLinks.UserLinks)}</Col>
 							<Col>{LinkList("Item management", AdminLinks.ItemLinks)}</Col>
+							<Col>{LinkList("Branch management", AdminLinks.BranchLinks)}</Col>
 						</Row>
 					</Container>
 				</PageWrapper>

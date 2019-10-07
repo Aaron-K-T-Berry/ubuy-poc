@@ -16,7 +16,7 @@ export default class UserViewerTable extends React.Component<{}, UserState> {
 			users: dummy_data
 		};
     }
-    
+
 	render() {
 		return (
             <Table striped bordered className="table">
@@ -26,8 +26,7 @@ export default class UserViewerTable extends React.Component<{}, UserState> {
                         <th>Last Name</th>
                         <th>E-mail</th>
                         <th>Address</th>
-                      
-                        <th>View/Edit/Remove</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
                 <tbody>

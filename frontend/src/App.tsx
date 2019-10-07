@@ -26,6 +26,10 @@ import ViewAllAccount from "./pages/ViewAllAccount";
 import ViewAllItems from "./pages/ViewAllItems";
 import ViewItem from "./pages/ViewItem";
 import "./styles/App.css";
+import BranchViewAll from "./pages/branch/BranchViewAll";
+import BranchViewSingle from "./pages/branch/BranchViewSingle";
+import BranchEditSingle from "./pages/branch/BranchEditSingle";
+import BranchAddSingle from "./pages/branch/BranchAddSingle";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -90,26 +94,26 @@ const App: React.FC = () => {
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
-							userRole={UserTypes.Admin}
 							path="/item/view/all"
 							component={ViewAllItems}
+							userRole={UserTypes.Admin}
 						/>
 
-						<Route path="/branch/:id/view" component={ViewItem} />
+						<Route path="/branch/:id/view" component={BranchViewSingle} />
 						<PrivateRoute
 							path="/branch/:id/edit"
-							component={EditItem}
+							component={BranchEditSingle}
 							userRole={UserTypes.Internal}
 						/>
 						<PrivateRoute
-							path="/branch/add"
-							component={AddItem}
+							path="/branch/add" 
+							component={BranchAddSingle}
 							userRole={UserTypes.Internal}
 						/>
 						<PrivateRoute
-							userRole={UserTypes.Internal}
 							path="/branch/view/all"
-							component={ViewAllItems}
+							component={BranchViewAll}
+							userRole={UserTypes.Internal}
 						/>
 
 						<PrivateRoute
