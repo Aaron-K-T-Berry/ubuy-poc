@@ -47,7 +47,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		this.setState({ [event.target.id]: event.target.value });
 	}
 
-	async handleSubmit(event: any) {
+	async handleSubmit() {
 		// TODO get the endpoint from config
 		const res = await axios.post(
 			`${env.API_HOSTNAME}/auth/authenticate`,

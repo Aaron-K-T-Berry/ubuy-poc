@@ -18,6 +18,12 @@ export default class SiteHeader extends React.Component<
 	SiteHeaderProps,
 	SiteHeaderState
 > {
+	isInternalUser = () => {
+		const userType = this.props.authContext.userType;
+		const internalTypes = ["ADMIN", "INTERNAL"];
+		return internalTypes.indexOf(userType) > -1;
+	};
+
 	render() {
 		return (
 			<div className="site-header">
@@ -55,7 +61,7 @@ export default class SiteHeader extends React.Component<
 					<h2> Account </h2>
 				</NavLink>
 
-				{true ? this.buildAdminNav() : {}}
+				{this.isInternalUser() && this.buildAdminNav()}
 
 				<NavLink
 					className="navlink"
@@ -97,7 +103,7 @@ export default class SiteHeader extends React.Component<
 					className="navlink"
 					style={{ textDecoration: "none" }}
 					activeStyle={{ color: "steelblue" }}
-					to="/management/admin"
+					to={`/management/${this.props.authContext.userType.toLowerCase()}`}
 				>
 					<h2> Management </h2>
 				</NavLink>

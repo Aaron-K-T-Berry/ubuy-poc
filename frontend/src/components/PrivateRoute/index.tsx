@@ -5,13 +5,13 @@ import env from "../../common/ConfigHelper"
 
 export enum RouteUserTypes {
 	USER = "USER",
-	BRANCH = "BRANCH",
+	INTERNAL = "INTERNAL",
 	ADMIN = "ADMIN"
 }
 
 const apiCheckTokenPaths = {
 	USER: "/auth/checkTokenCustomer",
-	BRANCH: "/auth/checkTokenBranch",
+	INTERNAL: "/auth/checkTokenBranch",
 	ADMIN: "/auth/checkTokenAdmin"
 };
 
@@ -40,10 +40,14 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 	checkAccess = () => {
 		let { userRole, history } = this.props;
 
+
+
 		// Default to user auth if userRole is undefined
 		if (userRole === undefined) {
 			userRole = RouteUserTypes.USER;
 		}
+		console.log(env.API_HOSTNAME + apiCheckTokenPaths[userRole]);
+
 		Axios.get(env.API_HOSTNAME + apiCheckTokenPaths[userRole], {
 			withCredentials: true
 		})
@@ -53,7 +57,8 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 					loaded: true
 				});
 			})
-			.catch(() => {
+			.catch((err) => {
+
 				history.push("/login");
 			});
 	};

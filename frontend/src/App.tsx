@@ -30,12 +30,12 @@ import Success from "./pages/common/success";
 const App: React.FC = () => {
 	// Setup react hooks
 	const [authedState, setAuthedSate] = useState({
-		isAuthed: authHelper.isAuthed()
+		isAuthed: authHelper.hasToken(),
+		userType: authHelper.getUserRole()
 	});
 
 	return (
 		<div>
-			{console.log(authedState)}
 			<Router>
 				<SiteHeader authContext={authedState} authFunc={setAuthedSate} />
 				<div className="router-wrapper">
@@ -70,7 +70,7 @@ const App: React.FC = () => {
 						<PrivateRoute
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
-							userRole={RouteUserTypes.BRANCH}
+							userRole={RouteUserTypes.INTERNAL}
 						/>
 						<PrivateRoute
 							path="/register/internal/admin"
@@ -101,7 +101,7 @@ const App: React.FC = () => {
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
-							path="/management/branch"
+							path="/management/internal"
 							component={BranchManagement}
 							userRole={UserTypes.Internal}
 						/>
