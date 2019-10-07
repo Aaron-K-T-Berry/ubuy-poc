@@ -3,10 +3,19 @@ import "../styles/App.css";
 import EditItem from "../components/ItemViewer/ItemEdit";
 import dummy_data from "../components/ItemViewer/data/itemsStub";
 
-export interface EditItemState {}
+export interface EditItemState {
+	itemId: string;
+}
 
 export interface EditItemProps {
-	itemID: number;
+	match: {
+		isExact: boolean;
+		path: string;
+		url: string;
+		params: {
+			id: string;
+		};
+	};
 }
 
 export default class ViewItem extends React.Component<
@@ -16,11 +25,11 @@ export default class ViewItem extends React.Component<
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			items: dummy_data
+			itemId: this.props.match.params.id
 		};
 	}
 
 	render() {
-		return <EditItem itemID={101} />;
+		return <EditItem itemID={this.state.itemId} />;
 	}
 }

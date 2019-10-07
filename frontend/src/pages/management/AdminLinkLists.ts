@@ -17,15 +17,11 @@ export default {
 	ItemLinks: [
 		{
 			title: "Add item",
-			path: "/admin/item/add"
-		},
-		{
-			title: "Edit item",
-			path: "/admin/item/edit"
+			path: "/item/add"
 		},
 		{
 			title: "View all items",
-			path: "/admin/item/view/all"
+			path: "/item/view/all"
 		}
 	],
 

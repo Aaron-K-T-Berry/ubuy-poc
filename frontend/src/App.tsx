@@ -29,12 +29,15 @@ import Success from "./pages/common/success";
 
 const App: React.FC = () => {
 	// Setup react hooks
-	const [authedState, setAuthedSate] = useState(authHelper.isAuthed);
+	const [authedState, setAuthedSate] = useState({
+		isAuthed: authHelper.isAuthed()
+	});
 
 	return (
 		<div>
+			{console.log(authedState)}
 			<Router>
-				<SiteHeader isAuthenticated={authedState} authFunc={setAuthedSate} />
+				<SiteHeader authContext={authedState} authFunc={setAuthedSate} />
 				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
@@ -77,18 +80,18 @@ const App: React.FC = () => {
 
 						<Route path="/item/:id/view" component={ViewItem} />
 						<PrivateRoute
-							path="/admin/item/:id/edit"
+							path="/item/:id/edit"
 							component={EditItem}
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
-							path="/admin/item/add"
+							path="/item/add"
 							component={AddItem}
 							userRole={UserTypes.Admin}
 						/>
 						<PrivateRoute
 							userRole={UserTypes.Admin}
-							path="/admin/item/view/all"
+							path="/item/view/all"
 							component={ViewAllItems}
 						/>
 

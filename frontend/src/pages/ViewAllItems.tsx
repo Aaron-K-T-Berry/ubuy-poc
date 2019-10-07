@@ -43,7 +43,7 @@ export default class ViewAllItems extends React.Component<
 		window.open(`/item/${itemId}/view`, "_blank");
 	}
 	handleEditItem(itemId: string) {
-		window.open(`/admin/item/${itemId}/edit`, "_blank");
+		window.open(`/item/${itemId}/edit`, "_blank");
 	}
 
 	render() {

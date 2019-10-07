@@ -14,7 +14,7 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 import env from "../common/ConfigHelper";
-import "./styles/Login.css"
+import "./styles/Login.css";
 
 // Add state here
 export interface LoginState {
@@ -59,7 +59,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		);
 		if (res.status === 200) {
 			this.setState({ loginSuccess: true });
-			this.props.authFunc(true);
+			this.props.authFunc({ isAuthed: true, userType: res.data.userType });
 		}
 	}
 

@@ -43,7 +43,8 @@ export default class AuthController {
 						res.cookie("token", token, { httpOnly: false });
 						responseBuilder.buildSuccess(res, {
 							msg: "Authenticated",
-							token: token
+							token: token,
+							userType: user.userMeta !== undefined ? user.userMeta.userType : "CUSTOMER"
 						});
 					}
 				});

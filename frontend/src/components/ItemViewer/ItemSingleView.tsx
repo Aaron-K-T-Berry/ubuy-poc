@@ -39,7 +39,9 @@ export default class ViewItem extends React.Component<
 				{ withCredentials: true }
 			);
 			if (res.status === 200) {
-				this.setState({ item: res.data });
+				if (res.data !== null) {
+					this.setState({ item: res.data });
+				}
 			} else {
 				console.log(`${res.status} code returned trying to get single item`);
 			}
@@ -51,6 +53,7 @@ export default class ViewItem extends React.Component<
 	render() {
 		return (
 			<div className="content-body flex-center">
+				{console.log(this.state)}
 				<div className="img-container">
 					<img
 						alt="Product"
