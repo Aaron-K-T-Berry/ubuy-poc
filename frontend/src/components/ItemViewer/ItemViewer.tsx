@@ -2,10 +2,9 @@ import React from "react";
 import "../../styles/App.css";
 import ItemCard from "../ItemCard/ItemCard";
 import { Container, Row } from "react-bootstrap";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
+import ApiHelper from "../../common/ApiHelper";
 
-export interface ItemState { 
+export interface ItemState {
 	items: any[];
 }
 
@@ -18,10 +17,7 @@ export default class ItemViewer extends React.Component<{}, ItemState> {
 	}
 
 	async componentDidMount() {
-		const res = await Axios.get(env.API_HOSTNAME + "/item", {
-			withCredentials: true
-		});
-		this.setState({ items: res.data });
+		this.setState({ items: await ApiHelper.item.getAll() });
 	}
 
 	render() {

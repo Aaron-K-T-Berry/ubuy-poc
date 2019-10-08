@@ -10,16 +10,18 @@ import {
 	InputGroup,
 	ButtonGroup
 } from "react-bootstrap";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
 import { Redirect } from "react-router";
 import { Modal } from "react-bootstrap";
+import BranchSelector from "../Selectors/BranchSelector";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface EditItemState {
+	allBranches: any[];
 	item: any;
 	updateItemSuccess: boolean;
 	deleteItemSuccess: boolean;
 	showModal: boolean;
+	selectedBranches: any[];
 }
 
 export interface EditItemProps {
@@ -33,39 +35,38 @@ export default class EditItem extends React.Component<
 	constructor(props: any) {
 		super(props);
 		this.state = {
+			allBranches: [],
 			item: {
 				_id: "",
 				name: "",
 				photo: "",
 				price: "",
 				desc: "",
-				branch: ""
+				branch: []
 			},
 			updateItemSuccess: false,
 			deleteItemSuccess: false,
-			showModal: false
+			showModal: false,
+			selectedBranches: []
 		};
 
 		this.handleChange = this.handleChange.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
 		this.handleShowModal = this.handleShowModal.bind(this);
+		this.handleBranchSelector = this.handleBranchSelector.bind(this);
+		this.mapSelectedBranches = this.mapSelectedBranches.bind(this);
+		this.lookupBranchDetails = this.lookupBranchDetails.bind(this);
 	}
 
 	componentDidMount = async () => {
-		try {
-			const res = await Axios.get(
-				`${env.API_HOSTNAME}/item/${this.props.itemID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				this.setState({ item: res.data });
-			} else {
-				console.log(`${res.status} code returned trying to get single item`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		const items = await ApiHelper.item.getSingle(this.props.itemID);
+		this.setState({
+			...this.state,
+			item: items,
+			allBranches: await ApiHelper.branch.getAll(),
+			selectedBranches: items.branch
+		});
 	};
 
 	handleChange = (event: any) => {
@@ -76,48 +77,52 @@ export default class EditItem extends React.Component<
 	};
 
 	handleUpdate = async () => {
-		try {
-			const res = await Axios.patch(
-				`${env.API_HOSTNAME}/item/${this.props.itemID}`,
-				this.state.item,
-				{ withCredentials: true }
-			);
-
-			if (res.status === 200) {
-				console.log("Item patched successfully:", res.data);
-				this.setState({ ...this.state, updateItemSuccess: true });
-			} else {
-				console.log(
-					`${res.status} code was returned while trying to patch item`
-				);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({
+			...this.state,
+			updateItemSuccess: await ApiHelper.item.update(
+				this.props.itemID,
+				this.state.item
+			)
+		});
 	};
 
 	handleDelete = async () => {
-		try {
-			const res = await Axios.delete(
-				`${env.API_HOSTNAME}/item/${this.props.itemID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				console.log(`Item ${this.state.item._id} was successfully deleted`);
-				this.setState({ ...this.state, deleteItemSuccess: true });
-			} else {
-				console.log(
-					`${res.status} code was returned when trying to delete item`
-				);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({
+			...this.state,
+			deleteItemSuccess: await ApiHelper.item.delete(this.props.itemID)
+		});
 	};
 
 	handleShowModal = () => {
 		this.setState({ ...this.state, showModal: true });
 	};
+
+	handleBranchSelector(selectedItems: any[]) {
+		const mappedItems = selectedItems.map(item => item.id);
+		this.setState({
+			...this.state,
+			selectedBranches: selectedItems,
+			item: { ...this.state.item, branch: mappedItems }
+		});
+	}
+
+	lookupBranchDetails(allBranches: any[], branchId: string) {
+		return allBranches.filter(branch => branch._id === branchId)[0];
+	}
+
+	mapSelectedBranches(selectedBranches: any[]) {
+		const mapped = selectedBranches.map(branch => {
+			if (branch.id === undefined) {
+				const foundBranch = this.lookupBranchDetails(
+					this.state.allBranches,
+					branch
+				);
+				return { id: foundBranch._id, label: foundBranch.name };
+			}
+			return branch;
+		});
+		return mapped;
+	}
 
 	render() {
 		return (
@@ -190,6 +195,16 @@ export default class EditItem extends React.Component<
 							value={this.state.item.description}
 						/>
 					</Group>
+
+					<Label>Branch:</Label>
+					<BranchSelector
+						handleChange={this.handleBranchSelector}
+						allBranches={this.state.allBranches}
+						selectedBranches={this.mapSelectedBranches(
+							this.state.selectedBranches
+						)}
+					/>
+
 					<ButtonGroup>
 						<Button variant="danger" onClick={this.handleShowModal}>
 							Delete

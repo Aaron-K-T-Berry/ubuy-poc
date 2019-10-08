@@ -1,19 +1,7 @@
 import React, { Component } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
-
-export enum RouteUserTypes {
-	USER = "USER",
-	INTERNAL = "INTERNAL",
-	ADMIN = "ADMIN"
-}
-
-const apiCheckTokenPaths = {
-	USER: "/auth/checkTokenCustomer",
-	INTERNAL: "/auth/checkTokenBranch",
-	ADMIN: "/auth/checkTokenAdmin"
-};
+import ApiHelper from "../../common/ApiHelper";
+import { RouteUserTypes } from "../../common/ApiHelper/auth/interfaces";
 
 export interface PrivateRouteProps {
 	userRole?: RouteUserTypes;
@@ -33,37 +21,22 @@ class PrivateRoute extends Component<PrivateRouteProps, PrivateRouteSate> {
 		};
 	}
 
-	componentDidMount() {
-		this.checkAccess();
-	}
-
-	checkAccess = () => {
-		let { userRole, history } = this.props;
-
-		// Default to user auth if userRole is undefined
-		if (userRole === undefined) {
-			userRole = RouteUserTypes.USER;
-		}
-		console.log(env.API_HOSTNAME + apiCheckTokenPaths[userRole]);
-
-		Axios.get(env.API_HOSTNAME + apiCheckTokenPaths[userRole], {
-			withCredentials: true
-		})
-			.then(() => {
-				this.setState({
-					haveAccess: true,
-					loaded: true
-				});
-			})
-			.catch(err => {
-				history.push({
-					pathname: "/login",
-					state: {
-						reason: "Your account does not have permission to access the requested path."
-					}
-				});
+	async componentDidMount() {
+		if (await ApiHelper.auth.checkAccess(this.props.userRole)) {
+			this.setState({
+				haveAccess: true,
+				loaded: true
 			});
-	};
+		} else {
+			this.props.history.push({
+				pathname: "/login",
+				state: {
+					reason:
+						"Your account does not have permission to access the requested path."
+				}
+			});
+		}
+	}
 
 	render() {
 		//@ts-ignore

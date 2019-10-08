@@ -1,29 +1,28 @@
 import React from "react";
 import "../../styles/App.css";
-import dummy_branch_data, { Branch } from "./data/branchStub";
-import { DropdownButton, Dropdown } from "react-bootstrap";
+import "@kenshooui/react-multi-select/dist/style.css";
+import MultiSelect from "@kenshooui/react-multi-select";
 
-export interface BranchState {
-	branches: Branch[];
+export interface BranchSelectorProps {
+	handleChange: Function;
+	allBranches: any[];
+	selectedBranches: any[];
 }
+export interface BranchSelectorState {}
 
-export default class BranchSelector extends React.Component<{}, BranchState> {
-	constructor(props: any) {
-		super(props);
-		this.state = {
-			branches: dummy_branch_data
-		};
-	}
-
+export default class BranchSelector extends React.Component<
+	BranchSelectorProps,
+	BranchSelectorState
+> {
 	render() {
 		return (
-			<DropdownButton title="Select From Branches" id="branch" variant="info">
-				{this.state.branches.map(branch => {
-					return (
-						<Dropdown.Item eventKey={branch.id}>{branch.name}</Dropdown.Item>
-					);
+			<MultiSelect
+				items={this.props.allBranches.map(branch => {
+					return { id: branch._id, label: branch.name };
 				})}
-			</DropdownButton>
+				selectedItems={this.props.selectedBranches}
+				onChange={this.props.handleChange}
+			/>
 		);
 	}
 }

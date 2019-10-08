@@ -2,13 +2,18 @@ import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemViewerTable.css";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 export interface ItemRowProp {
 	item: {
 		_id: number;
 		name: string;
 		price: string;
-		branch: string;
+		branch: {
+			_id: string;
+			name: string;
+			address: string;
+		}[];
 		description: string;
 	};
 	handleViewItem: any;
@@ -21,7 +26,6 @@ export default class ItemRow extends React.Component<
 	ItemRowProp,
 	ItemRowState
 > {
-
 	render() {
 		return (
 			<tr>
@@ -33,7 +37,20 @@ export default class ItemRow extends React.Component<
 
 				<td className="table-column-desc">{this.props.item.description}</td>
 
-				<td className="table-column-branch">{this.props.item.branch}</td>
+				<td className="table-column-branch">
+					<>
+						{this.props.item.branch.map(b => {
+							return (
+								<>
+									<Link to={`/branch/${b._id}/view`}>
+										<p>{b.name}</p>
+										<p>{b.address}</p>
+									</Link>
+								</>
+							);
+						})}
+					</>
+				</td>
 
 				<td className="table-column-button">
 					<ButtonGroup>

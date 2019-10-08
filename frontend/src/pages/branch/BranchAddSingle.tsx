@@ -1,9 +1,8 @@
 import React from "react";
 import "../../styles/App.css";
-import ItemAdder from "../../components/BranchViewer/BranchAdder"; 
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
+import ItemAdder from "../../components/BranchViewer/BranchAdder";
 import { Redirect } from "react-router-dom";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface BranchAddSingleState {
 	branchAddSuccess: boolean;
@@ -23,18 +22,7 @@ export default class BranchAddSingle extends React.Component<
 	}
 
 	async handleSubmit(state: any) {
-		try {
-			const res = await Axios.put(env.API_HOSTNAME + "/branch", state, {
-				withCredentials: true
-			});
-			if (res.status === 200) {
-				this.setState({ branchAddSuccess: true });
-			} else {
-				console.log(`${res.status} code received when trying to add branch`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({ branchAddSuccess: await ApiHelper.branch.add(state) });
 	}
 
 	render() {
