@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import authHelper from "./common/AuthHelper";
-import PrivateRoute, { RouteUserTypes } from "./components/PrivateRoute";
+import PrivateRoute from "./components/PrivateRoute";
 import SiteFooter from "./components/SiteFooter/SiteFooter";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import { UserTypes } from "./components/UserRegistrationForm";
 import AccountInfo from "./pages/AccountInfo";
 import AccountM from "./pages/AccountM";
-import AddItem from "./pages/AddItem";
+import AddItem from "./pages/items/AddItem";
 import AdminView from "./pages/AdminView";
 import Cart from "./pages/Cart";
 import CartView from "./pages/CartView";
@@ -23,13 +23,14 @@ import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
 import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
 import ViewAllAccount from "./pages/ViewAllAccount";
-import ViewAllItems from "./pages/ViewAllItems";
-import ViewItem from "./pages/ViewItem";
+import ViewAllItems from "./pages/items/ViewAllItems";
+import ViewItem from "./pages/items/ViewItem";
 import "./styles/App.css";
 import BranchViewAll from "./pages/branch/BranchViewAll";
 import BranchViewSingle from "./pages/branch/BranchViewSingle";
 import BranchEditSingle from "./pages/branch/BranchEditSingle";
 import BranchAddSingle from "./pages/branch/BranchAddSingle";
+import { RouteUserTypes } from "./common/ApiHelper/auth/interfaces";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -106,7 +107,7 @@ const App: React.FC = () => {
 							userRole={UserTypes.Internal}
 						/>
 						<PrivateRoute
-							path="/branch/add" 
+							path="/branch/add"
 							component={BranchAddSingle}
 							userRole={UserTypes.Internal}
 						/>

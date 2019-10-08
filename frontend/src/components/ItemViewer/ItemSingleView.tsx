@@ -2,8 +2,7 @@ import React from "react";
 import "../../styles/App.css";
 import "./styles/ItemSingleView.css";
 import { Button } from "react-bootstrap";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface ViewItemState {
 	item: any;
@@ -26,30 +25,20 @@ export default class ViewItem extends React.Component<
 				photo: "",
 				price: "",
 				desc: "",
-				branch: ""
+				branch: []
 			}
 		};
 	}
 
 	async componentDidMount() {
-		try {
-			const res = await Axios.get(
-				`${env.API_HOSTNAME}/item/${this.props.itemID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				if (res.data !== null) {
-					this.setState({ item: res.data });
-				}
-			} else {
-				console.log(`${res.status} code returned trying to get single item`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		const item = await ApiHelper.item.getSingle(this.props.itemID);
+		const branchDetails = await ApiHelper.branch.getBatch(item.branch);
+		this.setState({ item: { ...item, branch: branchDetails } });
 	}
 
 	render() {
+		console.log(this.state.item.branch);
+
 		return (
 			<div className="content-body flex-center">
 				<div className="img-container">
@@ -71,7 +60,13 @@ export default class ViewItem extends React.Component<
 						</Button>
 					</div>
 					<b> Description: </b>
-					{this.state.item.desc}
+					<p>{this.state.item.description}</p>
+					<b> Available At: </b>
+					<ul>
+						{this.state.item.branch.map((branch: any) => {
+							return <li>{branch.name} - ({branch.address})</li>;
+						})}
+					</ul>
 				</div>
 			</div>
 		);

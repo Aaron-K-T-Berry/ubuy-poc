@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/App.css";
-import ItemSingleView from "../components/ItemViewer/ItemSingleView";
+import "../../styles/App.css";
+import ItemSingleView from "../../components/ItemViewer/ItemSingleView";
 
 export interface ViewItemState {
 	id: string;

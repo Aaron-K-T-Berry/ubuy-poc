@@ -9,10 +9,9 @@ import {
 	FormLabel as Label,
 	ButtonGroup
 } from "react-bootstrap";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
 import { Redirect } from "react-router";
 import { Modal } from "react-bootstrap";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface EditItemState {
 	branch: any;
@@ -41,7 +40,6 @@ export default class EditItem extends React.Component<
 			deleteBranchSuccess: false,
 			showModal: false
 		};
-
 		this.handleChange = this.handleChange.bind(this);
 		this.handleUpdate = this.handleUpdate.bind(this);
 		this.handleDelete = this.handleDelete.bind(this);
@@ -49,66 +47,36 @@ export default class EditItem extends React.Component<
 	}
 
 	componentDidMount = async () => {
-		try {
-			const res = await Axios.get(
-				`${env.API_HOSTNAME}/branch/${this.props.branchID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				this.setState({ branch: res.data });
-			} else {
-				console.log(`${res.status} code returned trying to get single branch`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({
+			...this.state,
+			branch: await ApiHelper.branch.getSingle(this.props.branchID)
+		});
 	};
 
 	handleChange = (event: any) => {
 		const targetId = event.target.id;
 		const targetValue = event.target.value;
-		this.setState({ branch: { ...this.state.branch, [targetId]: targetValue } });
+		this.setState({
+			branch: { ...this.state.branch, [targetId]: targetValue }
+		});
 		event.preventDefault();
 	};
 
 	handleUpdate = async () => {
-		try {
-			const res = await Axios.patch(
-				`${env.API_HOSTNAME}/branch/${this.props.branchID}`,
-				this.state.branch,
-				{ withCredentials: true }
-			);
-
-			if (res.status === 200) {
-				console.log("Branch patched successfully:", res.data);
-				this.setState({ ...this.state, updateBranchSuccess: true });
-			} else {
-				console.log(
-					`${res.status} code was returned while trying to patch branch`
-				);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({
+			...this.state,
+			updateBranchSuccess: await ApiHelper.branch.update(
+				this.props.branchID,
+				this.state.branch
+			)
+		});
 	};
 
 	handleDelete = async () => {
-		try {
-			const res = await Axios.delete(
-				`${env.API_HOSTNAME}/branch/${this.props.branchID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				console.log(`Item ${this.state.branch._id} was successfully branch`);
-				this.setState({ ...this.state, deleteBranchSuccess: true });
-			} else {
-				console.log(
-					`${res.status} code was returned when trying to delete branch`
-				);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({
+			...this.state,
+			deleteBranchSuccess: await ApiHelper.branch.delete(this.props.branchID)
+		});
 	};
 
 	handleShowModal = () => {

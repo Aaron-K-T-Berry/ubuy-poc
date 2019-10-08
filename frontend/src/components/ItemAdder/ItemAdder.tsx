@@ -6,16 +6,22 @@ import {
 	FormLabel as Label,
 	InputGroup
 } from "react-bootstrap";
-// import BranchSelector from "../Selectors/BranchSelector";
+import BranchSelector from "../Selectors/BranchSelector";
+import ApiHelper from "../../common/ApiHelper";
 // import CategorySelector from "../Selectors/CategorySelector";
 
 // Add state here
 export interface ItemAdderState {
-	name: string;
-	price: string;
-	description: string;
-	quantity: string;
-	photo: string;
+	item: {
+		name: string;
+		price: string;
+		description: string;
+		quantity: string;
+		photo: string;
+		branch: string[];
+	};
+	allBranches: any[];
+	selectedBranches: any[];
 }
 
 // Add passed in props here
@@ -30,19 +36,43 @@ export default class ItemAdder extends React.Component<
 	constructor(props: any) {
 		super(props);
 		this.state = {
-			name: "",
-			price: "",
-			description: "",
-			quantity: "",
-			photo: ""
+			item: {
+				name: "",
+				price: "",
+				description: "",
+				quantity: "",
+				photo: "",
+				branch: []
+			},
+			allBranches: [],
+			selectedBranches: []
 		};
-
 		this.handleChange = this.handleChange.bind(this);
+		this.handleBranchSelector = this.handleBranchSelector.bind(this);
 	}
 
 	handleChange(event: any) {
 		// @ts-ignore
-		this.setState({ [event.target.id]: event.target.value });
+		this.setState({
+			...this.state,
+			item: { ...this.state.item, [event.target.id]: event.target.value }
+		});
+	}
+
+	handleBranchSelector(selectedItems: any[]) {
+		const mappedItems = selectedItems.map(item => item.id);
+		this.setState({
+			...this.state,
+			selectedBranches: selectedItems,
+			item: { ...this.state.item, branch: mappedItems }
+		});
+	}
+
+	async componentDidMount() {
+		this.setState({
+			...this.state,
+			allBranches: await ApiHelper.branch.getAll()
+		});
 	}
 
 	render() {
@@ -54,7 +84,7 @@ export default class ItemAdder extends React.Component<
 					<Input
 						type="text"
 						id="name"
-						value={this.state.name}
+						value={this.state.item.name}
 						onChange={this.handleChange}
 					/>
 				</InputGroup>
@@ -67,7 +97,7 @@ export default class ItemAdder extends React.Component<
 					<Input
 						id="price"
 						type="number"
-						value={this.state.price}
+						value={this.state.item.price}
 						onChange={this.handleChange}
 					></Input>
 				</InputGroup>
@@ -77,7 +107,7 @@ export default class ItemAdder extends React.Component<
 					<Input
 						as="textarea"
 						id="description"
-						value={this.state.description}
+						value={this.state.item.description}
 						onChange={this.handleChange}
 					/>
 				</InputGroup>
@@ -87,7 +117,7 @@ export default class ItemAdder extends React.Component<
 					<Input
 						id="quantity"
 						type="number"
-						value={this.state.quantity}
+						value={this.state.item.quantity}
 						onChange={this.handleChange}
 					/>
 				</InputGroup>
@@ -97,22 +127,26 @@ export default class ItemAdder extends React.Component<
 					<Input
 						type="text"
 						id="photo"
-						value={this.state.photo}
+						value={this.state.item.photo}
 						onChange={this.handleChange}
 						placeholder="/images/products/example-product/example.jpg"
 					/>
 				</InputGroup>
 
+				<Label>Branch:</Label>
+				<BranchSelector
+					handleChange={this.handleBranchSelector}
+					allBranches={this.state.allBranches}
+					selectedBranches={this.state.selectedBranches}
+				/>
+
 				{/* Below parts not supported by api yet */}
 				{/* <Label>Categories:</Label>
 				<CategorySelector /> */}
 
-				{/* <Label>Branch:</Label>
-				<BranchSelector /> */}
-
 				<Button
 					onClick={() => {
-						this.props.handleSubmit(this.state);
+						this.props.handleSubmit(this.state.item);
 					}}
 				>
 					Add Item

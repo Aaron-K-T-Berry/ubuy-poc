@@ -1,9 +1,8 @@
 import React from "react";
-import "../styles/App.css";
-import ItemAdder from "../components/ItemAdder/ItemAdder";
-import Axios from "axios";
-import env from "../common/ConfigHelper";
+import "../../styles/App.css";
+import ItemAdder from "../../components/ItemAdder/ItemAdder";
 import { Redirect } from "react-router-dom";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface AddItemState {
 	itemAddSuccess: boolean;
@@ -18,23 +17,11 @@ export default class AddItem extends React.Component<
 	constructor(props: any) {
 		super(props);
 		this.state = { itemAddSuccess: false };
-
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	async handleSubmit(state: any) {
-		try {
-			const res = await Axios.put(env.API_HOSTNAME + "/item", state, {
-				withCredentials: true
-			});
-			if (res.status === 200) {
-				this.setState({ itemAddSuccess: true });
-			} else {
-				console.log(`${res.status} code received when trying to add item`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		this.setState({ itemAddSuccess: await ApiHelper.item.add(state) });
 	}
 
 	render() {

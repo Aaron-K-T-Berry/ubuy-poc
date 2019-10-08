@@ -1,8 +1,7 @@
 import React from "react";
 import "../../styles/App.css";
 import BranchTable from "../../components/BranchViewer/BranchViewerTable";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface ViewAllItemsProps {}
 export interface ViewAllItemsState {
@@ -19,24 +18,8 @@ export default class ViewAllItems extends React.Component<
 	}
 
 	async componentDidMount() {
-		try {
-			const res = await Axios.get(env.API_HOSTNAME + "/branch", {
-				withCredentials: true
-			});
-
-			if (res.status === 200) {
-				if (res.data !== undefined) {
-					this.setState({ items: res.data });
-					console.log(`Fetched ${res.data.length} branches from the backend`);
-				} else {
-					console.log("Call for all branches returned no data");
-				}
-			} else {
-				console.log(`${res.status} code returned trying to get all branches`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		const branches = await ApiHelper.branch.getAll();
+		this.setState({ items: branches });
 	}
 
 	handleViewItem(branchId: string) {

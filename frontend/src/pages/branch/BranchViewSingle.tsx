@@ -30,6 +30,6 @@ export default class BranchViewSingle extends React.Component<
 	componentDidMount = () => {};
 
 	render() {
-		return <BranchSingleView itemID={this.state.id} />;
+		return <BranchSingleView branchID={this.state.id} />;
 	}
 }

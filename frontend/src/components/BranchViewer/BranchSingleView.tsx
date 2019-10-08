@@ -1,15 +1,14 @@
 import React from "react";
 import "../../styles/App.css";
 import "./styles/BranchSingleView.css";
-import Axios from "axios";
-import env from "../../common/ConfigHelper";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface BranchSingleViewState {
 	item: any;
 }
 
 export interface BranchSingleViewProps {
-	itemID: string;
+	branchID: string;
 }
 
 export default class BranchSingleView extends React.Component<
@@ -28,21 +27,8 @@ export default class BranchSingleView extends React.Component<
 	}
 
 	async componentDidMount() {
-		try {
-			const res = await Axios.get(
-				`${env.API_HOSTNAME}/branch/${this.props.itemID}`,
-				{ withCredentials: true }
-			);
-			if (res.status === 200) {
-				if (res.data !== null) {
-					this.setState({ item: res.data });
-				}
-			} else {
-				console.log(`${res.status} code returned trying to get single branch`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+		const branch = await ApiHelper.branch.getSingle(this.props.branchID);
+		this.setState({ item: branch });
 	}
 
 	render() {

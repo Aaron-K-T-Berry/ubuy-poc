@@ -1,8 +1,7 @@
 import React from "react";
-import "../styles/App.css";
-import ItemTable from "../components/ItemViewer/ItemViewerTable";
-import Axios from "axios";
-import env from "../common/ConfigHelper";
+import "../../styles/App.css";
+import ItemTable from "../../components/ItemViewer/ItemViewerTable";
+import ApiHelper from "../../common/ApiHelper";
 
 export interface ViewAllItemsProps {}
 export interface ViewAllItemsState {
@@ -19,24 +18,24 @@ export default class ViewAllItems extends React.Component<
 	}
 
 	async componentDidMount() {
-		try {
-			const res = await Axios.get(env.API_HOSTNAME + "/item", {
-				withCredentials: true
-			});
+		const items = await ApiHelper.item.getAll();
+		const branches = await ApiHelper.branch.getAll();
+		this.setState({ items: this.mapBranchesToItems(items, branches) });
+	}
 
-			if (res.status === 200) {
-				if (res.data !== undefined) {
-					this.setState({ items: res.data });
-					console.log(`Fetched ${res.data.length} items from the backend`);
-				} else {
-					console.log("Call for all items returned no data");
-				}
-			} else {
-				console.log(`${res.status} code returned trying to get all items`);
-			}
-		} catch (err) {
-			console.log(err);
-		}
+	lookupBranchDetails(branches: any[], branchId: string) {
+		return branches.filter(branch => branch._id === branchId)[0];
+	}
+
+	mapBranchesToItems(items: any[], branches: any[]) {
+		return items.map(item => {
+			return {
+				...item,
+				branch: item.branch.map((b: any) =>
+					this.lookupBranchDetails(branches, b)
+				)
+			};
+		});
 	}
 
 	handleViewItem(itemId: string) {
