@@ -7,9 +7,7 @@ import SiteFooter from "./components/SiteFooter/SiteFooter";
 import SiteHeader from "./components/SiteHeader/SiteHeader";
 import { UserTypes } from "./components/UserRegistrationForm";
 import AccountInfo from "./pages/AccountInfo";
-import AccountM from "./pages/AccountM";
 import AddItem from "./pages/items/AddItem";
-import AdminView from "./pages/AdminView";
 import Cart from "./pages/Cart";
 import CartView from "./pages/CartView";
 import Success from "./pages/common/success";
@@ -55,13 +53,6 @@ const App: React.FC = () => {
 						/>
 
 						<PrivateRoute path="/account/user" exact component={AccountInfo} />
-						<Route path="/account/admin" exact component={AdminView} />
-						<PrivateRoute
-							path="/account/m"
-							userRole={RouteUserTypes.ADMIN}
-							exact
-							component={AccountM}
-						/>
 						<PrivateRoute
 							path="/admin/account/view/all"
 							userRole={UserTypes.Admin}
