@@ -39,9 +39,17 @@ export default class AuthController {
 						const token = jwt.sign(payload, env.TOKEN_SECRET, {
 							expiresIn: "1h"
 						});
+						const userType =
+							user.userMeta !== undefined ? user.userMeta.userType : "CUSTOMER";
+
 						res.setHeader("Access-Control-Allow-Headers", "Set-Cookie");
-						res.cookie("token", token, { httpOnly: true });
-						responseBuilder.buildSuccess(res, "authenticated");
+						res.cookie("token", token, { httpOnly: false });
+						res.cookie("userType", userType, { httpOnly: false });
+						responseBuilder.buildSuccess(res, {
+							msg: "Authenticated",
+							token: token,
+							userType: userType
+						});
 					}
 				});
 			}

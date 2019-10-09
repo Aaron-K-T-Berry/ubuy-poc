@@ -1,0 +1,10 @@
+.search {
+  flex: auto;
+	float: right;
+  -webkit-flex: 1;
+  max-width: 100%;
+  padding-left: 10pt;
+  padding-right: 10pt;
+  max-width: 650pt;
+  min-width: 100pt;
+}

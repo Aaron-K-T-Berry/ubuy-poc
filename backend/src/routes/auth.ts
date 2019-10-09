@@ -13,6 +13,6 @@ export const AuthRoute = (app: Express, controller: AuthController) => {
 		customerAuth,
 		controller.handleCheckToken
 	);
-	app.get("/auth/checkTokenBranch", adminAuth, controller.handleCheckToken);
-	app.get("/auth/checkTokenAdmin", branchAuth, controller.handleCheckToken);
+	app.get("/auth/checkTokenBranch", branchAuth, controller.handleCheckToken);
+	app.get("/auth/checkTokenAdmin", adminAuth, controller.handleCheckToken);
 };

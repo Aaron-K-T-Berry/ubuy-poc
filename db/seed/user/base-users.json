@@ -1,0 +1,39 @@
+{
+	"db": "ubuy",
+	"collection": "users",
+	"records": [
+		{
+			"_id": "000000000001",
+			"firstName": "user",
+			"lastName": "user",
+			"email": "user",
+			"password": "$2b$10$S89jVFsWTqv1d9jT0YJax.sGAp2uiw4HIfqp6YOdhrHX3yFZsOsTy",
+			"address": "user",
+			"userMeta": {
+				"userType": "CUSTOMER"
+			}
+		},
+		{
+			"_id": "000000000002",
+			"firstName": "internal",
+			"lastName": "internal",
+			"email": "internal",
+			"password": "$2b$10$gz.MmfNoIVgzNYOltdQw3u6qtfxcOrpX7s.n6nkx.x0q8Tuw9/Za.",
+			"address": "internal",
+			"userMeta": {
+				"userType": "INTERNAL"
+			}
+		},
+		{
+			"_id": "000000000003",
+			"firstName": "admin",
+			"lastName": "admin",
+			"email": "admin",
+			"password": "$2b$10$5IusXK/s9S020oX2AyYueuWhWeeEcYelIqUhNHBSp54Aq0O217pPC",
+			"address": "admin",
+			"userMeta": {
+				"userType": "ADMIN"
+			}
+		}
+	]
+}

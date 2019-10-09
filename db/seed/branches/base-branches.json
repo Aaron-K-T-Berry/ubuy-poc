@@ -1,0 +1,21 @@
+{
+	"db": "ubuy",
+	"collection": "branches",
+	"records": [
+		{
+			"_id": "000000000001",
+			"name": "Ultimo",
+			"address": "15 Broadway, Ultimo NSW 2007"
+		},
+		{
+			"_id": "000000000002",
+			"name": "North Sydney",
+			"address": "North Sydney NSW 2060"
+		},
+		{
+			"_id": "000000000003",
+			"name": "St Leonards",
+			"address": "St Leonards NSW 2065"
+		}
+	]
+}

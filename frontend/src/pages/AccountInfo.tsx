@@ -8,6 +8,7 @@ import {
 	FormLabel as Label
 } from "react-bootstrap";
 import axios from "axios";
+import env from "../common/ConfigHelper";
 
 export interface AccountInfoProps {}
 
@@ -32,11 +33,9 @@ export default class AccountInfo extends React.Component<
 	}
 
 	async componentDidMount() {
-		const res = await axios.get("http://localhost:4000/user", {
+		const res = await axios.get(`${env.API_HOSTNAME}/user`, {
 			withCredentials: true
 		});
-		console.log(res);
-
 		const user: AccountInfoState = {
 			firstName: res.data.user.firstName,
 			lastName: res.data.user.lastName,
@@ -45,13 +44,11 @@ export default class AccountInfo extends React.Component<
 		this.setState({ ...user });
 	}
 
-	componentWillUnmount() {}
-
 	render() {
 		return (
-			<div className="content-body flex-center">
+			<div className="body-wrapper flex-center">
 				<div className="body-heading">Account Information</div>
-				<div className="input">
+				<div className="body-content input">
 					<Group>
 						<Label>{PageContent.firstName.label}</Label>
 						<Input
@@ -77,7 +74,7 @@ export default class AccountInfo extends React.Component<
 							value={this.state.email}
 						/>
 					</Group>
-					<Button>Edit</Button>
+					<Button>Edit </Button>
 				</div>
 			</div>
 		);

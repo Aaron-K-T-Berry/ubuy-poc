@@ -1,0 +1,33 @@
+.logo {
+	animation-duration: 2.5s;
+	animation-name: animation;
+	transition: 0.5s;
+}
+
+.logo:hover {
+	transform: scale(1.2);
+}
+
+.animation-target {
+	-webkit-animation: animation 1800ms linear infinite both;
+	animation: animation 1800ms linear infinite both;
+}
+
+.site-header {
+	background-color: #16202a;
+}
+
+.logo-image {
+	height: 50px;
+	width: 50px;
+}
+
+.navbar {
+	padding: 10pt;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.navlink {
+	padding: 5pt;
+}

@@ -1,36 +1,136 @@
-import React from "react";
-import "./styles/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import PageNotFound from "./pages/PageNotFound";
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import SiteHeader from "./components/SiteHeader";
-import SiteFooter from "./components/SiteFooter";
+import authHelper from "./common/AuthHelper";
+import PrivateRoute from "./components/PrivateRoute";
+import SiteFooter from "./components/SiteFooter/SiteFooter";
+import SiteHeader from "./components/SiteHeader/SiteHeader";
+import { UserTypes } from "./components/UserRegistrationForm";
+import AccountInfo from "./pages/AccountInfo";
+import AccountM from "./pages/AccountM";
+import AddItem from "./pages/items/AddItem";
+import AdminView from "./pages/AdminView";
+import Cart from "./pages/Cart";
+import CartView from "./pages/CartView";
+import Success from "./pages/common/success";
+import EditItem from "./pages/EditItem";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
-import AccountInfo from "./pages/AccountInfo";
-import RegisterBranchUser from "./pages/Registration/RegisterBranch";
+import AdminManagement from "./pages/management/Admin";
+import BranchManagement from "./pages/management/Branch";
+import PageNotFound from "./pages/PageNotFound";
 import RegisterAdminUser from "./pages/Registration/RegisterAdmin";
+import RegisterBranchUser from "./pages/Registration/RegisterBranch";
 import RegisterCustomer from "./pages/Registration/RegisterCustomer";
+import ViewAllAccount from "./pages/ViewAllAccount";
+import ViewAllItems from "./pages/items/ViewAllItems";
+import ViewItem from "./pages/items/ViewItem";
+import "./styles/App.css";
+import BranchViewAll from "./pages/branch/BranchViewAll";
+import BranchViewSingle from "./pages/branch/BranchViewSingle";
+import BranchEditSingle from "./pages/branch/BranchEditSingle";
+import BranchAddSingle from "./pages/branch/BranchAddSingle";
+import { RouteUserTypes } from "./common/ApiHelper/auth/interfaces";
 
 const App: React.FC = () => {
+	// Setup react hooks
+	const [authedState, setAuthedSate] = useState({
+		isAuthed: authHelper.hasToken(),
+		userType: authHelper.getUserRole()
+	});
+
 	return (
 		<div>
 			<Router>
-				<SiteHeader />
-				<div className="page-wrapper">
+				<SiteHeader authContext={authedState} authFunc={setAuthedSate} />
+				<div className="router-wrapper">
 					<Switch>
 						<Route path="/" exact component={HomePage} />
-						<Route path="/login" exact component={LoginForm} />
-						<Route path="/account" exact component={AccountInfo} />
 						<Route
+							path="/login"
+							exact
+							render={props => (
+								<LoginForm {...props} authFunc={setAuthedSate} />
+							)}
+						/>
+
+						<PrivateRoute path="/account/user" exact component={AccountInfo} />
+						<Route path="/account/admin" exact component={AdminView} />
+						<PrivateRoute
+							path="/account/m"
+							userRole={RouteUserTypes.ADMIN}
+							exact
+							component={AccountM}
+						/>
+						<PrivateRoute
+							path="/admin/account/view/all"
+							userRole={UserTypes.Admin}
+							component={ViewAllAccount}
+						/>
+
+						<PrivateRoute path="/cart" exact component={Cart} />
+						<PrivateRoute path="/cart/view" exact component={CartView} />
+
+						<Route path="/register/user" component={RegisterCustomer} />
+						<PrivateRoute
 							path="/register/internal/branch"
 							component={RegisterBranchUser}
+							userRole={RouteUserTypes.INTERNAL}
 						/>
-						<Route
+						<PrivateRoute
 							path="/register/internal/admin"
 							component={RegisterAdminUser}
+							userRole={RouteUserTypes.ADMIN}
 						/>
-						<Route path="/register/user" component={RegisterCustomer} />
+
+						<Route path="/item/:id/view" component={ViewItem} />
+						<PrivateRoute
+							path="/item/:id/edit"
+							component={EditItem}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/item/add"
+							component={AddItem}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/item/view/all"
+							component={ViewAllItems}
+							userRole={UserTypes.Admin}
+						/>
+
+						<Route path="/branch/:id/view" component={BranchViewSingle} />
+						<PrivateRoute
+							path="/branch/:id/edit"
+							component={BranchEditSingle}
+							userRole={UserTypes.Internal}
+						/>
+						<PrivateRoute
+							path="/branch/add"
+							component={BranchAddSingle}
+							userRole={UserTypes.Internal}
+						/>
+						<PrivateRoute
+							path="/branch/view/all"
+							component={BranchViewAll}
+							userRole={UserTypes.Internal}
+						/>
+
+						<PrivateRoute
+							path="/management/admin"
+							component={AdminManagement}
+							userRole={UserTypes.Admin}
+						/>
+						<PrivateRoute
+							path="/management/internal"
+							component={BranchManagement}
+							userRole={UserTypes.Internal}
+						/>
+
+						<Route path="/common/success" component={Success} />
+
+						{/* 404 */}
 						<Route component={PageNotFound} />
 					</Switch>
 				</div>

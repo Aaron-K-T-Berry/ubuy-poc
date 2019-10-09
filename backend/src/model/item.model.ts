@@ -1,18 +1,18 @@
 import mongoose, { Document } from "mongoose";
 
 export interface Item {
-	id: string;
 	name: string;
-	// Need to work out how to handle ingesting photos
 	description: string;
+	// This will be the path to the image file
+	// relative to the frontend
 	photo: string;
 	quantity: number;
+	// A list of branches that this item is available from
 	branch: string[];
 	price: number;
 }
 
 export interface ItemModel extends Document {
-	id: string;
 	name: string;
 	description: string;
 	photo: string;
@@ -22,7 +22,6 @@ export interface ItemModel extends Document {
 }
 
 const ItemSchema = new mongoose.Schema({
-	id: { type: String, required: true, unique: true },
 	name: { type: String, required: true },
 	description: { type: String, required: true },
 	photo: { type: String, required: true },
