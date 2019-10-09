@@ -1,15 +1,15 @@
 import { Request, Response } from "express";
-import itemModel from "../model/item.model";
+import ItemModel from "../../model/item.model";
 import { MongoError } from "mongodb";
-import responseBuilder, { ApiCode } from "../common/response-builder";
-import handleMongoError from "../common/mongo-errors";
+import responseBuilder, { ApiCode } from "../../common/response-builder";
+import handleMongoError from "../../common/mongo-errors";
 
 export default class ItemController {
 	constructor() {}
 
 	public handleCreate(req: Request, res: Response) {
 		const body = req.body;
-		const newItemRequest = new itemModel({
+		const newItemRequest = new ItemModel({
 			name: body.name,
 			description: body.description,
 			photo: body.photo,
@@ -29,7 +29,7 @@ export default class ItemController {
 
 	public async handleReadSingle(req: Request, res: Response) {
 		try {
-			const item = await itemModel.findOne({
+			const item = await ItemModel.findOne({
 				_id: req.params.itemId
 			});
 			responseBuilder.buildSuccess(res, item);
@@ -39,7 +39,7 @@ export default class ItemController {
 	}
 
 	public async handleReadAll(req: Request, res: Response) {
-		const allItems = await itemModel.find({}).lean();
+		const allItems = await ItemModel.find({}).lean();
 		responseBuilder.buildSuccess(res, allItems);
 	}
 
@@ -50,7 +50,7 @@ export default class ItemController {
 				n: number;
 				nModified: number;
 				ok: number;
-			} = await itemModel.update({ _id: id }, req.body);
+			} = await ItemModel.update({ _id: id }, req.body);
 
 			responseBuilder.buildSuccess(res, {
 				msg: `Successfully updated item with id: ${id}`,
@@ -68,7 +68,7 @@ export default class ItemController {
 				n?: number;
 				deletedCount?: number;
 				ok?: number;
-			} = await itemModel.deleteOne({ _id: id }, req.body);
+			} = await ItemModel.deleteOne({ _id: id }, req.body);
 
 			responseBuilder.buildSuccess(res, {
 				msg: `Successfully deleted item with id: ${id}`,
@@ -82,7 +82,7 @@ export default class ItemController {
 	public async handleSearch(req: Request, res: Response) {
 		try {
 			const queryString = req.body.query;
-			const response = await itemModel.find({ name: { $regex: queryString } });
+			const response = await ItemModel.find({ name: { $regex: queryString } });
 			responseBuilder.buildSuccess(res, response);
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);

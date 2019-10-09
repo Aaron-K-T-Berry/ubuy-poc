@@ -3,11 +3,8 @@ import mongoose, { Document } from "mongoose";
 export interface Item {
 	name: string;
 	description: string;
-	// This will be the path to the image file
-	// relative to the frontend
 	photo: string;
 	quantity: number;
-	// A list of branches that this item is available from
 	branch: string[];
 	price: number;
 }
