@@ -11,6 +11,10 @@ export default {
 		{
 			title: "Register new admin user",
 			path: "/register/internal/admin"
+		},
+		{
+			title: "View all users",
+			path: "/user/view/all"
 		}
 	],
 
@@ -33,6 +37,13 @@ export default {
 		{
 			title: "View all branches",
 			path: "/branch/view/all"
+		}
+	],
+
+	OrderLinks: [
+		{
+			title: "View all orders",
+			path: "/order/view/all"
 		}
 	]
 };

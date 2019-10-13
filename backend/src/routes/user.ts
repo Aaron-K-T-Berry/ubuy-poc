@@ -14,7 +14,7 @@ export const UserRoute = (app: Express, controller: UserController) => {
 	// Register internal user
 	// Register admin user
 	app.get("/user/admin/:userId", branchAuth, controller.getSingle); // Get single user (for admin views)
-	// Get all user
+	app.get("/user/admin", branchAuth, controller.getAll); // Get all user (for admin views)
 	// Update user
 	// Delete user
 };

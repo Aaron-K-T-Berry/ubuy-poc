@@ -85,9 +85,23 @@ export default class UserController {
 				_id: req.params.userId
 			});
 			// @ts-ignore
-			const cleanedResult = { ...result["_doc"],  password: undefined };
+			const cleanedResult = { ...result["_doc"], password: undefined };
 
 			responseBuilder.buildSuccess(res, cleanedResult);
+		} catch (err) {
+			handleMongoError(err, res);
+		}
+	}
+
+	public async getAll(req: Request, res: Response) {
+		try {
+			const results = await userModel.find({}).lean();
+			// @ts-ignore
+			const cleanedResults = results.map(result => {
+				return { ...result, password: undefined };
+			});
+
+			responseBuilder.buildSuccess(res, cleanedResults);
 		} catch (err) {
 			handleMongoError(err, res);
 		}
