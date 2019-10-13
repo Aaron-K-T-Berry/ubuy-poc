@@ -6,10 +6,12 @@
 
 .card-title {
 	font-weight: bold;
+	height: 50px;
 }
 
 .card-text {
 	color: #c0c0c0;
+	height: 50px;
 }
 
 .card-img-top {

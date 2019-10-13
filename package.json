@@ -16,8 +16,11 @@
 		"cz-emoji": "^1.1.2"
 	},
 	"config": {
-    "commitizen": {
-      "path": "./node_modules/cz-emoji"
-    }
-  }
+		"commitizen": {
+			"path": "./node_modules/cz-emoji"
+		}
+	},
+	"dependencies": {
+		"mongodb": "^3.3.2"
+	}
 }
