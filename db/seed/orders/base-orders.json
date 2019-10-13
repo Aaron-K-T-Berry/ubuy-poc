@@ -1,0 +1,21 @@
+{
+	"db": "ubuy",
+	"collection": "orders",
+	"records": [
+		{
+			"_id": "000000000001",
+			"userId": "303030303030303030303031",
+			"items": [
+				{
+					"itemId": "303030303030303030303031",
+					"quantity": 1,
+					"branchId": "303030303030303030303031"
+				}
+			],
+			"billingAddress": "3826 Terra Cotta Street",
+			"deliveryAddress": "4167 Traders Alley",
+			"orderTime": "2019-09-23T16:41:15+00:00",
+			"status": "packing"
+		}
+	]
+}
