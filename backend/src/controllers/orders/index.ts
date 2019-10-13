@@ -46,7 +46,7 @@ export default class OrderController {
 		try {
 			const item = await OrderModel.find({
 				userId: req.params.userId
-			});
+			}).lean();
 			responseBuilder.buildSuccess(res, item);
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);

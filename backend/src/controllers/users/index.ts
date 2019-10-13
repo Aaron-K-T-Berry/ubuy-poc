@@ -36,7 +36,6 @@ export default class UserController {
 			address,
 			userType
 		} = req.body;
-		
 
 		const user = new userModel({
 			firstName,
@@ -78,5 +77,19 @@ export default class UserController {
 				responseBuilder.buildSuccess(res, "Welcome to the club!");
 			}
 		});
+	}
+
+	public async getSingle(req: Request, res: Response) {
+		try {
+			const result = await userModel.findOne({
+				_id: req.params.userId
+			});
+			// @ts-ignore
+			const cleanedResult = { ...result["_doc"],  password: undefined };
+
+			responseBuilder.buildSuccess(res, cleanedResult);
+		} catch (err) {
+			handleMongoError(err, res);
+		}
 	}
 }
