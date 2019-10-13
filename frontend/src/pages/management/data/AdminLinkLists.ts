@@ -42,8 +42,8 @@ export default {
 
 	OrderLinks: [
 		{
-			title: "View all orders",
-			path: "/order/view/all"
+			title: "View all orders",  
+			path: "/order/admin/view/all"
 		}
 	]
 };

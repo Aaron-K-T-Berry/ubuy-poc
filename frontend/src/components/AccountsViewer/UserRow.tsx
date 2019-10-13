@@ -5,44 +5,30 @@ import { Button, ButtonGroup } from "react-bootstrap";
 
 export interface UserProp {
 	user: {
-        firstName: string;
-        lastName: string;
-        email: string;
-        address: string | undefined;
+		firstName: string;
+		lastName: string;
+		email: string;
+		address: string | undefined;
 	};
+	handleEditUser: any;
+	handleViewUser: any;
 }
 
 export default class UserRow extends React.Component<UserProp, {}> {
-    render() {
-        return(
-            <tr>
-                <td className="table-column-id">
-                    {this.props.user.firstName}
-                </td>
+	render() {
+		return (
+			<tr>
+				<td>{this.props.user.firstName}</td>
+				<td>{this.props.user.lastName}</td>
+				<td>{this.props.user.email}</td>
 
-                <td className="table-column-name">
-                    {this.props.user.lastName}
-                </td>
-
-                <td className="table-column-price">
-                    ${this.props.user.email}
-                </td>
-
-                <td className="table-column-desc">
-                    {this.props.user.address}
-                </td>
-             
-
-             
-
-                <td className="table-column-button">
-                    <ButtonGroup>
-                        <Button variant="info">View</Button>
-                        <Button variant="warning">Edit</Button>
-                        <Button variant="danger">Delete</Button>
-                    </ButtonGroup>
-                </td>
-            </tr>
-        );
-    }
+				<td className="table-column-button">
+					<ButtonGroup>
+						<Button variant="info">View</Button>
+						<Button variant="warning">Edit</Button>
+					</ButtonGroup>
+				</td>
+			</tr>
+		);
+	}
 }

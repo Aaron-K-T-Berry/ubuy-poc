@@ -29,6 +29,8 @@ import BranchViewSingle from "./pages/branch/BranchViewSingle";
 import BranchEditSingle from "./pages/branch/BranchEditSingle";
 import BranchAddSingle from "./pages/branch/BranchAddSingle";
 import { RouteUserTypes } from "./common/ApiHelper/auth/interfaces";
+import ViewAllOrders from "./pages/order/ViewAllOrders";
+import ViewSingleOrder from "./pages/order/ViewSingleOrder";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -54,7 +56,7 @@ const App: React.FC = () => {
 
 						<PrivateRoute path="/account/user" exact component={AccountInfo} />
 						<PrivateRoute
-							path="/admin/account/view/all"
+							path="/user/view/all"
 							userRole={UserTypes.Admin}
 							component={ViewAllAccount}
 						/>
@@ -105,6 +107,18 @@ const App: React.FC = () => {
 						<PrivateRoute
 							path="/branch/view/all"
 							component={BranchViewAll}
+							userRole={UserTypes.Internal}
+						/>
+
+						<PrivateRoute
+							path="/order/admin/view/all"
+							component={ViewAllOrders}
+							userRole={UserTypes.Internal}
+						/>
+
+						<PrivateRoute
+							path="/order/view/:userId/:orderId"
+							component={ViewSingleOrder}
 							userRole={UserTypes.Internal}
 						/>
 

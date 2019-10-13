@@ -64,7 +64,7 @@ export default class UserRegistrationForm extends React.Component<
 
 	showExtraFields() {
 		const userType = this.state.userType;
-		if (userType === "INTERNAL" || userType === "ADMIN") return true;
+		if (userType === "INTERNAL") return true;
 		return false;
 	}
 

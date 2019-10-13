@@ -67,6 +67,8 @@ export default class OrderController {
 	public async getAll(req: Request, res: Response) {
 		try {
 			const allItems = await OrderModel.find({}).lean();
+			console.log(allItems);
+			
 			responseBuilder.buildSuccess(res, allItems);
 		} catch (err) {
 			handleMongoError(err, res);

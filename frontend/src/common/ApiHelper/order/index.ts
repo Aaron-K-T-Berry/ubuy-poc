@@ -23,6 +23,25 @@ export const getAll = async () => {
 	}
 };
 
+export const getSingle = async (userId: string, orderId: string) => {
+	try {
+		const res = await Axios.get(
+			`${env.API_HOSTNAME}/order/user/${userId}/${orderId}`,
+			{
+				withCredentials: true
+			}
+		);
+		if (res.status === 200) {
+			return res.data;
+		} else {
+			console.log(`${res.status} code returned trying to get single order`);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export default {
-	getAll
+	getAll,
+	getSingle
 };
