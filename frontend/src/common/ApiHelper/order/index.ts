@@ -41,7 +41,26 @@ export const getSingle = async (userId: string, orderId: string) => {
 	}
 };
 
+export const getUserOrders = async (userId: string) => {
+	try {
+		const res = await Axios.get(
+			`${env.API_HOSTNAME}/order/user/${userId}`,
+			{
+				withCredentials: true
+			}
+		);
+		if (res.status === 200) {
+			return res.data;
+		} else {
+			console.log(`${res.status} code returned trying to get users orders`);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+};
+
 export default {
 	getAll,
-	getSingle
+	getSingle,
+	getUserOrders
 };
