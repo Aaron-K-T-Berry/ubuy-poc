@@ -11,7 +11,7 @@ import AddItem from "./pages/items/AddItem";
 import Cart from "./pages/Cart";
 import CartView from "./pages/CartView";
 import Success from "./pages/common/success";
-import EditItem from "./pages/EditItem";
+import EditItem from "./pages/items/EditItem";
 import HomePage from "./pages/Home";
 import LoginForm from "./pages/Login";
 import AdminManagement from "./pages/management/Admin";
@@ -31,6 +31,7 @@ import BranchAddSingle from "./pages/branch/BranchAddSingle";
 import { RouteUserTypes } from "./common/ApiHelper/auth/interfaces";
 import ViewAllOrders from "./pages/order/ViewAllOrders";
 import ViewSingleOrder from "./pages/order/ViewSingleOrder";
+import EditAccount from "./pages/account/EditAccount";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -55,6 +56,12 @@ const App: React.FC = () => {
 						/>
 
 						<PrivateRoute path="/account/user" exact component={AccountInfo} />
+						<PrivateRoute
+							path="/account/user/edit/:userId"
+							exact
+							component={EditAccount}
+						/>
+
 						<PrivateRoute
 							path="/user/view/all"
 							userRole={UserTypes.Admin}
