@@ -1,6 +1,6 @@
 import React from "react";
-import "../styles/App.css";
-import EditItem from "../components/ItemViewer/ItemEdit";
+import "../../styles/App.css";
+import EditItem from "../../components/ItemViewer/ItemEdit";
 
 export interface EditItemState {
 	itemId: string;

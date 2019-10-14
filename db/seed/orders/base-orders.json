@@ -1,0 +1,61 @@
+{
+	"db": "ubuy",
+	"collection": "orders",
+	"records": [
+		{
+			"_id": "000000000001",
+			"userId": "303030303030303030303031",
+			"items": [
+				{
+					"itemId": "303030303030303030303031",
+					"quantity": 1,
+					"branchId": "303030303030303030303031"
+				}
+			],
+			"billingAddress": "3826 Terra Cotta Street",
+			"deliveryAddress": "4167 Traders Alley",
+			"orderTime": "2019-09-23T16:41:15+00:00",
+			"status": "packing"
+		},
+		{
+			"_id": "000000000002",
+			"userId": "303030303030303030303031",
+			"items": [
+				{
+					"itemId": "303030303030303030303034",
+					"quantity": 2,
+					"branchId": "303030303030303030303032"
+				}
+			],
+			"billingAddress": "27 Barton St, Surrey Hills, VIC 3127",
+			"deliveryAddress": "27 Barton St, Surrey Hills, VIC 3127",
+			"orderTime": "2019-10-13T08:14:31+0000",
+			"status": "packing"
+		},
+		{
+			"_id": "000000000003",
+			"userId": "303030303030303030303033",
+			"items": [
+				{
+					"itemId": "303030303030303030303035",
+					"quantity": 1,
+					"branchId": "303030303030303030303032"
+				},
+				{
+					"itemId": "303030303030303030303037",
+					"quantity": 1,
+					"branchId": "303030303030303030303031"
+				},
+				{
+					"itemId": "303030303030303030303039",
+					"quantity": 1,
+					"branchId": "303030303030303030303032"
+				}
+			],
+			"billingAddress": "256 Hillwood Jetty Rd, Hillwood, TAS 7252",
+			"deliveryAddress": "256 Hillwood Jetty Rd, Hillwood, TAS 7252",
+			"orderTime": "2019-05-12T08:14:31+0000",
+			"status": "packing"
+		}
+	]
+}

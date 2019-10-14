@@ -23,7 +23,7 @@ export default class BranchViewerTable extends React.Component<
 						<th>ID</th>
 						<th>Name</th>
 						<th>Address</th>
-						<th>Items</th>
+						{/* <th>Items</th> */}
 						<th>Actions</th>
 					</tr>
 				</thead>

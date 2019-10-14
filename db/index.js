@@ -41,6 +41,18 @@ const run = () => {
 		const fileData = require(path);
 		applyRecords(fileData.db, fileData.collection, fileData.records);
 	});
+
+	// Get orders seed files
+	const ordersFilePath = "./seed/orders";
+	const ordersFilePaths = getFiles(ordersFilePath).map(file => {
+		return `${ordersFilePath}/${file}`;
+	});
+
+	// Apply orders
+	ordersFilePaths.forEach(path => {
+		const fileData = require(path);
+		applyRecords(fileData.db, fileData.collection, fileData.records);
+	});
 };
 
 // UTIL

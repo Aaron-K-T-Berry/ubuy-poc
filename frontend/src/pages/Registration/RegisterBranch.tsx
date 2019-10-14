@@ -57,13 +57,15 @@ export default class RegisterBranchUser extends React.Component<
 		];
 
 		return (
-			<div className="content-body flex-center">
-				<div className="h3"> Create New Branch User </div>
-				<UserRegistrationForm
-					userType={UserTypes.Internal}
-					handleRegister={this.handleSubmit}
-					validationKeys={validationKeys}
-				/>
+			<div className="body-wrapper flex-center">
+				<div className="body-heading">Create New Branch User</div>
+				<div className="body-content">
+					<UserRegistrationForm
+						userType={UserTypes.Internal}
+						handleRegister={this.handleSubmit}
+						validationKeys={validationKeys}
+					/>
+				</div>
 			</div>
 		);
 	}

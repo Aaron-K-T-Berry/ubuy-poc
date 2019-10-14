@@ -57,13 +57,15 @@ export default class RegisterAdminUser extends React.Component<
 		];
 
 		return (
-			<div className="content-body flex-center">
-				<div className="h3"> Create New Admin User </div>
-				<UserRegistrationForm
-					userType={UserTypes.Admin}
-					handleRegister={this.handleSubmit}
-					validationKeys={validationKeys}
-				/>
+			<div className="body-wrapper flex-center">
+				<div className="body-heading">Create New Admin User</div>
+				<div className="body-content">
+					<UserRegistrationForm
+						userType={UserTypes.Admin}
+						handleRegister={this.handleSubmit}
+						validationKeys={validationKeys}
+					/>
+				</div>
 			</div>
 		);
 	}

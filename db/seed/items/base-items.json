@@ -10,6 +10,87 @@
 			"quantity": 100,
 			"price": 1699.0,
 			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000002",
+			"name": "Scorptec Sunder RTX 2070 Super Gaming PC",
+			"description": "Scorptec Sunder RTX 2070 Super Gaming PC, AMD Ryzen 5 3600 6 Core, AMD B450 Chipset, GeForce RTX 2070 Super 8GB, 16GB 2666MHz RAM, 500GB M.2 NVMe SSD, 2TB HDD, Corsair Crystal 280X Case, 650W PSU, Win 10 Home",
+			"photo": "/images/products/scorptec-sunder/main.jpg",
+			"quantity": 100,
+			"price": 2249.0,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000003",
+			"name": "Razer Blade 15 Base Model Black 15.6inch Core i7 Gaming Laptop",
+			"description": "Razer Blade 15 Base Model Black Gaming Laptop, i7-9750H, 16GB RAM, 512GB M.2 PCIE SSD, 15.6inch FHD 144Hz, GeForce RTX 2060, WiFi, BT, 2.07kg, Win10 Home",
+			"photo": "/images/products/razer-blade-15/main.jpg",
+			"quantity": 100,
+			"price": 3399.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000004",
+			"name": "LG 49WL95C-W 49inch UltraWide 5K Dual QHD IPS Curved Monitor",
+			"description": "LG 49inch UltraWide 5K Dual QHD IPS Curved Monitor, 5120x1440, HDR10, 5ms, 1000:1, 32:9 Aspect, HDMI, DisplayPort, USB-C, Speakers, PBP, VESA, Tilt, H/Adjust, Swivel",
+			"photo": "/images/products/LG-49WL95C-W/main.jpg",
+			"quantity": 100,
+			"price": 1999.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000005",
+			"name": "Thrustmaster T.16000M FCS Joystick For PC",
+			"description": "Thrustmaster T.16000M FCS Joystick For PC",
+			"photo": "/images/products/thrustmaster/main.jpg",
+			"quantity": 100,
+			"price": 84.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000006",
+			"name": "Corsair HD120 RGB 120mm Fan, With Controller",
+			"description": "Corsair HD120 RGB Individually Addressable LED Static Pressure 120mm Fan, 800 - 1725RPM, With Controller",
+			"photo": "/images/products/corsair-HD120/main.jpg",
+			"quantity": 100,
+			"price": 42.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000007",
+			"name": "ASUS ROG Strix B450-F Gaming Motherboard",
+			"description": "ASUS ROG Strix B450-F Gaming MB, B450, 4x DDR4, 3x PCI-E 3.0 x16, 2x M.2, 6x SATA3, 8x USB3.1, DisplayPort, HDMI, ATX, Aura RBG",
+			"photo": "/images/products/ASUS-ROG-strix-B450-F/main.jpg",
+			"quantity": 100,
+			"price": 219.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000008",
+			"name": "Scorptec IEM RTX 2070 Gaming PC",
+			"description": "Scorptec IEM RTX 2070 Gaming PC, Intel Core i7 9700F 8 Core, Intel B360 Chipset, ASUS GeForce RTX 2070 8GB, 16GB 2666MHz RAM, 500GB M.2 NVMe SSD, 2TB HDD, Corsair Carbide 275R TG Case, 650W PSU, Windows 10 Home",
+			"photo": "/images/products/scorptec-IEM/main.jpg",
+			"quantity": 100,
+			"price": 2449.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000009",
+			"name": "Acer Triton 500 15.6inch 144Hz G-Sync Core i7 Gaming Laptop",
+			"description": "Acer Triton 500 Gaming Laptop, i7-8750H, 32GB (2x 16GB) RAM, 512GB M.2 PCIE SSD, 15.6inch FHD IPS 144Hz G-Sync, GeForce RTX 2080, WiFi, BT, HD Webcam, Win10 Home",
+			"photo": "/images/products/acer-triton-500/main.jpg",
+			"quantity": 100,
+			"price": 3599.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
+		},
+		{
+			"_id": "000000000010",
+			"name": "MSI Trident X Plus 9SE Gaming Desktop, Core i9",
+			"description": "MSI Trident X Plus 9SE Gaming Desktop, i9-9900k, 32GB (2x 16GB) RAM, 512GB M.2 PCIE SSD + 2TB HDD, GeForce RTX 2080, GBLAN, WiFi, BT, Win10 Home",
+			"photo": "/images/products/MSI-trident-X/main.jpg",
+			"quantity": 100,
+			"price": 4199.00,
+			"branch": ["303030303030303030303031", "303030303030303030303032"]
 		}
 	]
 }

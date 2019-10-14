@@ -25,7 +25,7 @@ export default class BranchRow extends React.Component<
 				<td className="table-column-id">{this.props.item._id}</td>
 				<td className="table-column-name">{this.props.item.name}</td>
 				<td className="table-column-address">{this.props.item.address}</td>
-				<td className="table-column-items"></td>
+				{/* <td className="table-column-items"></td> */}
 				<td className="table-column-actions">
 					<ButtonGroup>
 						<Button
