@@ -34,9 +34,15 @@ export default class AuthController {
 							"Incorrect email or password"
 						);
 					} else {
+						console.log(user);
+
 						// Issue token
-						const payload = { email };
-						const token = jwt.sign(payload, env.TOKEN_SECRET, {
+						const jwtPayload = {
+							email: user.email,
+							userId: user._id,
+							userMeta: user.userMeta
+						};
+						const token = jwt.sign(jwtPayload, env.TOKEN_SECRET, {
 							expiresIn: "1h"
 						});
 						const userType =

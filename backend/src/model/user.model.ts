@@ -4,6 +4,7 @@ const uniqueValidator = require("mongoose-unique-validator");
 const saltRounds = 10;
 
 export interface User {
+	_id: string
 	firstName: string;
 	lastName: string;
 	email: string;
@@ -12,7 +13,7 @@ export interface User {
 	userMeta: InternalUserType | undefined;
 	isCorrectPassword?: Function;
 }
- 
+
 export interface InternalUserType {
 	userType: string; // admin or employee
 	branchID: string | undefined; // id of branch or undefined for admin

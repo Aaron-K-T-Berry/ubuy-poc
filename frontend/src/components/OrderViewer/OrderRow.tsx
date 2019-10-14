@@ -64,7 +64,8 @@ export default class OrderRow extends React.Component<
 						>
 							View
 						</Button>
-						<Button
+						{/* Removed until orders edit is complete */}
+						{/* <Button
 							variant="warning"
 							onClick={() => {
 								this.props.handleEditItem(
@@ -74,7 +75,7 @@ export default class OrderRow extends React.Component<
 							}}
 						>
 							Edit
-						</Button>
+						</Button> */}
 					</ButtonGroup>
 				</td>
 			</tr>
