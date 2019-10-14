@@ -1,30 +1,22 @@
 import { Request, Response } from "express";
-import userModel, { User, InternalUserType } from "../../model/user.model";
+import userModel, { InternalUserType } from "../../model/user.model";
 import responseBuilder from "../../common/response-builder";
 import { MongoError } from "mongodb";
 import handleMongoError from "../../common/mongo-errors";
+import { getUser, updateUser } from "./monogo.users";
+import * as _ from "lodash";
 
-export interface AuthRequest extends Request {
-	email: string;
-}
+export interface AuthRequest extends Request {}
 
 export default class UserController {
 	constructor() {}
 
 	public async handleGetUser(req: AuthRequest, res: Response) {
-		const result: User = ((await userModel.findOne({
-			email: req.body.email
-		})) as unknown) as User;
-
-		const user: User = {
-			email: result.email,
-			firstName: result.firstName,
-			lastName: result.lastName,
-			address: result.address,
-			userMeta: result.userMeta
-		};
-
-		res.send({ user });
+		const result = await userModel.findOne({
+			email: req.query.email
+		});
+		// @ts-ignore
+		res.send({ ...result["_doc"], password: undefined });
 	}
 
 	public handleRegisterUser(req: Request, res: Response) {
@@ -102,6 +94,25 @@ export default class UserController {
 			});
 
 			responseBuilder.buildSuccess(res, cleanedResults);
+		} catch (err) {
+			handleMongoError(err, res);
+		}
+	}
+
+	public async update(req: Request, res: Response) {
+		try {
+			const userId = req.params.userId;
+			const currentUserDetails = ((await getUser(userId)) as any)["_doc"];
+			const mergedUser = _.assign(
+				currentUserDetails,
+				_.pick(req.body, _.keys(currentUserDetails))
+			);
+			const response = await updateUser(userId, mergedUser);
+
+			responseBuilder.buildSuccess(res, {
+				msg: `Successfully updated account with id: ${userId}`,
+				updateStats: response
+			});
 		} catch (err) {
 			handleMongoError(err, res);
 		}
