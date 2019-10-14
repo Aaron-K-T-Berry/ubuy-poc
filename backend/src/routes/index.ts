@@ -9,6 +9,8 @@ import BranchController from "../controllers/branch";
 import { ItemRoute } from "./item";
 import ItemController from "../controllers/item";
 import OrderController from "../controllers/orders";
+import { TransactionRoute } from "./transactions";
+import TransactionController from "../controllers/transaction";
 
 export const Routes = (init: ApiInitializer) => {
 	AuthRoute(init.getApp(), new AuthController());
@@ -16,6 +18,7 @@ export const Routes = (init: ApiInitializer) => {
 	BranchRoute(init.getApp(), new BranchController());
 	ItemRoute(init.getApp(), new ItemController());
 	OrderRoute(init.getApp(), new OrderController());
+	TransactionRoute(init.getApp(), new TransactionController());
 
 	// 404
 	init.getApp().use(function(req, res, next) {
@@ -23,11 +26,11 @@ export const Routes = (init: ApiInitializer) => {
 
 		// respond with json
 		if (req.accepts("json")) {
-			res.send({ error: "Not found" });
+			res.send({ error: "Route not found" });
 			return;
 		}
 
 		// default to plain-text. send()
-		res.type("txt").send("Not found");
+		res.type("txt").send("Route not found");
 	});
 };
