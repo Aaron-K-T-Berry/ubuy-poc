@@ -40,8 +40,6 @@ export default class OrderRow extends React.Component<
 	};
 
 	render() {
-		console.log(this.props.order);
-
 		return (
 			<tr>
 				<td>

@@ -37,8 +37,6 @@ export default class ViewItem extends React.Component<
 	}
 
 	render() {
-		console.log(this.state.item.branch);
-
 		return (
 			<div className="content-body flex-center">
 				<div className="img-container">

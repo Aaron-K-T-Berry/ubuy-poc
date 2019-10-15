@@ -34,8 +34,6 @@ export default class AuthController {
 							"Incorrect email or password"
 						);
 					} else {
-						console.log(user);
-
 						// Issue token
 						const jwtPayload = {
 							email: user.email,
