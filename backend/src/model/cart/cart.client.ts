@@ -4,22 +4,7 @@ export const putItem = async (userId: string, data: any) => {
 	return CartModel.findOneAndUpdate(
 		{ userId: userId },
 		data,
-		{ upsert: true },
-		(error, result) => {
-			if (!error) {
-				if (!result) {
-					result = new CartModel();
-				}
-
-				result.save(error => {
-					if (!error) {
-						// Do something with the document
-					} else {
-						throw error;
-					}
-				});
-			}
-		}
+		{ upsert: true }
 	);
 };
 

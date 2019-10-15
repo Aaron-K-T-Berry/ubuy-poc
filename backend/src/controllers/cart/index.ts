@@ -15,12 +15,17 @@ export default class CartController {
 
 		try {
 			const currentCart = await getCart(userId);
-			const data = { userId: userId, items: [...currentCart.items, itemId] };
-			const response = await putItem(userId, data);
 
+			let data;
+			if (currentCart == null) {
+				data = { userId: userId, items: [itemId] };
+			} else {
+				data = { userId: userId, items: [...currentCart.items, itemId] };
+			}
+
+			await putItem(userId, data);
 			responseBuilder.buildSuccess(res, {
-				msg: `Successfully put item in cart for user with id: ${userId}`,
-				updateStats: response
+				msg: `Successfully put item in cart for user with id: ${userId}`
 			});
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound, err);
