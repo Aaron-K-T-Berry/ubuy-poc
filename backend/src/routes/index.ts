@@ -11,6 +11,8 @@ import ItemController from "../controllers/item";
 import OrderController from "../controllers/orders";
 import { TransactionRoute } from "./transactions";
 import TransactionController from "../controllers/transaction";
+import { CartRoute } from "./cart";
+import CartController from "../controllers/cart";
 
 export const Routes = (init: ApiInitializer) => {
 	AuthRoute(init.getApp(), new AuthController());
@@ -19,6 +21,7 @@ export const Routes = (init: ApiInitializer) => {
 	ItemRoute(init.getApp(), new ItemController());
 	OrderRoute(init.getApp(), new OrderController());
 	TransactionRoute(init.getApp(), new TransactionController());
+	CartRoute(init.getApp(), new CartController())
 
 	// 404
 	init.getApp().use(function(req, res, next) {
