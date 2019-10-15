@@ -10,6 +10,8 @@ export interface ViewItemState {
 
 export interface ViewItemProps {
 	itemID: string;
+	cartContext: any;
+	cartFunc: any;
 }
 
 export default class ViewItem extends React.Component<
@@ -36,6 +38,12 @@ export default class ViewItem extends React.Component<
 		this.setState({ item: { ...item, branch: branchDetails } });
 	}
 
+	handleAddToCart = async () => {
+		await ApiHelper.cart.put(this.state.item._id);
+		const updatedCart = await this.props.cartContext.getCart();
+		this.props.cartFunc({ ...this.props.cartContext, cart: updatedCart });
+	};
+
 	render() {
 		return (
 			<div className="content-body flex-center">
@@ -53,7 +61,11 @@ export default class ViewItem extends React.Component<
 					<div className="item-name">{this.state.item.name}</div>
 					<div className="item-body">
 						<em className="price">${this.state.item.price}</em>
-						<Button className="button-cart" variant="success">
+						<Button
+							className="button-cart"
+							variant="success"
+							onClick={this.handleAddToCart}
+						>
 							Add to cart
 						</Button>
 					</div>
@@ -62,7 +74,11 @@ export default class ViewItem extends React.Component<
 					<b> Available At: </b>
 					<ul>
 						{this.state.item.branch.map((branch: any) => {
-							return <li>{branch.name} - ({branch.address})</li>;
+							return (
+								<li>
+									{branch.name} - ({branch.address})
+								</li>
+							);
 						})}
 					</ul>
 				</div>

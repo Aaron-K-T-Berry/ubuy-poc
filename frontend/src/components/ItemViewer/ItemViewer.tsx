@@ -8,7 +8,12 @@ export interface ItemState {
 	items: any[];
 }
 
-export default class ItemViewer extends React.Component<{}, ItemState> {
+export interface ItemProps {
+	cartFunc: any;
+	cartContext: any;
+}
+
+export default class ItemViewer extends React.Component<ItemProps, ItemState> {
 	constructor(props: any) {
 		super(props);
 		this.state = {
@@ -26,7 +31,14 @@ export default class ItemViewer extends React.Component<{}, ItemState> {
 				<Container fluid>
 					<Row noGutters={true} className="justify-content-md-center">
 						{this.state.items.map(item => {
-							return <ItemCard key={item._id} item={item} />;
+							return (
+								<ItemCard
+									cartContext={this.props.cartContext}
+									key={item._id}
+									item={item}
+									cartFunc={this.props.cartFunc}
+								/>
+							);
 						})}
 					</Row>
 				</Container>

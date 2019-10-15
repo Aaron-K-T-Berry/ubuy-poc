@@ -9,7 +9,7 @@ import { UserTypes } from "./components/UserRegistrationForm";
 import AccountInfo from "./pages/AccountInfo";
 import AddItem from "./pages/items/AddItem";
 import Cart from "./pages/Cart";
-import CartView from "./pages/CartView";
+import CartView from "./pages/cart/CartView";
 import Success from "./pages/common/success";
 import EditItem from "./pages/items/EditItem";
 import HomePage from "./pages/Home";
@@ -32,6 +32,8 @@ import { RouteUserTypes } from "./common/ApiHelper/auth/interfaces";
 import ViewAllOrders from "./pages/order/ViewAllOrders";
 import ViewSingleOrder from "./pages/order/ViewSingleOrder";
 import EditAccount from "./pages/account/EditAccount";
+import ApiHelper from "./common/ApiHelper";
+import { itemIdToItem } from "./common/Mappers/ItemMapper";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -39,14 +41,42 @@ const App: React.FC = () => {
 		isAuthed: authHelper.hasToken(),
 		userType: authHelper.getUserRole()
 	});
+	const [cartState, updateCartState] = useState({
+		cart: { userId: "", items: [] },
+		getCart: async () => {
+			const userCart = await ApiHelper.cart.get();
+			if (userCart !== undefined && userCart.items !== undefined) {
+				const mappedItems = {
+					userId: userCart.userId,
+					items: await itemIdToItem(userCart.items)
+				};
+				return mappedItems;
+			}
+		}
+	});
 
 	return (
 		<div>
 			<Router>
-				<SiteHeader authContext={authedState} authFunc={setAuthedSate} />
+				<SiteHeader
+					authContext={authedState}
+					authFunc={setAuthedSate}
+					cartContext={cartState}
+					cartFunc={updateCartState}
+				/>
 				<div className="router-wrapper">
 					<Switch>
-						<Route path="/" exact component={HomePage} />
+						<Route
+							path="/"
+							exact
+							render={props => (
+								<HomePage
+									{...props}
+									cartFunc={updateCartState}
+									cartContext={cartState}
+								/>
+							)}
+						/>
 						<Route
 							path="/login"
 							exact
@@ -69,7 +99,7 @@ const App: React.FC = () => {
 						/>
 
 						<PrivateRoute path="/cart" exact component={Cart} />
-						<PrivateRoute path="/cart/view" exact component={CartView} />
+						<PrivateRoute path="/cart/payment" exact component={CartView} />
 
 						<Route path="/register/user" component={RegisterCustomer} />
 						<PrivateRoute
@@ -83,7 +113,16 @@ const App: React.FC = () => {
 							userRole={RouteUserTypes.ADMIN}
 						/>
 
-						<Route path="/item/:id/view" component={ViewItem} />
+						<Route
+							path="/item/:id/view"
+							render={props => (
+								<ViewItem
+									{...props}
+									cartContext={cartState}
+									cartFunc={updateCartState}
+								/>
+							)}
+						/>
 						<PrivateRoute
 							path="/item/:id/edit"
 							component={EditItem}

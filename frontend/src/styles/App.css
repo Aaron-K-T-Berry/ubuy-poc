@@ -4,6 +4,13 @@
 	src: url(./Card.css);
 }
 
+body::after {
+  content: '';
+  display: block;
+  height: 70px; /* Set same as footer's height */
+  background-color: #efefef;
+}
+
 .body-heading {
 	color: midnightblue;
 	font-size: 30pt;
@@ -23,6 +30,7 @@
 	background: lightgrey;
 	padding: 10px;
 	border-radius: 10px;
+	height: 100%;
 }
 
 .content-body {

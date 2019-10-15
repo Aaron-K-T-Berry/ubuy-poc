@@ -1,44 +1,132 @@
 import React from "react";
 import "../styles/App.css";
-import ItemViewerCart from "../components/ItemViewer/ItemViewerCart";
-import { Button } from "react-bootstrap";
-import axios from "axios";
-import env from "../common/ConfigHelper";
-import { NavLink } from "react-router-dom";
+import { Button, Table } from "react-bootstrap";
+import ApiHelper from "../common/ApiHelper";
+import { itemIdToItem } from "../common/Mappers/ItemMapper";
 
 export interface CartProps {}
 
-export interface CartState {}
+export interface CartState {
+	cart: {
+		userId: string;
+		items: any[];
+	};
+}
 
 export default class AccountInfo extends React.Component<CartProps, CartState> {
-	async componentDidMount() {
-		const res = await axios.get(`${env.API_HOSTNAME}/cart`, {
-			withCredentials: true
-		});
-		const user: CartState = {
-			firstName: res.data.user.firstName,
-			lastName: res.data.user.lastName,
-			email: res.data.user.email
+	constructor(props: any) {
+		super(props);
+
+		this.state = {
+			cart: {
+				userId: "",
+				items: []
+			}
 		};
-		this.setState({ ...user });
 	}
+	async componentDidMount() {
+		await this.updatedCartContents();
+	}
+
+	updatedCartContents = async () => {
+		const res = await ApiHelper.cart.get();
+		if (res !== undefined && res.items !== undefined) {
+			const mapped = await itemIdToItem(res.items);
+			this.setState({ cart: { userId: res.userId, items: mapped } });
+		} else {
+			this.setState({
+				cart: {
+					userId: "",
+					items: []
+				}
+			});
+		}
+	};
+
+	calculateCartValue = () => {
+		let value = 0;
+		this.state.cart.items.forEach(item => {
+			if (item !== undefined) {
+				value += item.price;
+			}
+		});
+		return value;
+	};
+
+	handleCheckout = () => {
+		window.location.href = "/cart/payment";
+	};
+
+	handleEmptyCart = async () => {
+		if (this.state.cart.items.length > 0) {
+			await ApiHelper.cart.empty();
+			window.location.reload();
+		}
+	};
+	handleRemove = async (itemId: string) => {
+		await ApiHelper.cart.remove(itemId);
+		window.location.reload();
+	};
 
 	render() {
 		return (
 			<div className="body-wrapper flex-center">
-				<div className="body-heading">
-					Shopping Cart
-					<data>
-									<text> :$88</text>
-								</data>
-								<NavLink to="/cart/view"><Button className="button">Continue to Checkout</Button></NavLink>
-				</div>
-
+				<div className="body-heading">Your Cart</div>
 				<div className="body-content">
-					<ItemViewerCart />
+					<div style={{ margin: "10px" }}>
+						<Button
+							style={{ margin: "10px" }}
+							onClick={() => {
+								this.handleEmptyCart();
+							}}
+							variant="danger"
+						>
+							Empty Cart
+						</Button>
+						<Button
+							style={{ margin: "10px" }}
+							onClick={() => {
+								this.handleCheckout();
+							}}
+						>
+							Continue to checkout
+						</Button>
+					</div>
+					<Table>
+						<tr>
+							<th>Item</th>
+
+							<th>Price</th>
+							<th>Actions</th>
+						</tr>
+						{this.state.cart.items.map(item => {
+							if (item !== undefined) {
+								return (
+									<tr>
+										<td>{item.name}</td>
+
+										<td>${item.price}</td>
+										<td>
+											<Button
+												onClick={() => {
+													this.handleRemove(item._id);
+												}}
+											>
+												Remove
+											</Button>
+										</td>
+									</tr>
+								);
+							}
+						})}
+						<tr>
+							<th>Total:</th>
+							<td>${this.calculateCartValue()}</td>
+							<td />
+						</tr>
+					</Table>
 				</div>
 			</div>
 		);
-
 	}
 }

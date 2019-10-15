@@ -41,7 +41,6 @@ export default class BranchAdder extends React.Component<
 		return (
 			<div className="input">
 				<Label>Branch Name:</Label>
-
 				<InputGroup>
 					<Input
 						type="text"
