@@ -8,9 +8,12 @@ import UserRegistrationForm, {
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import env from "../../common/ConfigHelper";
+import { Redirect } from "react-router";
 
 // Add state here
-export interface RegisterState {}
+export interface RegisterState {
+	submitSuccess: boolean;
+}
 
 // Add passed in props here
 export interface RegisterProps {}
@@ -22,20 +25,31 @@ export default class RegisterAdminUser extends React.Component<
 	constructor(props: any) {
 		super(props);
 
+		this.state = {
+			submitSuccess: false
+		};
+
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	async handleSubmit(state: UserRegistrationFormState) {
 		try {
-			await axios.post(`${env.API_HOSTNAME}/user/register/internal`, {
-				firstName: state.firstName,
-				lastName: state.lastName,
-				email: state.email,
-				address: state.address,
-				password: state.password,
-				userType: state.userType,
-				branchID: state.branchID
-			});
+			const res = await axios.post(
+				`${env.API_HOSTNAME}/user/register/internal`,
+				{
+					firstName: state.firstName,
+					lastName: state.lastName,
+					email: state.email,
+					address: state.address,
+					password: state.password,
+					userType: state.userType,
+					branchID: state.branchID
+				}
+			);
+
+			if (res.status === 200) {
+				this.setState({ submitSuccess: true });
+			}
 		} catch (error) {
 			const errorCode = error.response.data.ApiCode;
 			this.notify(errorCode);
@@ -51,7 +65,6 @@ export default class RegisterAdminUser extends React.Component<
 			"firstName",
 			"lastName",
 			"email",
-			"branchID",
 			"password",
 			"passwordConfirm"
 		];
@@ -66,6 +79,7 @@ export default class RegisterAdminUser extends React.Component<
 						validationKeys={validationKeys}
 					/>
 				</div>
+				{this.state.submitSuccess && <Redirect to="/login" />}
 			</div>
 		);
 	}
