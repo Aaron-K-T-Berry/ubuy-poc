@@ -58,7 +58,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 	}
 
 	async handleSubmit() {
-		// TODO get the endpoint from config
 		const res = await axios.post(
 			`${env.API_HOSTNAME}/auth/authenticate`,
 			{
@@ -96,7 +95,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 									id="email"
 									onChange={this.handleChange}
 								/>
-
 								<Label>{PageContent.password.label}</Label>
 								<Input
 									type="password"
@@ -104,7 +102,6 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 									id="password"
 									onChange={this.handleChange}
 								/>
-
 								<Button
 									className="button"
 									id="buttonLogin"
@@ -112,7 +109,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 								>
 									Log In
 								</Button>
-								{this.state.loginSuccess && <Redirect to={"/"} />}
+								{this.state.loginSuccess && (window.location.href = "/")}
 							</Group>
 						</div>
 						<div className="body-heading">

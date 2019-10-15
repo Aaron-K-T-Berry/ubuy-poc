@@ -7,10 +7,14 @@ import "./styles/Animations.css";
 import "./styles/SiteHeader.css";
 import Search from "../Search";
 import AuthHelper from "../../common/AuthHelper";
+import ApiHelper from "../../common/ApiHelper";
+import { itemIdToItem } from "../../common/Mappers/ItemMapper";
 
 export interface SiteHeaderProps {
 	authContext: any;
 	authFunc: Function;
+	cartContext: any;
+	cartFunc: Function;
 }
 export interface SiteHeaderState {}
 
@@ -18,8 +22,33 @@ export default class SiteHeader extends React.Component<
 	SiteHeaderProps,
 	SiteHeaderState
 > {
+	async componentDidMount() {
+		if (this.props.authContext.isAuthed) {
+			const updatedCart = await this.props.cartContext.getCart();
+			this.props.cartFunc({ ...this.props.cartContext, cart: updatedCart });
+		}
+	}
+
+	buildCartValue = () => {
+		if (
+			this.props.cartContext.cart !== undefined &&
+			this.props.cartContext.cart.items !== undefined
+		) {
+			let value = 0;
+			const cartItems = this.props.cartContext.cart.items;
+			cartItems.forEach((item: any) => {
+				if (item !== undefined && item.price !== undefined) {
+					value += item.price;
+				}
+			});
+			return <p>${value}</p>;
+		}
+		return <></>;
+	};
+
 	isInternalUser = () => {
 		const userType = this.props.authContext.userType;
+
 		const internalTypes = ["ADMIN", "INTERNAL"];
 		return internalTypes.indexOf(userType) > -1;
 	};
@@ -72,12 +101,15 @@ export default class SiteHeader extends React.Component<
 					}}
 					to="/cart"
 				>
-					<img
-						src="/images/branding/cart.png"
-						width="50"
-						height="50"
-						alt="uBay-logo"
-					/>
+					<div className="cart-container">
+						<img
+							src="/images/branding/cart.png"
+							width="50"
+							height="50"
+							alt="uBay-logo"
+						/>
+						<div className="cart-text">{this.buildCartValue()}</div>
+					</div>
 				</NavLink>
 
 				<NavLink

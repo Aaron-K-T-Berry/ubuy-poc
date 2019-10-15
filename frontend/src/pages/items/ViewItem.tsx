@@ -14,6 +14,8 @@ export interface ViewItemProps {
 			id: string;
 		};
 	};
+	cartContext: any;
+	cartFunc: any; 
 }
 
 export default class ViewItem extends React.Component<
@@ -30,6 +32,12 @@ export default class ViewItem extends React.Component<
 	componentDidMount = () => {};
 
 	render() {
-		return <ItemSingleView itemID={this.state.id} />;
+		return (
+			<ItemSingleView
+				cartContext={this.props.cartContext}
+				cartFunc={this.props.cartFunc}
+				itemID={this.state.id}
+			/>
+		);
 	}
 }
