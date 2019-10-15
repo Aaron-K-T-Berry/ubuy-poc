@@ -45,9 +45,6 @@ export default class ViewAllOrders extends React.Component<
 				};
 			})
 		);
-
-		console.log(mappedOrders);
-
 		this.setState({ ...this.state, orders: mappedOrders });
 	}
 
