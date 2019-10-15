@@ -8,8 +8,14 @@ import {
 	getSingleUser
 } from "../../model/transcations/transact.client";
 import { Transaction } from "../../model/transcations/transact.model";
+import jwtHelper from "../../common/jwt-helper";
+import * as OrderClient from "../../model/order/orders.client";
+import * as TransactClient from "../../model/transcations/transact.client";
+import * as CartClient from "../../model/cart/cart.client";
 
 export default class TransactionController {
+	constructor() {}
+
 	public async create(req: Request, res: Response) {
 		try {
 			const newTransaction = {
@@ -66,6 +72,65 @@ export default class TransactionController {
 				msg: `Successfully deleted transaction with id: ${transactionId}`,
 				deletedStats: response
 			});
+		} catch (err) {
+			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound, err);
+		}
+	}
+
+	public async process(req: Request, res: Response) {
+		const userId = jwtHelper.getUserId(req.cookies.token);
+		const transactDetails = req.body.transactDetails;
+		const cart = req.body.cart;
+
+		try {
+			// Create a order for user
+			const order = {
+				userId: userId,
+				items: cart.items.map((item: any) => {
+					return {
+						itemId: item._id,
+						quantity: "1",
+						branchId: item.branch[0]
+					};
+				}),
+				billingAddress: transactDetails.billingAddress,
+				deliveryAddress: transactDetails.deliveryAddress,
+				orderTime: new Date().toUTCString(),
+				status: "packing"
+			};
+
+			const orderResponse = await OrderClient.createOrder(order);
+			const orderId = orderResponse._id;
+
+			// Create a transaction record for user
+			const transaction = {
+				userId: userId,
+				orderId: orderId,
+				paymentDetails: transactDetails.paymentDetails,
+				createdTime: new Date()
+			};
+
+			const transactResponse = await TransactClient.create(
+				transaction as Transaction
+			);
+			const transactId = transactResponse._id;
+
+			// Empty users cart
+			if (transactId !== undefined && orderId !== undefined) {
+				const cartResponse = await CartClient.deleteCart(userId);
+				console.log(cartResponse);
+				responseBuilder.buildSuccess(res, {
+					msg: `Successfully created transaction`,
+					userId,
+					orderId,
+					transactId
+				});
+			} else {
+				responseBuilder.buildError(
+					res,
+					new Error("Unknown transaction failure")
+				);
+			}
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound, err);
 		}

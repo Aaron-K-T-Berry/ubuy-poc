@@ -81,7 +81,11 @@ export default class AccountInfo extends React.Component<
 	calculateTotal = (order: any) => {
 		let currentValue = 0;
 		order.items.forEach((lineItem: any) => {
-			currentValue = currentValue + lineItem.quantity * lineItem.item.price;
+			console.log(lineItem);
+			
+			if (lineItem.item !== undefined) {
+				currentValue = currentValue + lineItem.quantity * lineItem.item.price;
+			}
 		});
 		return currentValue;
 	};

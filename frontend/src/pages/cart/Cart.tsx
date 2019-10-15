@@ -1,8 +1,8 @@
 import React from "react";
-import "../styles/App.css";
+import "../../styles/App.css";
 import { Button, Table } from "react-bootstrap";
-import ApiHelper from "../common/ApiHelper";
-import { itemIdToItem } from "../common/Mappers/ItemMapper";
+import ApiHelper from "../../common/ApiHelper";
+import { itemIdToItem } from "../../common/Mappers/ItemMapper";
 
 export interface CartProps {}
 

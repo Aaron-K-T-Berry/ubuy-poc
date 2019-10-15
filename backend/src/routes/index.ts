@@ -21,7 +21,7 @@ export const Routes = (init: ApiInitializer) => {
 	ItemRoute(init.getApp(), new ItemController());
 	OrderRoute(init.getApp(), new OrderController());
 	TransactionRoute(init.getApp(), new TransactionController());
-	CartRoute(init.getApp(), new CartController())
+	CartRoute(init.getApp(), new CartController());
 
 	// 404
 	init.getApp().use(function(req, res, next) {

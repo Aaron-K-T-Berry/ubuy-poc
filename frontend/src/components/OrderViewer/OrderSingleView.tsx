@@ -54,6 +54,7 @@ export default class OrderSingleView extends React.Component<
 			this.props.userId,
 			this.props.orderId
 		);
+
 		const branches = await ApiHelper.branch.getAll();
 		const items = await ApiHelper.item.getAll();
 
@@ -74,6 +75,8 @@ export default class OrderSingleView extends React.Component<
 			status: order.status,
 			orderTime: order.orderTime
 		};
+
+		console.log(mappedOrders);
 		this.setState({ order: mappedOrders });
 	}
 
@@ -112,17 +115,19 @@ export default class OrderSingleView extends React.Component<
 						</thead>
 						<tbody>
 							{this.state.order.items.map(lineItem => {
-								return (
-									<tr>
-										<td>
-											<Link to={`/item/${lineItem.item._id}/view`}>
-												{lineItem.item.name}
-											</Link>
-										</td>
-										<td>{lineItem.quantity}</td>
-										<td>${lineItem.item.price}</td>
-									</tr>
-								);
+								if (lineItem.item !== undefined) {
+									return (
+										<tr>
+											<td>
+												<Link to={`/item/${lineItem.item._id}/view`}>
+													{lineItem.item.name}
+												</Link>
+											</td>
+											<td>{lineItem.quantity}</td>
+											<td>${lineItem.item.price}</td>
+										</tr>
+									);
+								}
 							})}
 						</tbody>
 					</Table>

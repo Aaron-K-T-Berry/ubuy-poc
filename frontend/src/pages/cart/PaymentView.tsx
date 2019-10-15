@@ -65,12 +65,11 @@ export default class PaymentView extends React.Component<{}, PaymentViewState> {
 		};
 
 		this.handleChange = this.handleChange.bind(this);
-		this.updatedCartContents();
 	}
 
-	// componentDidMount() {
-	// 	await this.updatedCartContents();
-	// }
+	async componentDidMount() {
+		await this.updatedCartContents();
+	}
 
 	updatedCartContents = async () => {
 		const res = await ApiHelper.cart.get();
@@ -139,8 +138,16 @@ export default class PaymentView extends React.Component<{}, PaymentViewState> {
 		window.location.href = `/cart`;
 	};
 
-	handleProcessPayment = () => {
+	handleProcessPayment = async () => {
+		const payload = {
+			transactDetails: this.state.transactDetails,
+			cart: this.state.cart
+		};
+		const res = await ApiHelper.transact.process(payload);
 		
+		if (res !== undefined) {
+			window.location.href = `/account/user`;
+		}
 	};
 
 	render() {

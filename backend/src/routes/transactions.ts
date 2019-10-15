@@ -6,6 +6,7 @@ export const TransactionRoute = (
 	app: Express,
 	controller: TransactionController
 ) => {
+	app.post("/transact/process", customerAuth, controller.process)
 	app.post("/transact/create", customerAuth, controller.create); // Create transactions
 	app.get("/transact/view/all", branchAuth, controller.getAll); // View all transactions
 	app.get("/transact/view/:userId", customerAuth, controller.getAllUsers); // View a users transactions

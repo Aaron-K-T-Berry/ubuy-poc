@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import OrderModel from "../../model/orders.model";
+import OrderModel from "../../model/order/orders.model";
 import { MongoError } from "mongodb";
 import responseBuilder, { ApiCode } from "../../common/response-builder";
 import handleMongoError from "../../common/mongo-errors";
@@ -67,8 +67,6 @@ export default class OrderController {
 	public async getAll(req: Request, res: Response) {
 		try {
 			const allItems = await OrderModel.find({}).lean();
-			console.log(allItems);
-			
 			responseBuilder.buildSuccess(res, allItems);
 		} catch (err) {
 			handleMongoError(err, res);

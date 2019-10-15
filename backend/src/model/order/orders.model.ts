@@ -30,7 +30,7 @@ export const ItemsSchema = new mongoose.Schema({
 const OrderSchema = new mongoose.Schema({
 	userId: { type: String, required: true },
 	items: {
-		type: [ItemsSchema],
+		type: [{}],
 		required: true
 	},
 	billingAddress: { type: String, required: true },

@@ -4,6 +4,7 @@ import AuthApi from "./auth";
 import OrderApi from "./order";
 import * as UserApi from "./user";
 import CartApi from "./cart";
+import TransactApi from "./transact";
 
 export default {
 	branch: BranchApi,
@@ -11,5 +12,6 @@ export default {
 	auth: AuthApi,
 	order: OrderApi,
 	user: UserApi,
-	cart: CartApi
+	cart: CartApi,
+	transact: TransactApi
 };
