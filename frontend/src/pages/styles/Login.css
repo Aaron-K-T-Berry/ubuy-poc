@@ -21,3 +21,10 @@
 	padding-right: 0;
 	padding-left: 0;
 }
+
+.alert {
+  padding: 20px;
+  background-color: #f44336; /* Red */
+  color: white;
+  margin-bottom: 15px;
+}

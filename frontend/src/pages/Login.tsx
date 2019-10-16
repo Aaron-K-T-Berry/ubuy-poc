@@ -74,7 +74,9 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 
 	buildReferralError = () => {
 		const errorMessage = this.state.referralError;
-		toast(errorMessage);
+		// toast(errorMessage);
+
+		return <div className="alert">{errorMessage}</div>;
 	};
 
 	render() {
