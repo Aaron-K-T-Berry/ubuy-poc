@@ -7,8 +7,6 @@ import "./styles/Animations.css";
 import "./styles/SiteHeader.css";
 import Search from "../Search";
 import AuthHelper from "../../common/AuthHelper";
-import ApiHelper from "../../common/ApiHelper";
-import { itemIdToItem } from "../../common/Mappers/ItemMapper";
 
 export interface SiteHeaderProps {
 	authContext: any;
