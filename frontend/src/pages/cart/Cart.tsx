@@ -3,6 +3,7 @@ import "../../styles/App.css";
 import { Button, Table } from "react-bootstrap";
 import ApiHelper from "../../common/ApiHelper";
 import { itemIdToItem } from "../../common/Mappers/ItemMapper";
+import { Link } from "react-router-dom";
 
 export interface CartProps {}
 
@@ -54,7 +55,9 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 	};
 
 	handleCheckout = () => {
-		window.location.href = "/cart/payment";
+		if (this.state.cart.items.length > 0) {
+			window.location.href = "/cart/payment";
+		}
 	};
 
 	handleEmptyCart = async () => {
@@ -103,7 +106,9 @@ export default class AccountInfo extends React.Component<CartProps, CartState> {
 							if (item !== undefined) {
 								return (
 									<tr>
-										<td>{item.name}</td>
+										<td>
+											<Link to={`/item/${item._id}/view`}>{item.name}</Link>
+										</td>
 
 										<td>${item.price}</td>
 										<td>

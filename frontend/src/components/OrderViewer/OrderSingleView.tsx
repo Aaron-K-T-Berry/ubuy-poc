@@ -93,10 +93,10 @@ export default class OrderSingleView extends React.Component<
 					<b>Order time:</b>
 					<p>{new Date(this.state.order.orderTime).toLocaleString()}</p>
 
-					<b>User:</b>
+					{/* <b>User:</b>
 					<p>
 						{this.state.order.user.firstName}, {this.state.order.user.lastName}
-					</p>
+					</p> */}
 
 					<b>Billing Address:</b>
 					<p>{this.state.order.billingAddress}</p>
