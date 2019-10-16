@@ -15,10 +15,8 @@ export default class HomePage extends React.Component<HomePageProps, {}> {
 			<div>
 				<Container className="content-body">
 					<Row>
-						<div className="body-heading">Recommendations</div>
-					</Row>
-					<Row>
 						<ItemViewer
+							getAllItems={true}
 							cartFunc={this.props.cartFunc}
 							cartContext={this.props.cartContext}
 						/>

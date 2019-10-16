@@ -6,7 +6,7 @@ export const getAll = async () => {
 		const res = await Axios.get(env.API_HOSTNAME + "/item", {
 			withCredentials: true
 		});
- 
+
 		if (res.status === 200) {
 			if (res.data !== undefined) {
 				console.log(`Fetched ${res.data.length} item(s) from the backend`);
@@ -89,10 +89,31 @@ export const add = async (item: any) => {
 	return false;
 };
 
+export const search = async (query: string) => {
+	try {
+		const res = await Axios.post(
+			env.API_HOSTNAME + "/item/search",
+			{ query },
+			{
+				withCredentials: true
+			}
+		);
+		if (res.status === 200) {
+			return res;
+		} else {
+			console.log(`${res.status} code received when trying query items`);
+		}
+	} catch (err) {
+		console.log(err);
+	}
+	return false;
+};
+
 export default {
 	getAll,
 	getSingle,
 	update,
 	delete: remove,
-	add
+	add,
+	search
 };

@@ -34,6 +34,7 @@ import ViewSingleOrder from "./pages/order/ViewSingleOrder";
 import EditAccount from "./pages/account/EditAccount";
 import ApiHelper from "./common/ApiHelper";
 import { itemIdToItem } from "./common/Mappers/ItemMapper";
+import SearchResults from "./pages/search/Results";
 
 const App: React.FC = () => {
 	// Setup react hooks
@@ -82,6 +83,18 @@ const App: React.FC = () => {
 							exact
 							render={props => (
 								<LoginForm {...props} authFunc={setAuthedSate} />
+							)}
+						/>
+
+						<Route
+							path="/search/result"
+							exact
+							render={props => (
+								<SearchResults
+									{...props}
+									cartFunc={updateCartState}
+									cartContext={cartState}
+								/>
 							)}
 						/>
 

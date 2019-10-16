@@ -11,6 +11,8 @@ export interface ItemState {
 export interface ItemProps {
 	cartFunc: any;
 	cartContext: any;
+	items?: any[];
+	getAllItems: boolean;
 }
 
 export default class ItemViewer extends React.Component<ItemProps, ItemState> {
@@ -22,14 +24,18 @@ export default class ItemViewer extends React.Component<ItemProps, ItemState> {
 	}
 
 	async componentDidMount() {
-		this.setState({ items: await ApiHelper.item.getAll() });
+		if (this.props.getAllItems || this.props.items === undefined) {
+			this.setState({ items: await ApiHelper.item.getAll() });
+		} else {
+			this.setState({ items: this.props.items });
+		}
 	}
 
 	render() {
 		return (
 			<div>
 				<Container fluid>
-					<Row noGutters={true} className="justify-content-md-center">
+					<Row className="justify-content-md-center">
 						{this.state.items.map(item => {
 							return (
 								<ItemCard
