@@ -82,7 +82,9 @@ export default class ItemController {
 	public async handleSearch(req: Request, res: Response) {
 		try {
 			const queryString = req.body.query;
-			const response = await ItemModel.find({ name: { $regex: queryString } });
+			const response = await ItemModel.find({
+				name: { $regex: `${queryString}`, $options: "i" }
+			});
 			responseBuilder.buildSuccess(res, response);
 		} catch (err) {
 			responseBuilder.buildAPIError(res, ApiCode.MongoNotFound);

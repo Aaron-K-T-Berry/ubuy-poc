@@ -15,7 +15,6 @@ import {
 import axios from "axios";
 import env from "../common/ConfigHelper";
 import "./styles/Login.css";
-import { toast } from "react-toastify";
 
 // Add state here
 export interface LoginState {
@@ -23,6 +22,7 @@ export interface LoginState {
 	password: string;
 	loginSuccess: boolean;
 	referralError?: string;
+	showFailed: boolean;
 }
 
 // Add passed in props here
@@ -37,7 +37,8 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		this.state = {
 			email: "",
 			password: "",
-			loginSuccess: false
+			loginSuccess: false,
+			showFailed: false
 		};
 
 		if (this.props.location.state) {
@@ -58,24 +59,37 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 	}
 
 	async handleSubmit() {
-		const res = await axios.post(
-			`${env.API_HOSTNAME}/auth/authenticate`,
-			{
-				email: this.state.email,
-				password: this.state.password
-			},
-			{ withCredentials: true }
-		);
-		if (res.status === 200) {
-			this.setState({ loginSuccess: true });
-			this.props.authFunc({ isAuthed: true, userType: res.data.userType });
+		try {
+			const res = await axios.post(
+				`${env.API_HOSTNAME}/auth/authenticate`,
+				{
+					email: this.state.email,
+					password: this.state.password
+				},
+				{ withCredentials: true }
+			);
+			if (res.status === 200) {
+				this.setState({ loginSuccess: true });
+				this.props.authFunc({ isAuthed: true, userType: res.data.userType });
+			} else {
+				this.setState({ ...this.state, showFailed: true });
+			}
+		} catch (err) {
+			this.setState({ ...this.state, showFailed: true });
 		}
 	}
 
 	buildReferralError = () => {
 		const errorMessage = this.state.referralError;
-		// toast(errorMessage);
+		return this.buildErrorBanner(errorMessage as string);
+	};
 
+	buildLoginFailError = () => {
+		const errorMessage = "Incorrect username or password.";
+		return this.buildErrorBanner(errorMessage as string);
+	};
+
+	buildErrorBanner = (errorMessage: string) => {
 		return <div className="alert">{errorMessage}</div>;
 	};
 
@@ -83,6 +97,7 @@ export default class LoginForm extends React.Component<LoginProps, LoginState> {
 		return (
 			<Container className="content-body" fluid={true}>
 				{this.state.referralError && this.buildReferralError()}
+				{this.state.showFailed && this.buildLoginFailError()}
 				<Row>
 					<Col className="login-body">
 						<div className="body-heading">
