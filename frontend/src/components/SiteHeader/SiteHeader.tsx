@@ -120,7 +120,7 @@ export default class SiteHeader extends React.Component<
 						AuthHelper.logout();
 						this.props.authFunc({ isAuthed: false });
 					}}
-					to="/logout"
+					to="/"
 				>
 					<h2>Logout</h2>
 				</NavLink>
