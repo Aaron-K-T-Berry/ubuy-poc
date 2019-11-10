@@ -1,5 +1,10 @@
 # ubuy-poc
 
+## THIS REPO HAS BEEN ARCHIVED
+
+Software studio 1B has finished so this repo has been archived. Feel free to fork this repo if code is still needed.
+
+---
 This is a proof of concept for the assignment and what the app might structurally look like.
 
 This is super simple with each app separated into its own functional layer (Frontend, Backend and Data access) this is easiest in the sense of separating concerns between what code is supposed to deal with. This was there is no question where display or business logic should sit.
